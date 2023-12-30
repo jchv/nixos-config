@@ -9,7 +9,6 @@
       ./keyring.nix
       ./overrides.nix
       ./portal.nix
-      ./programs.nix
       ./qt.nix
       ./waybar.nix
     ];
