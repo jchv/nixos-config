@@ -1,4 +1,4 @@
-{ ... }: {
+{
   config = {
     environment.etc."sway/config".text = ''
       # Display configuration

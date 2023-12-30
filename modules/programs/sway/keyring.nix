@@ -1,4 +1,4 @@
-{ config, pkgs, lib, enableDebugging, replaceDependency, overrideDerivation, ... }: {
+{
   config = {
     programs.sway.extraSessionCommands = ''
       export GNOME_KEYRING_CONTROL=/run/user/$UID/keyring
