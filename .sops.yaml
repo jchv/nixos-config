@@ -1,0 +1,14 @@
+keys:
+  - &john_nullptr age1lj4gknnm9yxtcj8z279rnf2cya9kqt4pr28yca3cc9ejgcl9uqfsldn2r6
+  - &taiga age14m320dsll0pnxfzxespkkyqj8mdu9v6curvank8ayje77v3jypvsylh6rq
+  - &curly age12ywld2dxh2mdhqdcgd5ne7yypla74n52dhu9cw0ccsgpfrgg6drqysguje
+  - &puchiko age1mnk2z8hjkp86ecxdps6ht6tqq9dxuwm5y8llpvp8d4ehqyf0sprqu26tu8
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *john_nullptr
+      - *taiga
+      - *curly
+
