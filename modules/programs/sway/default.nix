@@ -110,6 +110,7 @@
 
         titlebar_border_thickness 1
         titlebar_padding 5
+        seat seat0 xcursor_theme Adwaita
 
         # DBus graphical environment
         # XDG Autostart
