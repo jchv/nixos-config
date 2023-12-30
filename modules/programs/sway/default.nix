@@ -91,7 +91,6 @@
     environment = {
       sessionVariables = {
         LD_LIBRARY_PATH = [ "${pkgs.libappindicator-gtk3.out}/lib" ];
-        NIXOS_OZONE_WL = "1";
       };
 
       etc."udisks2/mount_options.conf".text = ''
