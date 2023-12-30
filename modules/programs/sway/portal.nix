@@ -10,15 +10,16 @@
           "org.freedesktop.impl.portal.FileChooser" = [
             "kde"
           ];
-          "org.freedesktop.impl.portal.OpenURI" = [
-            "kde"
+          "org.freedesktop.impl.portal.AppChooser" = [
+            "gtk"
           ];
         };
       };
       xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [
+      extraPortals = with pkgs; with plasma5Packages; [
         xdg-desktop-portal-wlr
-        plasma5Packages.xdg-desktop-portal-kde
+        xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
       ];
     };
   };
