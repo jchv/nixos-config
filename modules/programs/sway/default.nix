@@ -151,8 +151,6 @@
             resume '$swaymsg "output * dpms on"' \
             before-sleep '$swaylock -f -c 000000'
 
-        for_window [title="^Dolphin$"] inhibit_idle visible
-
         # Playerctl, for better playback control.
         # Should be OK to rerun it a lot.
         # It will just crash if it's already running in this session.
