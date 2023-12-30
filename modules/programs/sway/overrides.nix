@@ -22,6 +22,9 @@
       for_window [app_id="org.kde.dolphin" title="^Moving \(.+ of .+\) — Dolphin"] floating enable
       for_window [app_id="org.kde.dolphin" title="^Deleting \(.+ of .+\) — Dolphin"] floating enable
 
+      # KDE portal file dialogs
+      for_window [app_id="org.freedesktop.impl.portal.desktop.kde"] floating enable
+
       # Wine virtual desktop
       for_window [title="- Wine desktop$" instance="explorer.exe" class="Wine"] floating enable
 
