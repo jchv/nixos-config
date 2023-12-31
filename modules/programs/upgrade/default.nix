@@ -1,19 +1,29 @@
 { pkgs, ... }: {
   config = {
     environment.systemPackages = [
-      (pkgs.writeScriptBin "nixos-upgrade-with" ''
+      (pkgs.writeScriptBin "nixos-commit-config-to-root" ''
         #!${pkgs.bash}/bin/bash
-        # TODO: better way to acquire root privileges (that sticks, but keeps agent)
-
-        # HACK: Ensure NSCD is running, for local domains
-        sudo systemctl start nscd
-
-        # Copy build from target machine
-        sudo -E nix-copy-closure -j8 --from "$1" $(ssh "$1" -- nix build /etc/nixos#nixosConfigurations."$(hostname)".config.system.build.toplevel --print-out-paths)
-
-        # Rebuild + switch
-        # TODO: try to update git and ensure everything is synced?
-        sudo nixos-rebuild switch
+        # Commits the configuration to root so that it is picked up in future
+        # unattended upgrades.
+        sudo nix flake lock --update-input nixos-config /etc/nixos
+      '')
+      (pkgs.writeScriptBin "nixos-upgrade-nixpkgs" ''
+        #!${pkgs.bash}/bin/bash
+        # Commits the configuration to root so that it is picked up in future
+        # unattended upgrades.
+        nix flake lock --update-input nixpkgs --commit-lock-file $HOME/nixos-config
+        sudo nix flake lock --update-input nixos-config --update-input nixpkgs /etc/nixos
+      '')
+      (pkgs.writeScriptBin "nixos-rebuild-with" ''
+        #!${pkgs.bash}/bin/bash
+        # Thin wrapper around nixos-rebuild for convenience.
+        if [ "$#" == "0" ] || [ "$1" == "--help" ]; then
+          echo "Usage: $0 <host> [options...]"
+          exit 1
+        fi
+        HOST=$1
+        shift
+        sudo -E HOME=/root SUDO_USER= nixos-rebuild switch --fast --build-host $HOST "$@"
       '')
     ];
   };
