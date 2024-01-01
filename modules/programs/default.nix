@@ -27,7 +27,7 @@
 
       # Internet/Networking
       discord
-      element-desktop-wayland
+      fractal-next
       gnome-network-displays
       jitsi-meet-electron
       librewolf-wayland
