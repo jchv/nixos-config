@@ -15,7 +15,7 @@
           "spacing": 4, // Gaps between modules (4px)
           "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
           "modules-center": ["sway/window"],
-          "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "upower", "clock", "tray"],
+          "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "upower", "clock", "tray"],
           "keyboard-state": {
             "numlock": true,
             "capslock": true,
