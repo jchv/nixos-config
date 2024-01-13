@@ -15,8 +15,11 @@
 
     playerctl-inhibit.url = "github:jchv/playerctl-inhibit";
     playerctl-inhibit.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nixos-hardware, sops-nix, nix-writers, dwarffs, playerctl-inhibit, ...}:
+  outputs = { self, nixpkgs, nixos-hardware, sops-nix, nix-writers, dwarffs, playerctl-inhibit, nixvim, ...}:
     let
       systemFor = hostname: modules:
         nixpkgs.lib.nixosSystem {
@@ -25,6 +28,7 @@
             (./machines + "/${hostname}")
             sops-nix.nixosModules.sops
             dwarffs.nixosModules.dwarffs
+            nixvim.nixosModules.nixvim
             {
               nixpkgs.overlays = [
                 nix-writers.overlays.default

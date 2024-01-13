@@ -7,7 +7,6 @@
       ./samba.nix
       ./shell.nix
       ./users.nix
-      ./vim.nix
     ];
 
   config = {

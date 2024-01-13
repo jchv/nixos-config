@@ -5,6 +5,7 @@
     ./syncthing
     ./tailscale
     ./upgrade
+    ./vim
     ./wine
   ];
 
