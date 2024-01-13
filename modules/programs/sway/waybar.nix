@@ -15,7 +15,7 @@
           "spacing": 4, // Gaps between modules (4px)
           "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
           "modules-center": ["sway/window"],
-          "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
+          "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "upower", "clock", "tray"],
           "keyboard-state": {
             "numlock": true,
             "capslock": true,
@@ -91,19 +91,13 @@
             "format": "{percent}% {icon}",
             "format-icons": ["", "", "", "", "", "", "", "", ""]
           },
-          "battery": {
-            "states": {
-              "warning": 30,
-              "critical": 15
-            },
-            "format": "{capacity}% {icon}",
-            "format-charging": "{capacity}% ",
-            "format-plugged": "{capacity}% ",
-            "format-alt": "{time} {icon}",
-            "format-icons": ["", "", "", "", ""]
-          },
-          "battery#bat2": {
-            "bat": "BAT2"
+          "upower": {
+            "icon-size": 12,
+            "hide-if-empty": true,
+            "tooltip": true,
+            "tooltip-spacing": 20,
+            "format": " {percentage}",
+            "format-alt": " {percentage}"
           },
           "network": {
             "format-wifi": "{essid} ({signalStrength}%) ",

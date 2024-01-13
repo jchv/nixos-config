@@ -9,6 +9,7 @@
       ./keyring.nix
       ./overrides.nix
       ./portal.nix
+      ./power.nix
       ./qt.nix
       ./waybar.nix
     ];
@@ -17,8 +18,8 @@
     programs.sway = {
       enable = true;
       extraOptions = [
-        "--verbose"
-        "--debug"
+        # "--verbose"
+        # "--debug"
         "--unsupported-gpu"
       ];
       extraSessionCommands = lib.mkBefore ''
@@ -100,8 +101,6 @@
 
       etc."sway/config".text = ''
         set $mod Mod4
-        set $swayidle ${pkgs.swayidle.out}/bin/swayidle
-        set $swaylock ${pkgs.swaylock.out}/bin/swaylock
         set $swaymsg ${pkgs.sway.out}/bin/swaymsg
         set $swaynag ${pkgs.sway.out}/bin/swaynag
         set $systemctl ${pkgs.systemd.out}/bin/systemctl
@@ -144,13 +143,6 @@
         bindsym --release Shift+$mod+p exec $grimshot --notify copy active
         for_window [title=".*"] title_format "%app_id %instance :: %shell"
 
-        # Idle timeout
-        exec $swayidle -w \
-            timeout 750 '$swaylock -f -c 000000' \
-            timeout 800 '$swaymsg "output * dpms off"' \
-            resume '$swaymsg "output * dpms on"' \
-            before-sleep '$swaylock -f -c 000000'
-
         # Playerctl, for better playback control.
         # Should be OK to rerun it a lot.
         # It will just crash if it's already running in this session.
@@ -172,7 +164,6 @@
         bindsym $mod+Shift+e exec $swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' '$swaymsg exit'
         bindsym $mod+i exec systemd-inhibit --mode=block --what=sleep:handle-lid-switch $swaynag -t warning -e bottom -m "Inhibiting suspend."
         bindsym --locked $mod+Shift+s exec sleep 1 && $systemctl suspend
-        bindsym $mod+l exec $swaylock -f -c 000000
         bindsym $mod+Left focus left
         bindsym $mod+Down focus down
         bindsym $mod+Up focus up
