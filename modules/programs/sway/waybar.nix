@@ -9,6 +9,18 @@
             swaybar_command ${pkgs.waybar.out}/bin/waybar
         }
       '';
+      "xdg/waybar/style.css".text = ''
+        @import url("${pkgs.waybar.out}/etc/xdg/waybar/style.css");
+        #upower {
+            padding: 0 10px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        #upower.charging, #upower.plugged {
+            color: #ffffff;
+            background-color: #26A65B;
+        }
+      '';
       "xdg/waybar/config".text = ''
         {
           "height": 30, // Waybar height (to be removed for auto height)
