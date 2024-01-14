@@ -31,7 +31,7 @@ in {
             timeout 800 '${swayDPMSOff}' \
             timeout 900 '${sleepIfOnBattery}' \
             idlehint 750 \
-            after-resume '${swayDPMSOn}"' \
+            resume '${swayDPMSOn}"' \
             before-sleep '${beforeSleep}'
 
         bindsym $mod+l exec ${swaylockCommand}
