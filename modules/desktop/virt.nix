@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   config = {
     environment.systemPackages = with pkgs; [
       qemu
@@ -6,8 +6,7 @@
       virt-viewer
       spice-gtk
       swtpm
-      libguestfs
-      libguestfs-appliance
+      libguestfs-with-appliance
       virtiofsd
     ];
 
@@ -25,6 +24,20 @@
         };
       };
     };
+
+    # Workaround for NixOS/nixpkgs#280881
+    nixpkgs.overlays = [
+      (self: super: {
+        libguestfs-with-appliance = super.libguestfs-with-appliance.overrideAttrs (final: prev: rec {
+          pname = "libguestfs";
+          version = "1.46.2";
+          src = super.fetchurl {
+            url = "https://libguestfs.org/download/${lib.versions.majorMinor version}-stable/${pname}-${version}.tar.gz";
+            sha256 = "sha256-5uppylIdYPDFS9bT2vH1kcxi4RBdwlOJcVJImqNIAGs=";
+          };
+        });
+      })
+    ];
 
     virtualisation.waydroid.enable = true;
 
