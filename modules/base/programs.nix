@@ -30,7 +30,6 @@
 
       # Utilities
       age
-      csvkit
       fd
       file
       fzf
