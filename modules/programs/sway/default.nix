@@ -104,7 +104,6 @@
         set $swaymsg ${pkgs.sway.out}/bin/swaymsg
         set $swaynag ${pkgs.sway.out}/bin/swaynag
         set $systemctl ${pkgs.systemd.out}/bin/systemctl
-        set $dolphin ${pkgs.dolphin.out}/bin/dolphin
         set $dex ${pkgs.dex.out}/bin/dex
 
         titlebar_border_thickness 1
@@ -158,7 +157,7 @@
         bindsym $mod+Return exec ${pkgs.kitty.out}/bin/kitty
         bindsym $mod+Shift+q kill
         bindsym $mod+d exec ${pkgs.zsh.out}/bin/zsh -c "${pkgs.fuzzel.out}/bin/fuzzel --width 80"
-        bindsym $mod+Home exec $dolphin --new-window $HOME
+        bindsym $mod+Home exec xdg-open $HOME
         floating_modifier $mod normal
         bindsym $mod+Shift+c reload
         bindsym $mod+Shift+e exec $swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' '$swaymsg exit'
