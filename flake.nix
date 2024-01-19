@@ -7,6 +7,9 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-writers.url = "git+https://cgit.krebsco.de/nix-writers";
     nix-writers.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -19,7 +22,18 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nixos-hardware, sops-nix, nix-writers, dwarffs, playerctl-inhibit, nixvim, ...}:
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    nixos-hardware,
+    sops-nix,
+    home-manager,
+    nix-writers,
+    dwarffs,
+    playerctl-inhibit,
+    nixvim,
+    ...
+  }:
     let
       systemFor = hostname: modules:
         nixpkgs.lib.nixosSystem {
@@ -27,6 +41,7 @@
           modules = [
             (./machines + "/${hostname}")
             sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
             dwarffs.nixosModules.dwarffs
             nixvim.nixosModules.nixvim
             {
