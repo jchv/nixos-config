@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/base
-    ../../modules/desktop
-    ../../modules/programs
-    ../../modules/hardware/android.nix
-    ../../modules/hardware/gamecube.nix
-    ../../modules/hardware/wacom.nix
+    ../../base
+    ../../desktop
+    ../../programs
+    ../../home
+    ../../hardware/android.nix
+    ../../hardware/gamecube.nix
+    ../../hardware/wacom.nix
   ];
 
   config = {

@@ -10,6 +10,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nur.url = "github:nix-community/NUR";
+
     nix-writers.url = "git+https://cgit.krebsco.de/nix-writers";
     nix-writers.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -21,6 +23,8 @@
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
   outputs = inputs@{
     self,
@@ -28,10 +32,12 @@
     nixos-hardware,
     sops-nix,
     home-manager,
+    nur,
     nix-writers,
     dwarffs,
     playerctl-inhibit,
     nixvim,
+    flake-utils,
     ...
   }:
     let
@@ -39,9 +45,10 @@
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            (./machines + "/${hostname}")
+            (./modules/machines + "/${hostname}")
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
+            nur.nixosModules.nur
             dwarffs.nixosModules.dwarffs
             nixvim.nixosModules.nixvim
             {
@@ -59,5 +66,14 @@
       nixosConfigurations.curly = systemFor "curly" [];
       nixosConfigurations.taiga = systemFor "taiga" [ surface ];
       nixosConfigurations.puchiko = systemFor "puchiko" [ micropc playerctlInhibit ];
-    };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in {
+        apps.updateMozillaAddons = {
+          type = "app";
+          program = toString (pkgs.writers.writeBash "update-firefox-addons" ''
+            nix run git+https://git.sr.ht/~rycee/mozilla-addons-to-nix -- ./packages/firefox-addons/addons.json ./packages/firefox-addons/addons.nix
+          '');
+        };
+      }
+    );
 }

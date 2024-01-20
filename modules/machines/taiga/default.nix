@@ -1,11 +1,12 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/base
-    ../../modules/desktop
-    ../../modules/programs
-    ../../modules/hardware/android.nix
-    ../../modules/hardware/brother-ql800.nix
+    ../../base
+    ../../desktop
+    ../../programs
+    ../../home
+    ../../hardware/android.nix
+    ../../hardware/brother-ql800.nix
   ];
 
   config = {

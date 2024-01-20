@@ -31,7 +31,6 @@
       fractal-next
       gnome-network-displays
       jitsi-meet-electron
-      librewolf-wayland
       remmina
       thunderbird
       waypipe

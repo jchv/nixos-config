@@ -3,6 +3,7 @@
     [
       ./i18n.nix
       ./nixos.nix
+      ./overlay.nix
       ./programs.nix
       ./samba.nix
       ./shell.nix
