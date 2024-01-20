@@ -66,6 +66,36 @@
       neovide
     ];
 
+    xdg.mime = {
+      addedAssociations = {
+        "application/pdf" = "librewolf.desktop";
+        "application/x-wine-extension-ini" = "org.kde.kwrite.desktop";
+        "inode/directory" = "neovide.desktop";
+        "text/plain" = "org.kde.kwrite.desktop";
+        "text/x-readme" = "org.kde.kwrite.desktop";
+        "x-scheme-handler/https" = "librewolf.desktop";
+        "x-scheme-handler/mailto" = "thunderbird.desktop";
+        "x-scheme-handler/mid" = "thunderbird.desktop";
+      };
+      defaultApplications = {
+        "application/pdf" = "org.kde.okular.desktop";
+        "application/vnd.rar" = "org.kde.ark.desktop";
+        "application/x-7z-compressed" = "org.kde.ark.desktop";
+        "application/x-tar" = "org.kde.ark.desktop";
+        "application/zip" = "org.kde.ark.desktop";
+        "image/gif" = "org.kde.gwenview.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "image/png" = "org.kde.gwenview.desktop";
+        "inode/directory" = "org.kde.dolphin.desktop";
+        "text/plain" = "org.kde.kwrite.desktop";
+        "text/x-readme" = "org.kde.kwrite.desktop";
+        "video/webm" = "org.kde.gwenview.desktop";
+        "x-scheme-handler/https" = "librewolf.desktop";
+        "x-scheme-handler/mailto" = "thunderbird.desktop";
+        "x-scheme-handler/mid" = "thunderbird.desktop";
+      };
+    };
+
     programs.wireshark.enable = true;
   };
 }
