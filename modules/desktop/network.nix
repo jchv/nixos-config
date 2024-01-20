@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   config = {
-    # Can work around hanging nixos-rebuild switch.
-    systemd.services.NetworkManager.reloadIfChanged = false;
+    # Workaround for https://github.com/NixOS/nixpkgs/issues/180175
+    systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
     networking = {
       # TODO: Probably would be good to re-enable, but it's annoying for
