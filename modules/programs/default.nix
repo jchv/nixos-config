@@ -71,8 +71,11 @@
         "application/pdf" = "librewolf.desktop";
         "application/x-wine-extension-ini" = "org.kde.kwrite.desktop";
         "inode/directory" = "neovide.desktop";
+        "text/html" = "librewolf.desktop";
         "text/plain" = "org.kde.kwrite.desktop";
         "text/x-readme" = "org.kde.kwrite.desktop";
+        "x-scheme-handler/about" = "librewolf.desktop";
+        "x-scheme-handler/http" = "librewolf.desktop";
         "x-scheme-handler/https" = "librewolf.desktop";
         "x-scheme-handler/mailto" = "thunderbird.desktop";
         "x-scheme-handler/mid" = "thunderbird.desktop";
