@@ -4,6 +4,9 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+      colorschemes = {
+        dracula.enable = true;
+      };
       plugins = {
         chadtree = {
           enable = true;
