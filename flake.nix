@@ -74,6 +74,9 @@
             nix run git+https://git.sr.ht/~rycee/mozilla-addons-to-nix -- ./packages/firefox-addons/addons.json ./packages/firefox-addons/addons.nix
           '');
         };
+        packages.vim = nixvim.legacyPackages.${system}.makeNixvim (
+          import ./modules/programs/vim/config.nix
+        );
       }
     );
 }
