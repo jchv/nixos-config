@@ -83,5 +83,16 @@
     -- Set GUI font for Neovide/etc.
     -- Otherwise Neovide uses 16pt, which is too big.
     vim.o.guifont = "monospace:h12"
+
+    -- Go format on save.
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      pattern = { "*.rs", "*.go" },
+      callback = function()
+        vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+        vim.lsp.buf.format({ async = false, timeout_ms = 5000 })
+      end,
+      group = vim.api.nvim_create_augroup("lsp_format", { clear = true }),
+      desc = "Format on Save",
+    })
   '';
 }

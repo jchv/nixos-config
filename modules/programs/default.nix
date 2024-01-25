@@ -41,6 +41,7 @@
       ark
       dolphin
       gwenview
+      obsidian
       okteta
       okular
       xarchiver
@@ -64,6 +65,10 @@
       # Text Editors
       kate
       neovide
+    ];
+
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-25.9.0"
     ];
 
     xdg.mime = {
