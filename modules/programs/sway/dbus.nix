@@ -9,6 +9,7 @@
   in {
     environment = {
       etc."sway/config".text = lib.mkBefore ''
+        # DBus graphical environment
         exec --no-startup-id ${dbus-sway-environment}
       '';
     };

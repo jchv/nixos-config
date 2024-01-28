@@ -110,7 +110,6 @@
         titlebar_padding 5
         seat seat0 xcursor_theme Adwaita
 
-        # DBus graphical environment
         # XDG Autostart
         exec --no-startup-id $dex -a
 
