@@ -49,7 +49,9 @@
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             nur.nixosModules.nur
-            dwarffs.nixosModules.dwarffs
+            # broken:
+            # "dwarffs.cc:13:10: fatal error: environment-variables.hh: No such file or directory"
+            # dwarffs.nixosModules.dwarffs
             nixvim.nixosModules.nixvim
             {
               nixpkgs.overlays = [

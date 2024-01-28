@@ -21,6 +21,7 @@
       inkscape
       krita
       mpv
+      vlc
 
       # Multimedia support in Qt apps
       phonon-backend-gstreamer

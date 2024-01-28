@@ -2,6 +2,7 @@
   imports = [
     ./compat.nix
     ./fonts.nix
+    ./fluidsynth.nix
     ./nas.nix
     ./network.nix
     ./pipewire.nix
