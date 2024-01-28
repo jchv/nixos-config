@@ -73,6 +73,10 @@
   extraConfigLua = ''
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
+    vim.g.mapleader = " "
+
+    -- Custom mappings
+    vim.keymap.set("n", "<Leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>")
 
     local function cd_to_argv_dir()
       if vim.fn.argc() ~= 1 then return end
@@ -126,18 +130,6 @@
       end,
       group = vim.api.nvim_create_augroup("lsp_format", { clear = true }),
       desc = "Format on Save",
-    })
-
-    -- Close if last window is CHADTree.
-    vim.o.confirm = true
-    vim.api.nvim_create_autocmd("BufEnter", {
-      group = vim.api.nvim_create_augroup("NvimTreeClose", {clear = true}),
-      callback = function()
-        local layout = vim.api.nvim_call_function("winlayout", {})
-        if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "CHADTree" and layout[3] == nil then
-          vim.cmd("quit")
-        end
-      end
     })
   '';
 }
