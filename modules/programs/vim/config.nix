@@ -14,6 +14,9 @@
     chadtree = {
       enable = true;
     };
+    fugitive = {
+      enable = true;
+    };
     bufferline = {
       enable = true;
       diagnostics = "nvim_lsp";
