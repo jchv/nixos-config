@@ -28,6 +28,10 @@
           separator = true;
         }
       ];
+      closeCommand = "";
+      leftMouseCommand = "lua switch_to_buffer(%d)";
+      rightMouseCommand = "";
+      showBufferCloseIcons = false;
     };
     none-ls = {
       enable = true;

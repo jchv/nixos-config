@@ -4,6 +4,9 @@ vim.g.mapleader = " "
 
 -- Custom mappings
 vim.keymap.set("n", "<Leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>")
+vim.keymap.set("n", "<Leader>g", ":Git<CR>")
+vim.keymap.set("n", "<Leader><Left>", ":bp<CR>")
+vim.keymap.set("n", "<Leader><Right>",  ":bn<CR>")
 
 local function cd_to_argv_dir()
   if vim.fn.argc() ~= 1 then return end
@@ -12,6 +15,40 @@ local function cd_to_argv_dir()
     if vim.fn.isdirectory(argv) == 0 then return end
     vim.cmd.cd(argv)
   end
+end
+
+local function is_fm_buffer(buffer)
+  return vim.api.nvim_buf_get_option(buffer, "filetype") == "CHADTree"
+end
+
+local function is_fm_window(window)
+  local buffer = vim.api.nvim_win_get_buf(window)
+  return is_fm_buffer(buffer)
+end
+
+local function new_window()
+  vim.cmd("vnew")
+  return vim.api.nvim_get_current_win()
+end
+
+local function find_first_non_fm_window()
+  local current_win = vim.api.nvim_get_current_win()
+  if not is_fm_window(current_win) then
+    return current_win
+  end
+  local tabpage = vim.api.nvim_get_current_tabpage()
+  local windows = vim.api.nvim_tabpage_list_wins(tabpage)
+  for _, window in ipairs(windows) do
+    if not is_fm_window(window) then
+      return window
+    end
+  end
+  return new_window()
+end
+
+function switch_to_buffer(buffer)
+  local window = find_first_non_fm_window()
+  vim.api.nvim_win_set_buf(window, buffer)
 end
 
 local function is_file_tree_open()
