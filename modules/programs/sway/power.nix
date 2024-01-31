@@ -27,11 +27,10 @@ in {
     environment.etc."sway/config".text = ''
         # Idle timeout
         exec ${pkgs.swayidle.out}/bin/swayidle -w \
-            timeout 750 '${swaylockCommand}' \
-            timeout 800 '${swayDPMSOff}' \
+            timeout 600 '${swayDPMSOff}' resume '${swayDPMSOn}' \
+            timeout 610 '${swaylockCommand}' \
             timeout 900 '${sleepIfOnBattery}' \
-            resume '${swayDPMSOn}' \
-            idlehint 750 \
+            idlehint 300 \
             before-sleep '${beforeSleep}'
 
         bindsym $mod+l exec ${swaylockCommand}
