@@ -7,6 +7,8 @@ vim.keymap.set("n", "<Leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>")
 vim.keymap.set("n", "<Leader>g", ":Git<CR>")
 vim.keymap.set("n", "<Leader><Left>", ":bp<CR>")
 vim.keymap.set("n", "<Leader><Right>",  ":bn<CR>")
+vim.keymap.set("n", "<Leader>o", ":Telescope session-lens search_session<CR>")
+vim.keymap.set("n", "<Leader>t", ":CHADopen<CR>")
 
 local function cd_to_argv_dir()
   if vim.fn.argc() ~= 1 then return end
@@ -27,7 +29,10 @@ local function is_fm_window(window)
 end
 
 local function new_window()
+  local splitright_old = vim.opt.splitright:get()
+  vim.opt.splitright = true
   vim.cmd("vnew")
+  vim.opt.splitright = splitright_old
   return vim.api.nvim_get_current_win()
 end
 
