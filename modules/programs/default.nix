@@ -9,7 +9,21 @@
     ./wine
   ];
 
-  config = {
+  config = let
+    patchDesktopFilesForKioFuse = pkg: pkgs.symlinkJoin {
+      name = "${pkg.name}-kio-fuse-workaround";
+      paths = [ pkg ];
+      postBuild = ''
+        for dst in $out/share/applications/*.desktop
+        do
+          src=$(readlink $dst)
+          unlink $dst
+          echo "patching KDE protocols $src -> $dst"
+          sed -e '/X-KDE-Protocols/ s/,sftp,smb//' $src > $dst
+        done
+      '';
+    };
+  in {
     environment.systemPackages = with pkgs; with libsForQt5; [
       # Multimedia
       audacity
@@ -20,8 +34,8 @@
       gst_all_1.gstreamer
       inkscape
       krita
-      mpv
-      vlc
+      (patchDesktopFilesForKioFuse mpv)
+      (patchDesktopFilesForKioFuse vlc)
 
       # Multimedia support in Qt apps
       phonon-backend-gstreamer
@@ -66,25 +80,6 @@
       # Text Editors
       kate
       neovide
-    ];
-
-    environment.sessionVariables.XDG_DATA_DIRS =
-    let
-      desktopOverrides = pkgs.runCommand "desktop-overrides" {} ''
-        mkdir -p $out/share/applications
-
-        # We use kio-fuse so this makes matters worse, not better.
-        sed \
-          -e '/X-KDE-Protocols/ s/,sftp,smb//' \
-          ${pkgs.mpv.out}/share/applications/mpv.desktop \
-          > $out/share/applications/mpv.desktop
-        sed \
-          -e '/X-KDE-Protocols/ s/,sftp,smb//' \
-          ${pkgs.vlc}/share/applications/vlc.desktop \
-          > $out/share/applications/vlc.desktop
-      '';
-    in [
-      "${desktopOverrides}/share"
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
