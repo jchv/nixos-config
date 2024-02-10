@@ -68,6 +68,25 @@
       neovide
     ];
 
+    environment.sessionVariables.XDG_DATA_DIRS =
+    let
+      desktopOverrides = pkgs.runCommand "desktop-overrides" {} ''
+        mkdir -p $out/share/applications
+
+        # We use kio-fuse so this makes matters worse, not better.
+        sed \
+          -e '/X-KDE-Protocols/ s/,sftp,smb//' \
+          ${pkgs.mpv.out}/share/applications/mpv.desktop \
+          > $out/share/applications/mpv.desktop
+        sed \
+          -e '/X-KDE-Protocols/ s/,sftp,smb//' \
+          ${pkgs.vlc}/share/applications/vlc.desktop \
+          > $out/share/applications/vlc.desktop
+      '';
+    in [
+      "${desktopOverrides}/share"
+    ];
+
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0"
     ];
