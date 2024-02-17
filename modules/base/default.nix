@@ -7,7 +7,6 @@
       ./programs.nix
       ./samba.nix
       ./shell.nix
-      ./users.nix
     ];
 
   config = {

@@ -37,11 +37,11 @@
         ProxyCommand nix run nixpkgs#cloudflared -- access ssh --hostname %h
 
       Host codereview.qt-project.org
-          Port 29418
-          PubkeyAcceptedKeyTypes +ssh-rsa
-          User jchw
-          PreferredAuthentications publickey
-          IdentityFile ~/.ssh/id_ed25519
+        Port 29418
+        PubkeyAcceptedKeyTypes +ssh-rsa
+        User jchw
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_ed25519
     '';
 
     # Eternal Terminal
@@ -53,6 +53,11 @@
       set -g mouse on
       bind m set-option mouse\; display-message "Mouse is now #{?mouse,on,off}"
     '';
+
+    # Direnv
+    programs.direnv = {
+      enable = true;
+    };
 
     # Environment
     environment = {

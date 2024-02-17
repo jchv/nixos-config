@@ -4,7 +4,7 @@
     ../../base
     ../../desktop
     ../../programs
-    ../../home
+    ../../users
     ../../hardware/android.nix
     ../../hardware/gamecube.nix
     ../../hardware/wacom.nix
