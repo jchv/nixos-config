@@ -59,10 +59,10 @@
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.8.11";
+      version = "1.8.12";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi";
-      sha256 = "8baf4fef3f7dfffb993190d3b4f6b881c89e2aabcf4850fd9d39e5cffd57eac8";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4228043/keepassxc_browser-1.8.12.xpi";
+      sha256 = "c5c5c2def2040f32dde6d59e4e98515682eefc52bd8679128b5627e71c84cdc9";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -71,6 +71,7 @@
         mozPermissions = [
           "activeTab"
           "contextMenus"
+          "cookies"
           "clipboardWrite"
           "nativeMessaging"
           "notifications"
@@ -132,10 +133,10 @@
     };
     "localcdn-fork-of-decentraleyes" = buildFirefoxXpiAddon {
       pname = "localcdn-fork-of-decentraleyes";
-      version = "2.6.62";
+      version = "2.6.63";
       addonId = "{b86e4813-687a-43e6-ab65-0bde4ab75758}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4221333/localcdn_fork_of_decentraleyes-2.6.62.xpi";
-      sha256 = "b3fd56ad4891605c082f7fd4830b1f83c69c42d44bbe2bc57c26202c960fad32";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4231487/localcdn_fork_of_decentraleyes-2.6.63.xpi";
+      sha256 = "6989dc192f992b809ddb99c8454677a9e7a2d8f0fe14d080369d1bf6bc0c5cf6";
       meta = with lib;
       {
         homepage = "https://www.localcdn.org";
@@ -238,14 +239,14 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.4.29";
+      version = "5.5.4";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4202411/sponsorblock-5.4.29.xpi";
-      sha256 = "ed7a9cf1cc9037294c7b9fdd8033b1d5fd900d59b3dc9b210e54ee7aee807128";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4229442/sponsorblock-5.5.4.xpi";
+      sha256 = "5ffbbbfb0090eb44be36e0f569cd9b5654f3d58e97e6190430f11cfb1ca8e39f";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
-        description = "Easily skip YouTube video sponsors. When you visit a YouTube video, the extension will check the database for reported sponsors and automatically skip known sponsors. You can also report sponsors in videos.\n\nOther browsers: https://sponsor.ajay.app";
+        description = "Easily skip YouTube video sponsors. When you visit a YouTube video, the extension will check the database for reported sponsors and automatically skip known sponsors. You can also report sponsors in videos. Other browsers: https://sponsor.ajay.app";
         license = licenses.lgpl3;
         mozPermissions = [
           "storage"
@@ -259,10 +260,10 @@
     };
     "uaswitcher" = buildFirefoxXpiAddon {
       pname = "uaswitcher";
-      version = "1.4.43";
+      version = "1.4.47";
       addonId = "user-agent-switcher@ninetailed.ninja";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4220735/uaswitcher-1.4.43.xpi";
-      sha256 = "2fc5630245ab81b6854bedb749d46de600ef4a7e2d8687f857ced7c6fbb33d15";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4234218/uaswitcher-1.4.47.xpi";
+      sha256 = "11f7538d3bf08f2ad340626acaa1a8d1455852d4a9d36acb82257ca3ef17e209";
       meta = with lib;
       {
         homepage = "https://gitlab.com/ntninja/user-agent-switcher";
