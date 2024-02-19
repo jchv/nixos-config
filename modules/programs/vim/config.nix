@@ -44,6 +44,7 @@
       servers = {
         nixd.enable = true;
         gopls.enable = true;
+        clangd.enable = true;
       };
     };
     lsp-format = {
