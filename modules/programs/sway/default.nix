@@ -76,19 +76,6 @@
       };
     };
 
-    nixpkgs.overlays = [
-      (self: super: {
-        sway-unwrapped = super.sway-unwrapped.overrideAttrs (final: prev: {
-          patches = (prev.patches or []) ++ [
-            (pkgs.fetchpatch {
-              url = "https://patch-diff.githubusercontent.com/raw/swaywm/sway/pull/7039.diff";
-              hash = "sha256-nR9QIJ+669UtEOth2YRELKHq7M4a79WX6M3GKF5Uuc0=";
-            })
-          ];
-        });
-      })
-    ];
-
     environment = {
       sessionVariables = {
         LD_LIBRARY_PATH = [ "${pkgs.libappindicator-gtk3.out}/lib" ];

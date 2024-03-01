@@ -42,10 +42,8 @@
     ];
 
     virtualisation = {
-      podman = {
-        enable = true;
-        enableNvidia = true;
-      };
+      podman.enable = true;
+      containers.cdi.dynamic.nvidia.enable = true;
     };
 
     nixpkgs.config.permittedInsecurePackages = [
