@@ -23,6 +23,10 @@
     services.thermald.enable = true;
     services.tlp.enable = true;
 
+    home-manager.users.john.programs.firefox.profiles.john.settings = {
+      "middlemouse.openNewWindow" = false;
+    };
+
     boot.kernelPackages = pkgs.linuxPackages_5_10;
   };
 }

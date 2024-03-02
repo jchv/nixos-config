@@ -17,7 +17,7 @@
             scroll_method on_button_down
         }
 
-        # primary_selection disabled # Sway 1.9
+        primary_selection disabled
     '';
   };
 }

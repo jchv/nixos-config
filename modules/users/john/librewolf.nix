@@ -48,6 +48,9 @@
           "widget.use-xdg-desktop-portal.open-uri" = 1;
           "widget.use-xdg-desktop-portal.settings" = 1;
 
+          # Disable pasting with middlemouse
+          "middlemouse.paste" = false;
+
           # Use dark theme
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
 
