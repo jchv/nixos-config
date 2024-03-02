@@ -112,21 +112,25 @@
     };
     "load-reddit-images-directly" = buildFirefoxXpiAddon {
       pname = "load-reddit-images-directly";
-      version = "1.3";
+      version = "1.5";
       addonId = "{4c421bb7-c1de-4dc6-80c7-ce8625e34d24}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4219481/load_reddit_images_directly-1.3.xpi";
-      sha256 = "fdfaca60cefdd34cc66747308cbaf26279a241df7d5f3aa5cd6b4cd350cecaa8";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4243440/load_reddit_images_directly-1.5.xpi";
+      sha256 = "5743d6517e92aabf3616946a738e3b478b56104ae6fff081e1b39d52609f5bf2";
       meta = with lib;
       {
-        description = "Firefox web extension that loads reddit images directly instead of redirecting to the HTML page containing the image. This works for <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/81e40807248441ca24f789047ae28a7a8266f8ad344ea6f4977e4473d60d20e5/http%3A//i.redd.it\" rel=\"nofollow\">i.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/8e73e8b6575335896f295209eb7b291999654798ffcb596097c6a3cafd045683/http%3A//preview.redd.it\" rel=\"nofollow\">preview.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7e63b0cb427894e946e7065c2badea35dadb397a6a87745849d72f65a9cad794/http%3A//external-preview.redd.it\" rel=\"nofollow\">external-preview.redd.it</a> and <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/5b712eb108fa1803f12422942e6674a8d67e9e8b02d20ccfcce6cf2cb33c934d/http%3A//www.reddit.com/media\" rel=\"nofollow\">www.reddit.com/media</a> urls.";
+        homepage = "https://github.com/nopperl/load-reddit-images-directly";
+        description = "Loads reddit images directly instead of redirecting to the HTML page containing the image. This works for <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/81e40807248441ca24f789047ae28a7a8266f8ad344ea6f4977e4473d60d20e5/http%3A//i.redd.it\" rel=\"nofollow\">i.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/8e73e8b6575335896f295209eb7b291999654798ffcb596097c6a3cafd045683/http%3A//preview.redd.it\" rel=\"nofollow\">preview.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7e63b0cb427894e946e7065c2badea35dadb397a6a87745849d72f65a9cad794/http%3A//external-preview.redd.it\" rel=\"nofollow\">external-preview.redd.it</a> and <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/5b712eb108fa1803f12422942e6674a8d67e9e8b02d20ccfcce6cf2cb33c934d/http%3A//www.reddit.com/media\" rel=\"nofollow\">www.reddit.com/media</a> urls.";
         license = licenses.mpl20;
         mozPermissions = [
+          "activeTab"
+          "storage"
           "webRequest"
           "webRequestBlocking"
           "*://i.redd.it/*"
           "*://external-preview.redd.it/*"
           "*://preview.redd.it/*"
           "*://www.reddit.com/media*"
+          "*://www.reddit.com/*"
         ];
         platforms = platforms.all;
       };
@@ -223,6 +227,21 @@
         platforms = platforms.all;
       };
     };
+    "ruffle_rs" = buildFirefoxXpiAddon {
+      pname = "ruffle_rs";
+      version = "0.1.0.1126";
+      addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4239745/ruffle_rs-0.1.0.1126.xpi";
+      sha256 = "3585adee8baef1ba409b976d37dc94a593afcaa576b6eb28371c898de87a41a2";
+      meta = with lib;
+      {
+        homepage = "https://ruffle.rs/";
+        description = "Putting Flash back on the web.\n\nDesigned to be easy to use, this extension will seamlessly enable you to play flash content, with no extra configuration required!";
+        license = licenses.mit;
+        mozPermissions = [ "<all_urls>" "storage" ];
+        platforms = platforms.all;
+      };
+    };
     "search-by-image" = buildFirefoxXpiAddon {
       pname = "search-by-image";
       version = "1.3";
@@ -239,10 +258,10 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.5.4";
+      version = "5.5.6";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4229442/sponsorblock-5.5.4.xpi";
-      sha256 = "5ffbbbfb0090eb44be36e0f569cd9b5654f3d58e97e6190430f11cfb1ca8e39f";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4241055/sponsorblock-5.5.6.xpi";
+      sha256 = "bde2199d2fd00281cd990a824f51e2c9c4bacc62e095f2192c5b101a148d1845";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
@@ -260,10 +279,10 @@
     };
     "uaswitcher" = buildFirefoxXpiAddon {
       pname = "uaswitcher";
-      version = "1.4.47";
+      version = "1.4.50";
       addonId = "user-agent-switcher@ninetailed.ninja";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4234218/uaswitcher-1.4.47.xpi";
-      sha256 = "11f7538d3bf08f2ad340626acaa1a8d1455852d4a9d36acb82257ca3ef17e209";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4240959/uaswitcher-1.4.50.xpi";
+      sha256 = "1f4c25bce4b31b12492679aac60003ae3733a08cd513626aa56ebabb2a7ce6e9";
       meta = with lib;
       {
         homepage = "https://gitlab.com/ntninja/user-agent-switcher";

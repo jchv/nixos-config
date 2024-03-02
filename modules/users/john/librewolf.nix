@@ -30,6 +30,7 @@
           nazeka
           old-reddit-redirect
           return-youtube-dislikes
+          ruffle_rs
           sponsorblock
           uaswitcher
           unpaywall
