@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./kitty
+    ./ruffle
     ./sway
     ./syncthing
     ./tailscale
@@ -116,6 +117,8 @@
         "x-scheme-handler/https" = "librewolf.desktop";
         "x-scheme-handler/mailto" = "thunderbird.desktop";
         "x-scheme-handler/mid" = "thunderbird.desktop";
+        "application/x-shockwave-flash" = "ruffle.desktop";
+        "application/vnd.adobe.flash.movie" = "ruffle.desktop";
       };
     };
 

@@ -142,8 +142,8 @@
 
         bindsym $mod+Return exec ${pkgs.kitty.out}/bin/kitty
         bindsym $mod+Shift+q kill
-        bindsym $mod+d exec ${pkgs.zsh.out}/bin/zsh -c "${pkgs.fuzzel.out}/bin/fuzzel --width 80"
-        bindsym $mod+Home exec xdg-open $HOME
+        bindsym $mod+d exec ${pkgs.zsh.out}/bin/zsh -c "exec ${pkgs.fuzzel.out}/bin/fuzzel --width 80"
+        bindsym $mod+Home exec ${pkgs.zsh.out}/bin/zsh -c "exec xdg-open $HOME"
         floating_modifier $mod normal
         bindsym $mod+Shift+c reload
         bindsym $mod+Shift+e exec $swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' '$swaymsg exit'
