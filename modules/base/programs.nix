@@ -1,14 +1,9 @@
 { config, pkgs, lib, ... }: {
   config = {
     environment.systemPackages = with pkgs; [
-      # Toolchains/Interpreters
-      go
-      python3
-
       # Development Tools
+      bear
       gitFull
-      gnumake
-      golines
       lazygit
       nixd
 
