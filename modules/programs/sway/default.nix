@@ -11,6 +11,7 @@
       ./portal.nix
       ./power.nix
       ./qt.nix
+      ./swaync.nix
       ./waybar.nix
     ];
 
