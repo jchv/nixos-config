@@ -15,7 +15,13 @@
     ];
 
     programs.sway.extraSessionCommands = ''
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     '';
+
+    environment.etc."xdg/baloofilerc".source = (pkgs.formats.ini {}).generate "baloorc" {
+      "Basic Settings" = {
+        "Indexing-Enabled" = false;
+      };
+    };
   };
 }
