@@ -100,6 +100,7 @@
         "x-scheme-handler/https" = "librewolf.desktop";
         "x-scheme-handler/mailto" = "thunderbird.desktop";
         "x-scheme-handler/mid" = "thunderbird.desktop";
+        "audio/x-opus+ogg" = "vlc.desktop";
       };
       defaultApplications = {
         "application/pdf" = "org.kde.okular.desktop";
@@ -119,6 +120,36 @@
         "x-scheme-handler/mid" = "thunderbird.desktop";
         "application/x-shockwave-flash" = "ruffle.desktop";
         "application/vnd.adobe.flash.movie" = "ruffle.desktop";
+
+        # Set most common audio formats to VLC as a good program to listen to
+        # random audio files.
+        "audio/aac" = "vlc.desktop";
+        "audio/flac" = "vlc.desktop";
+        "audio/m4a" = "vlc.desktop";
+        "audio/midi" = "vlc.desktop";
+        "audio/mp3" = "vlc.desktop";
+        "audio/ogg" = "vlc.desktop";
+        "audio/opus" = "vlc.desktop";
+        "audio/vorbis" = "vlc.desktop";
+        "audio/wav" = "vlc.desktop";
+        "audio/x-aac" = "vlc.desktop";
+        "audio/x-adpcm" = "vlc.desktop";
+        "audio/x-aiff" = "vlc.desktop";
+        "audio/x-ape" = "vlc.desktop";
+        "audio-x-flac" = "vlc.desktop";
+        "audio/x-it" = "vlc.desktop";
+        "audio-x-m4a" = "vlc.desktop";
+        "audio/x-mod" = "vlc.desktop";
+        "audio/x-mp3" = "vlc.desktop";
+        "audio/x-ms-asf" = "vlc.desktop";
+        "audio/x-ms-wma" = "vlc.desktop";
+        "audio/x-s3m" = "vlc.desktop";
+        "audio/x-opus+ogg" = "vlc.desktop";
+        "audio/x-vorbis" = "vlc.desktop";
+        "audio/x-vorbis+ogg" = "vlc.desktop";
+        "audio/x-wav" = "vlc.desktop";
+        "audio/x-wavpack" = "vlc.desktop";
+        "audio/x-xm" = "vlc.desktop";
       };
     };
 
