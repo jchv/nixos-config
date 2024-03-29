@@ -42,7 +42,7 @@
     lsp = {
       enable = true;
       servers = {
-        nixd.enable = true;
+        nil_ls.enable = true;
         gopls.enable = true;
         clangd.enable = true;
       };
@@ -56,7 +56,7 @@
     lsp-lines = {
       enable = true;
     };
-    nvim-cmp = {
+    cmp = {
       enable = true;
     };
     packer = {
