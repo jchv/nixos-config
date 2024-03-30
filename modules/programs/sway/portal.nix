@@ -22,5 +22,23 @@
         xdg-desktop-portal-gtk
       ];
     };
+    nixpkgs.overlays = [
+      (final: prev: {
+        discord = final.symlinkJoin {
+          name = "discord";
+          paths = [
+            (final.writeShellScriptBin "Discord" ''
+              export GTK_USE_PORTAL=1
+              exec ${prev.discord}/bin/Discord "$@"
+            '')
+            (final.writeShellScriptBin "discord" ''
+              export GTK_USE_PORTAL=1
+              exec ${prev.discord}/bin/discord "$@"
+            '')
+            prev.discord
+          ];
+        };
+      })
+    ];
   };
 }
