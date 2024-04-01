@@ -4,6 +4,7 @@
       ./dbus.nix
       ./display.nix
       ./fonts.nix
+      ./gtk.nix
       ./ime.nix
       ./input.nix
       ./keyring.nix
