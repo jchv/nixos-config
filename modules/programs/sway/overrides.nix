@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   config = {
     environment.etc."sway/config".text = lib.mkAfter ''
       # For development, force lightspark to floating.

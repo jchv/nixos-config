@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment.systemPackages = with pkgs; [
       (pkgs.symlinkJoin {
@@ -21,7 +22,7 @@
               "Player"
             ];
           })
-          (pkgs.runCommand "ruffle-icon" {} ''
+          (pkgs.runCommand "ruffle-icon" { } ''
             mkdir -p $out/share/icons/hicolor/scalable/apps
             cp ${pkgs.ruffle.src}/desktop/assets/logo.svg \
               $out/share/icons/hicolor/scalable/apps/ruffle.svg

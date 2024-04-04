@@ -1,99 +1,107 @@
-{ config, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options = {
     jchw.mullvadNs.enable = mkEnableOption "mullvad namespace";
   };
 
   config =
-  let
-    mullvadNamespace = "mullvad";
-    mullvadInterface = "wgmullvad";
-    mullvadNameserver = "10.64.0.1";
-    mullvadExec = pkgs.writeC "mullvad-exec" {
-      destination = "/bin/mullvad-exec.orig";
-    } ''
-      #define _GNU_SOURCE
-      #define NAME_OF_NETWORK_NAMESPACE "${mullvadNamespace}"
-      #define PATH_TO_NAMESPACE "/run/netns/" NAME_OF_NETWORK_NAMESPACE
-      #define PATH_TO_SYS_RESOLV "/etc/resolv.conf"
-      #define PATH_TO_NS_RESOLV "/etc/netns/" NAME_OF_NETWORK_NAMESPACE "/resolv.conf"
-      #include <fcntl.h>
-      #include <sched.h>
-      #include <sys/types.h>
-      #include <sys/stat.h>
-      #include <sys/mount.h>
-      #include <unistd.h>
-      #include <stdlib.h>
-      #include <stdio.h>
-      int die(const char *message) {
-        fprintf(stderr, "%s", message);
-        exit(-1);
-        return -1;
-      }
-      int main(int argc, char ** argv) {
-        if (getuid() == 0 || getgid() == 0)
-          return die("must not be ran as root");
-        if (geteuid() != 0)
-          return die("must be ran as setuid root");
-        int fd = open(PATH_TO_NAMESPACE, O_RDONLY);
-        if (fd == -1)
-          return die("failed to open netns");
-        if (setns(fd, CLONE_NEWNET) != 0)
-          return die("setns call failed");
-        if (close(fd) != 0)
-          return die("closing netns fd failed");
-        if (unshare(CLONE_NEWNS) != 0)
-          return die("unsharing fs failed");
-        if (mount("none", "/", NULL, MS_REC | MS_PRIVATE, NULL) != 0)
-          return die("moving to private root mount failed");
-        if (mount(PATH_TO_NS_RESOLV, PATH_TO_SYS_RESOLV,
-                  NULL, MS_BIND | MS_PRIVATE, NULL) != 0)
-          return die("mounting netns /etc/resolv.conf failed");
-        if (mount("/var/empty", "/var/run/nscd", NULL,
-                  MS_BIND | MS_PRIVATE, NULL) != 0)
-          return die("clobbering nscd socket failed");
-        if (setgid(getgid()) != 0 || setuid(getuid()) != 0)
-          return die("dropping root failed");
-        if (getuid() == 0 || getgid() == 0 || geteuid() == 0 || getegid() == 0)
-          return die("unexpected root permissions after dropping root");
-        if (argc > 1)
-          execvpe(argv[1], argv + 1, environ);
-        return die("no command provided");
-      }
-    '';
-  in mkIf config.jchw.mullvadNs.enable {
-    sops.secrets = {
-      "mullvad/account" = {};
-      "mullvad/device" = {};
-      "mullvad/privateKey" = {};
-      "mullvad/server" = {};
-    };
-
-    environment.systemPackages = with pkgs; [
-      wireguard-tools
-    ];
-
-    security.wrappers.mullvad-exec = {
-      source = "${mullvadExec}/bin/mullvad-exec.orig";
-      setuid = true;
-      owner = "root";
-      group = "users";
-      permissions = "u+wrx,g+x";
-    };
-
-    systemd.services.setup-mullvad-netns = {
-      description = "Set Up Mullvad Network Namespace";
-      path = with pkgs; [ iproute wireguard-tools iptables curl jq ];
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
-      wantedBy = [ "multi-user.target" ];
-
-      serviceConfig = {
-        Type = "oneshot";
+    let
+      mullvadNamespace = "mullvad";
+      mullvadInterface = "wgmullvad";
+      mullvadNameserver = "10.64.0.1";
+      mullvadExec = pkgs.writeC "mullvad-exec" { destination = "/bin/mullvad-exec.orig"; } ''
+        #define _GNU_SOURCE
+        #define NAME_OF_NETWORK_NAMESPACE "${mullvadNamespace}"
+        #define PATH_TO_NAMESPACE "/run/netns/" NAME_OF_NETWORK_NAMESPACE
+        #define PATH_TO_SYS_RESOLV "/etc/resolv.conf"
+        #define PATH_TO_NS_RESOLV "/etc/netns/" NAME_OF_NETWORK_NAMESPACE "/resolv.conf"
+        #include <fcntl.h>
+        #include <sched.h>
+        #include <sys/types.h>
+        #include <sys/stat.h>
+        #include <sys/mount.h>
+        #include <unistd.h>
+        #include <stdlib.h>
+        #include <stdio.h>
+        int die(const char *message) {
+          fprintf(stderr, "%s", message);
+          exit(-1);
+          return -1;
+        }
+        int main(int argc, char ** argv) {
+          if (getuid() == 0 || getgid() == 0)
+            return die("must not be ran as root");
+          if (geteuid() != 0)
+            return die("must be ran as setuid root");
+          int fd = open(PATH_TO_NAMESPACE, O_RDONLY);
+          if (fd == -1)
+            return die("failed to open netns");
+          if (setns(fd, CLONE_NEWNET) != 0)
+            return die("setns call failed");
+          if (close(fd) != 0)
+            return die("closing netns fd failed");
+          if (unshare(CLONE_NEWNS) != 0)
+            return die("unsharing fs failed");
+          if (mount("none", "/", NULL, MS_REC | MS_PRIVATE, NULL) != 0)
+            return die("moving to private root mount failed");
+          if (mount(PATH_TO_NS_RESOLV, PATH_TO_SYS_RESOLV,
+                    NULL, MS_BIND | MS_PRIVATE, NULL) != 0)
+            return die("mounting netns /etc/resolv.conf failed");
+          if (mount("/var/empty", "/var/run/nscd", NULL,
+                    MS_BIND | MS_PRIVATE, NULL) != 0)
+            return die("clobbering nscd socket failed");
+          if (setgid(getgid()) != 0 || setuid(getuid()) != 0)
+            return die("dropping root failed");
+          if (getuid() == 0 || getgid() == 0 || geteuid() == 0 || getegid() == 0)
+            return die("unexpected root permissions after dropping root");
+          if (argc > 1)
+            execvpe(argv[1], argv + 1, environ);
+          return die("no command provided");
+        }
+      '';
+    in
+    mkIf config.jchw.mullvadNs.enable {
+      sops.secrets = {
+        "mullvad/account" = { };
+        "mullvad/device" = { };
+        "mullvad/privateKey" = { };
+        "mullvad/server" = { };
       };
 
-      script =
-        ''
+      environment.systemPackages = with pkgs; [ wireguard-tools ];
+
+      security.wrappers.mullvad-exec = {
+        source = "${mullvadExec}/bin/mullvad-exec.orig";
+        setuid = true;
+        owner = "root";
+        group = "users";
+        permissions = "u+wrx,g+x";
+      };
+
+      systemd.services.setup-mullvad-netns = {
+        description = "Set Up Mullvad Network Namespace";
+        path = with pkgs; [
+          iproute
+          wireguard-tools
+          iptables
+          curl
+          jq
+        ];
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+          Type = "oneshot";
+        };
+
+        script = ''
           set -e
           NAMESPACE="${mullvadNamespace}"
           INTERFACE="${mullvadInterface}"
@@ -173,22 +181,22 @@ with lib; {
 
           echo "[+] Success! Probably..."
         '';
-    };
+      };
 
-    environment.etc.mullvad-resolvconf = {
-      target = "netns/mullvad/resolv.conf";
-      text = ''
-        # Generated by vpn.nix
-        # WARNING: This file gets blown away by NetworkManager.
-        # It will periodically perform a swap on /etc/resolv.conf.
-        # The bindmount applies to the inode, not the filename.
-        # That means even in the netns, this file will suddenly disappear.
-        # So actually DNS is enforced via iptables rules.
-        # Switching to systemd-resolved would resolve this...
-        search localdomain
-        nameserver ${mullvadNameserver}
-        options edns0
-      '';
+      environment.etc.mullvad-resolvconf = {
+        target = "netns/mullvad/resolv.conf";
+        text = ''
+          # Generated by vpn.nix
+          # WARNING: This file gets blown away by NetworkManager.
+          # It will periodically perform a swap on /etc/resolv.conf.
+          # The bindmount applies to the inode, not the filename.
+          # That means even in the netns, this file will suddenly disappear.
+          # So actually DNS is enforced via iptables rules.
+          # Switching to systemd-resolved would resolve this...
+          search localdomain
+          nameserver ${mullvadNameserver}
+          options edns0
+        '';
+      };
     };
-  };
 }

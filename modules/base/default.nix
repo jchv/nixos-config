@@ -1,13 +1,12 @@
 {
-  imports =
-    [
-      ./i18n.nix
-      ./nixos.nix
-      ./overlay.nix
-      ./programs.nix
-      ./samba.nix
-      ./shell.nix
-    ];
+  imports = [
+    ./i18n.nix
+    ./nixos.nix
+    ./overlay.nix
+    ./programs.nix
+    ./samba.nix
+    ./shell.nix
+  ];
 
   config = {
     # Enable flakes.
@@ -25,7 +24,9 @@
     boot.loader.efi.canTouchEfiVariables = true;
 
     # Increase max file limit
-    boot.kernel.sysctl = { "fs.file-max" = 2097152; };
+    boot.kernel.sysctl = {
+      "fs.file-max" = 2097152;
+    };
 
     # Update microcode on AMD/Intel
     hardware.cpu.amd.updateMicrocode = true;

@@ -1,9 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     systemd.user.services.fluidsynth = {
       description = "FluidSynth Daemon";
       documentation = [ "man:fluidsynth(1)" ];
-      after = [ "sound.target" "pipewire.service" ];
+      after = [
+        "sound.target"
+        "pipewire.service"
+      ];
       wantedBy = [ "default.target" ];
       restartIfChanged = true;
       serviceConfig = {

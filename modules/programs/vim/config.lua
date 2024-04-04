@@ -139,7 +139,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.go" },
+  pattern = { "*.go", "*.rs", "*.nix" },
   callback = function()
     vim.lsp.buf.format({ async = false, timeout_ms = 3000 })
   end,

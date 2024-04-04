@@ -1,8 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
-    environment.systemPackages = with pkgs; [
-      libwacom
-    ];
+    environment.systemPackages = with pkgs; [ libwacom ];
 
     nixpkgs.config.hardware.wacom.enabled = true;
   };

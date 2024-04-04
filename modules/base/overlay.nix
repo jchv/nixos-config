@@ -1,7 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, ... }:
+{
   config = {
-    nixpkgs.overlays = [
-      ((import ../../packages/overlay.nix) config.nur)
-    ];
+    nixpkgs.overlays = [ ((import ../../packages/overlay.nix) config.nur) ];
   };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
@@ -11,7 +12,14 @@
         home = "/home/john";
         uid = 1000;
         shell = pkgs.zsh;
-        extraGroups = [ "wheel" "networkmanager" "libvirtd" "adbusers" "video" "wireshark" ];
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "libvirtd"
+          "adbusers"
+          "video"
+          "wireshark"
+        ];
         hashedPassword = "$6$LK8j4pHMaTP$cwfQlA5j3ZXB4XrfDsk1qK9CDCjLlzS3.Y.BXaiW5BrYBPn9uxS7DyxFPZiyfJ5O/wlAdWSMk5DGhr.Zqg50K1";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgZ9V1xE87W7TXaySAvHpAM9QQ8IOc8qItnhh659d/e john@nullptr"

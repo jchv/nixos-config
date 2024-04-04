@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     # Nix-LD linker, allows many standard Linux binaries to work (AppImage, etc.)
     programs.nix-ld = {

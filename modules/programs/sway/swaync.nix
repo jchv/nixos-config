@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment.etc = {
       "xdg/swaync/config.json".text = ''

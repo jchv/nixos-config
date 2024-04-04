@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment.systemPackages = [ pkgs.cifs-utils ];
     security.pam.mount.enable = true;

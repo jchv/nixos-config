@@ -1,11 +1,14 @@
-{ pkgs, ... }: {
+{
   config = {
     # Zshell
     programs.zsh = {
       enable = true;
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" "man" ];
+        plugins = [
+          "git"
+          "man"
+        ];
         theme = "agnoster";
       };
     };

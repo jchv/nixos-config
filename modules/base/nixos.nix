@@ -1,4 +1,5 @@
-{ nixpkgs, ... }: {
+{ nixpkgs, ... }:
+{
   config = {
     nix = {
       settings = {

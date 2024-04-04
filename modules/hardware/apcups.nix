@@ -1,7 +1,8 @@
-{ config, ... }: {
+{ config, ... }:
+{
   config = {
     sops.secrets = {
-      "upsmon/password" = {};
+      "upsmon/password" = { };
     };
     power.ups = {
       enable = true;

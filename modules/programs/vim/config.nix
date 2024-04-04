@@ -6,9 +6,9 @@
     auto-session = {
       enable = true;
       extraOptions = {
-        pre_save_cmds = ["lua close_file_tree()"];
-        post_save_cmds = ["lua open_file_tree()"];
-        post_restore_cmds = ["lua open_file_tree()"];
+        pre_save_cmds = [ "lua close_file_tree()" ];
+        post_save_cmds = [ "lua open_file_tree()" ];
+        post_restore_cmds = [ "lua open_file_tree()" ];
       };
     };
     chadtree = {
@@ -42,9 +42,10 @@
     lsp = {
       enable = true;
       servers = {
-        nil_ls.enable = true;
         gopls.enable = true;
         clangd.enable = true;
+        nixd.enable = true;
+        nixd.settings.formatting.command = "nixfmt";
       };
     };
     lsp-format = {

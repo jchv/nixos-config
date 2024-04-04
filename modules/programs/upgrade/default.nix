@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment.systemPackages = [
       (pkgs.writeScriptBin "nixos-commit-config-to-root" ''

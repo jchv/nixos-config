@@ -21,19 +21,20 @@ let
     ${swaylockCommand}
     ${pauseAllPlayers}
   '';
-in {
+in
+{
   config = {
     services.upower.enable = true;
     environment.etc."sway/config".text = ''
-        # Idle timeout
-        exec ${pkgs.swayidle.out}/bin/swayidle -w \
-            timeout 600 '${swayDPMSOff}' resume '${swayDPMSOn}' \
-            timeout 610 '${swaylockCommand}' \
-            timeout 900 '${sleepIfOnBattery}' \
-            idlehint 300 \
-            before-sleep '${beforeSleep}'
+      # Idle timeout
+      exec ${pkgs.swayidle.out}/bin/swayidle -w \
+          timeout 600 '${swayDPMSOff}' resume '${swayDPMSOn}' \
+          timeout 610 '${swaylockCommand}' \
+          timeout 900 '${sleepIfOnBattery}' \
+          idlehint 300 \
+          before-sleep '${beforeSleep}'
 
-        bindsym $mod+l exec ${swaylockCommand}
+      bindsym $mod+l exec ${swaylockCommand}
     '';
   };
 }

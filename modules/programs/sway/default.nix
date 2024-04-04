@@ -1,20 +1,20 @@
-{ pkgs, lib, ... }: {
-  imports =
-    [
-      ./dbus.nix
-      ./display.nix
-      ./fonts.nix
-      ./gtk.nix
-      ./ime.nix
-      ./input.nix
-      ./keyring.nix
-      ./overrides.nix
-      ./portal.nix
-      ./power.nix
-      ./qt.nix
-      ./swaync.nix
-      ./waybar.nix
-    ];
+{ pkgs, lib, ... }:
+{
+  imports = [
+    ./dbus.nix
+    ./display.nix
+    ./fonts.nix
+    ./gtk.nix
+    ./ime.nix
+    ./input.nix
+    ./keyring.nix
+    ./overrides.nix
+    ./portal.nix
+    ./power.nix
+    ./qt.nix
+    ./swaync.nix
+    ./waybar.nix
+  ];
 
   config = {
     programs.sway = {

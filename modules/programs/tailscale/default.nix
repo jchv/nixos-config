@@ -1,9 +1,6 @@
-{ config, pkgs, lib, ... }:
-
+{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    tailscale
-  ];
+  environment.systemPackages = with pkgs; [ tailscale ];
 
   services.tailscale.enable = true;
 }

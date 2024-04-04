@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   config = {
     environment.etc."gtk-3.0/settings.ini".text = lib.mkAfter ''
       [Settings]

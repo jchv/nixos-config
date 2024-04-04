@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     fonts.packages = with pkgs; [
       comic-neue
@@ -9,11 +10,13 @@
       noto-fonts-emoji
       nerdfonts
       font-awesome
-      (pkgs.nerdfonts.override { fonts = [
-        "Go-Mono"
-        "SourceCodePro"
-        "JetBrainsMono"
-      ]; })
+      (pkgs.nerdfonts.override {
+        fonts = [
+          "Go-Mono"
+          "SourceCodePro"
+          "JetBrainsMono"
+        ];
+      })
     ];
 
     fonts.fontconfig.defaultFonts = {
@@ -33,9 +36,7 @@
         "Noto Serif CJK JP"
         "IPAPMincho"
       ];
-      emoji = [
-        "Noto Color Emoji"
-      ];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 }

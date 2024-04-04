@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment.systemPackages = with pkgs; [
       # Development Tools
@@ -41,8 +42,6 @@
       containers.cdi.dynamic.nvidia.enable = true;
     };
 
-    nixpkgs.config.permittedInsecurePackages = [
-      "p7zip-16.02"
-    ];
+    nixpkgs.config.permittedInsecurePackages = [ "p7zip-16.02" ];
   };
 }
