@@ -26,6 +26,8 @@
       HandlePowerKey=ignore
     '';
 
+    jchw.autosuspend = true;
+
     microsoft-surface.ipts.enable = true;
     microsoft-surface.surface-control.enable = true;
 

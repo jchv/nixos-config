@@ -65,10 +65,13 @@
       xserver = {
         enable = true;
         displayManager = {
-          defaultSession = "sway";
           gdm.enable = true;
         };
         upscaleDefaultCursor = false;
+      };
+
+      displayManager = {
+        defaultSession = "sway";
       };
 
       gnome = {

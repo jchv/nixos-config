@@ -4,6 +4,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -30,6 +33,7 @@
     inputs@{
       self,
       nixpkgs,
+      nix-index-database,
       nixos-hardware,
       sops-nix,
       home-manager,
@@ -48,6 +52,7 @@
           system = "x86_64-linux";
           modules = [
             (./modules/machines + "/${hostname}")
+            nix-index-database.nixosModules.nix-index
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             nur.nixosModules.nur

@@ -21,8 +21,14 @@
       allowDiscards = true;
     };
 
+    services.logind.extraConfig = ''
+      HandlePowerKey=suspend
+    '';
+
     services.thermald.enable = true;
     services.tlp.enable = true;
+
+    jchw.autosuspend = true;
 
     home-manager.users.john.programs.firefox.profiles.john.settings = {
       "middlemouse.openNewWindow" = false;

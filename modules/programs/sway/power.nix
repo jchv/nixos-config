@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   onBattery = pkgs.writeShellScript "onBattery" ''
     set -e
@@ -23,18 +28,29 @@ let
   '';
 in
 {
+  options = {
+    jchw.autosuspend = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
   config = {
     services.upower.enable = true;
-    environment.etc."sway/config".text = ''
-      # Idle timeout
-      exec ${pkgs.swayidle.out}/bin/swayidle -w \
-          timeout 600 '${swayDPMSOff}' resume '${swayDPMSOn}' \
-          timeout 610 '${swaylockCommand}' \
-          timeout 900 '${sleepIfOnBattery}' \
-          idlehint 300 \
-          before-sleep '${beforeSleep}'
+    environment.etc."sway/config".text =
+      let
+        suspendTimeout = lib.optionalString config.jchw.autosuspend "timeout 900 '${sleepIfOnBattery}'";
+      in
+      ''
+        # Idle timeout
+        exec ${pkgs.swayidle.out}/bin/swayidle -w \
+            timeout 600 '${swayDPMSOff}' resume '${swayDPMSOn}' \
+            timeout 610 '${swaylockCommand}' \
+            ${suspendTimeout} \
+            idlehint 300 \
+            before-sleep '${beforeSleep}'
 
-      bindsym $mod+l exec ${swaylockCommand}
-    '';
+        bindsym $mod+l exec ${swaylockCommand}
+      '';
   };
 }
