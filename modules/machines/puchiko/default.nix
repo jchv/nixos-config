@@ -32,6 +32,7 @@
 
     home-manager.users.john.programs.firefox.profiles.john.settings = {
       "middlemouse.openNewWindow" = false;
+      "browser.tabs.opentabfor.middleclick" = false;
     };
 
     boot.kernelPackages = pkgs.linuxPackages_5_10;
