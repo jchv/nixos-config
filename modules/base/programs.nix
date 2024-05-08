@@ -39,7 +39,6 @@
 
     virtualisation = {
       podman.enable = true;
-      containers.cdi.dynamic.nvidia.enable = true;
     };
 
     nixpkgs.config.permittedInsecurePackages = [ "p7zip-16.02" ];
