@@ -29,6 +29,9 @@
     services.tlp.enable = true;
 
     jchw.autosuspend = true;
+    jchw.u2f.enable = true;
+    jchw.u2f.sudo.enable = true;
+    jchw.u2f.screenLock.enable = true;
 
     home-manager.users.john.programs.firefox.profiles.john.settings = {
       "middlemouse.openNewWindow" = false;
