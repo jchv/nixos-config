@@ -92,9 +92,14 @@
             ''
           );
         };
-        packages.vim =
-          nixvim.legacyPackages.${system}.makeNixvim
-            (import ./modules/programs/vim/config.nix);
+        packages =
+        let
+          vim = nixvim.legacyPackages.${system}.makeNixvim
+              (import ./modules/programs/vim/config.nix);
+          overlay = (import ./packages/overlay.nix) nur.overlay (overlay // pkgs) pkgs;
+        in overlay // {
+          inherit vim;
+        };
       }
     );
 }
