@@ -27,6 +27,9 @@
     '';
 
     jchw.autosuspend = true;
+    jchw.u2f.enable = true;
+    jchw.u2f.sudo.enable = true;
+    jchw.u2f.screenLock.enable = true;
 
     microsoft-surface.ipts.enable = true;
     microsoft-surface.surface-control.enable = true;

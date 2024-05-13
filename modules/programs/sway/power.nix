@@ -52,5 +52,14 @@ in
 
         bindsym $mod+l exec ${swaylockCommand}
       '';
+
+    # Allow screen unlock with U2F
+    security.pam.services.swaylock = lib.mkIf config.jchw.u2f.screenLock.enable {
+      u2fAuth = true;
+      rules.auth.u2f.args = lib.mkAfter [
+        "pinverification=0"
+        "userverification=1"
+      ];
+    };
   };
 }

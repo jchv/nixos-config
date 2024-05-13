@@ -7,6 +7,7 @@
     ./network.nix
     ./pipewire.nix
     ./printing.nix
+    ./u2f.nix
     ./virt.nix
     ./vpn.nix
   ];
