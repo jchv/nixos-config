@@ -75,6 +75,9 @@
         };
       };
     };
+    treesitter = {
+      enable = true;
+    };
   };
   extraConfigLua = builtins.readFile ./config.lua;
 }
