@@ -45,7 +45,7 @@
         gopls.enable = true;
         clangd.enable = true;
         nixd.enable = true;
-        nixd.settings.formatting.command = "nixfmt";
+        nixd.settings.formatting.command = [ "nixfmt" ];
       };
     };
     lsp-format = {
