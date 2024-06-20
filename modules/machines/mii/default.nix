@@ -10,9 +10,9 @@
   ];
 
   config = {
-    networking.hostName = "taiga";
+    networking.hostName = "mii";
     system.stateVersion = "22.05";
-    #jchw.autosuspend = true;
+    jchw.autosuspend = true;
     services.fwupd.enable = true;
     disko.devices = {
       disk = {
@@ -29,9 +29,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot";
-                  mountOptions = [
-                    "defaults"
-                  ];
+                  mountOptions = [ "defaults" ];
                 };
               };
               luks = {
@@ -49,15 +47,24 @@
                     subvolumes = {
                       "/root" = {
                         mountpoint = "/";
-                        mountOptions = [ "compress=zstd" "noatime" ];
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                        ];
                       };
                       "/home" = {
                         mountpoint = "/home";
-                        mountOptions = [ "compress=zstd" "noatime" ];
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                        ];
                       };
                       "/nix" = {
                         mountpoint = "/nix";
-                        mountOptions = [ "compress=zstd" "noatime" ];
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                        ];
                       };
                       "/swap" = {
                         mountpoint = "/.swapvol";
