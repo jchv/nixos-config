@@ -27,6 +27,9 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs =
@@ -42,6 +45,7 @@
       dwarffs,
       playerctl-inhibit,
       nixvim,
+      disko,
       flake-utils,
       ...
     }:
@@ -56,6 +60,7 @@
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             nur.nixosModules.nur
+            disko.nixosModules.disko
             # broken:
             # "dwarffs.cc:13:10: fatal error: environment-variables.hh: No such file or directory"
             # dwarffs.nixosModules.dwarffs
@@ -68,6 +73,7 @@
         };
       surface = nixos-hardware.nixosModules.microsoft-surface-common;
       micropc = nixos-hardware.nixosModules.gpd-micropc;
+      framework-16-7040-amd = nixos-hardware.nixosModules.framework-16-7040-amd;
       playerctlInhibit = playerctl-inhibit.nixosModules.playerctl-inhibit;
     in
     {
@@ -77,6 +83,7 @@
         micropc
         playerctlInhibit
       ];
+      nixosConfigurations.mii = systemFor "mii" [ framework-16-7040-amd ];
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
