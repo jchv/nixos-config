@@ -10,6 +10,7 @@
       };
     in
     {
+      home.file.".mozilla/native-messaging-hosts".force = true;
       home.file.".mozilla/firefox/profiles.ini".target = ".librewolf/profiles.ini";
       home.file.".librewolf/john".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/john";
       programs.firefox = {

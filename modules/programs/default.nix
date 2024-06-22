@@ -51,7 +51,7 @@
           phonon-backend-vlc
 
           # Internet/Networking
-          discord
+          vesktop
           element-desktop-wayland
           fractal-next
           gnome-network-displays

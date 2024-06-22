@@ -12,6 +12,10 @@
           click_method clickfinger
       }
 
+      input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
+          click_method clickfinger
+      }
+
       input "1539:4104:SINO_WEALTH______________________________________Mouse" {
           scroll_button button2
           scroll_method on_button_down

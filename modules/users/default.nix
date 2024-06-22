@@ -4,6 +4,7 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.john = import ./john;
+    home-manager.backupFileExtension = "hm-backup";
 
     users = {
       mutableUsers = false;
