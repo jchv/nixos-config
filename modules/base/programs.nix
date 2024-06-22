@@ -38,7 +38,10 @@
     ];
 
     virtualisation = {
-      podman.enable = true;
+      podman = {
+        enable = true;
+        dockerCompat = true;
+      };
     };
 
     nixpkgs.config.permittedInsecurePackages = [ "p7zip-16.02" ];
