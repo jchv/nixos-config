@@ -35,7 +35,7 @@ in
     };
   };
 
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     services.upower.enable = true;
     environment.etc."sway/config".text =
       let

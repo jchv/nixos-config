@@ -13,6 +13,7 @@
     networking.hostName = "mii";
     system.stateVersion = "22.05";
     jchw.autosuspend = true;
+    jchw.desktop.kde.enable = true;
     services.fwupd.enable = true;
     disko.devices = {
       disk = {

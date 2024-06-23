@@ -23,6 +23,7 @@
     };
 
     jchw.mullvadNs.enable = true;
+    jchw.desktop.sway.enable = true;
 
     system.autoUpgrade.dates = "20:00";
     system.autoUpgrade.enable = true;

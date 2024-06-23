@@ -1,6 +1,11 @@
-{ pkgs, lib, ... }:
 {
-  config = {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     xdg.portal = {
       enable = true;
       config = lib.mkForce {

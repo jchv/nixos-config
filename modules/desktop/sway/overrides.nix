@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     environment.etc."sway/config".text = lib.mkAfter ''
       # For development, force lightspark to floating.
       for_window [class="lightspark"] floating enable

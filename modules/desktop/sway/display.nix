@@ -1,5 +1,6 @@
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     environment.etc."sway/config".text = ''
       # Display configuration
       output eDP-1 scale 1.5 bg ${../../../wallpapers/th.jpg} fill

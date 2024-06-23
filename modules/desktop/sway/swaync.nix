@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     environment.etc = {
       "xdg/swaync/config.json".text = ''
         {

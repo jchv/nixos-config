@@ -1,6 +1,11 @@
-{ pkgs, ... }:
 {
-  config = {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [

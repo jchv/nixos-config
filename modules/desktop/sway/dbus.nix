@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   config =
     let
@@ -8,7 +13,7 @@
         ${pkgs.systemd.out}/bin/systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
       '';
     in
-    {
+    lib.mkIf config.jchw.desktop.sway.enable {
       environment = {
         etc."sway/config".text = lib.mkBefore ''
           # DBus graphical environment

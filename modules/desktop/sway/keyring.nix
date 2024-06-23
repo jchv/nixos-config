@@ -1,5 +1,6 @@
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     programs.sway.extraSessionCommands = ''
       export GNOME_KEYRING_CONTROL=/run/user/$UID/keyring
       export SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh

@@ -18,9 +18,6 @@
     nix-writers.url = "git+https://cgit.krebsco.de/nix-writers";
     nix-writers.inputs.nixpkgs.follows = "nixpkgs";
 
-    dwarffs.url = "github:edolstra/dwarffs";
-    dwarffs.inputs.nixpkgs.follows = "nixpkgs";
-
     playerctl-inhibit.url = "github:jchv/playerctl-inhibit";
     playerctl-inhibit.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -42,7 +39,6 @@
       home-manager,
       nur,
       nix-writers,
-      dwarffs,
       playerctl-inhibit,
       nixvim,
       disko,
@@ -61,9 +57,6 @@
             home-manager.nixosModules.home-manager
             nur.nixosModules.nur
             disko.nixosModules.disko
-            # broken:
-            # "dwarffs.cc:13:10: fatal error: environment-variables.hh: No such file or directory"
-            # dwarffs.nixosModules.dwarffs
             nixvim.nixosModules.nixvim
             { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
           ] ++ modules;
@@ -100,13 +93,11 @@
           );
         };
         packages =
-        let
-          vim = nixvim.legacyPackages.${system}.makeNixvim
-              (import ./modules/programs/vim/config.nix);
-          overlay = (import ./packages/overlay.nix) nur.overlay (overlay // pkgs) pkgs;
-        in overlay // {
-          inherit vim;
-        };
+          let
+            vim = nixvim.legacyPackages.${system}.makeNixvim (import ./modules/programs/vim/config.nix);
+            overlay = (import ./packages/overlay.nix) nur.overlay (overlay // pkgs) pkgs;
+          in
+          overlay // { inherit vim; };
       }
     );
 }

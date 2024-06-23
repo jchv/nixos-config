@@ -1,10 +1,15 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   config =
     let
       mediaplayer = pkgs.callPackage ../../../packages/mediaplayer.nix { };
     in
-    {
+    lib.mkIf config.jchw.desktop.sway.enable {
       environment.etc = {
         "sway/config".text = ''
           bar {

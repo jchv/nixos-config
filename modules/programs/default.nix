@@ -3,7 +3,6 @@
   imports = [
     ./kitty
     ./ruffle
-    ./sway
     ./syncthing
     ./tailscale
     ./upgrade
@@ -28,70 +27,79 @@
             done
           '';
         };
+      elementDesktopWayland = pkgs.symlinkJoin {
+        name = "element-desktop-wayland";
+        paths = [ pkgs.element-desktop ];
+        postBuild = ''
+          . ${pkgs.makeWrapper}/nix-support/setup-hook
+          unlink $out/bin/element-desktop
+          makeWrapper '${pkgs.element-desktop}/bin/element-desktop' "$out/bin/element-desktop" \
+            --add-flags --ozone-platform-hint=auto \
+            --add-flags --enable-features=WaylandWindowDecorations \
+            --add-flags --enable-wayland-ime
+        '';
+      };
     in
     {
-      environment.systemPackages =
-        with pkgs;
-        with libsForQt5;
-        [
-          # Multimedia
-          audacity
-          gst_all_1.gst-plugins-bad
-          gst_all_1.gst-plugins-base
-          gst_all_1.gst-plugins-good
-          gst_all_1.gst-plugins-ugly
-          gst_all_1.gstreamer
-          inkscape
-          krita
-          (patchDesktopFilesForKioFuse mpv)
-          (patchDesktopFilesForKioFuse vlc)
+      environment.systemPackages = [
+        # Multimedia
+        pkgs.audacity
+        pkgs.gst_all_1.gst-plugins-bad
+        pkgs.gst_all_1.gst-plugins-base
+        pkgs.gst_all_1.gst-plugins-good
+        pkgs.gst_all_1.gst-plugins-ugly
+        pkgs.gst_all_1.gstreamer
+        pkgs.inkscape
+        pkgs.krita
+        (patchDesktopFilesForKioFuse pkgs.mpv)
+        (patchDesktopFilesForKioFuse pkgs.vlc)
 
-          # Multimedia support in Qt apps
-          phonon-backend-gstreamer
-          phonon-backend-vlc
+        # Multimedia support in Qt apps
+        pkgs.kdePackages.phonon
+        pkgs.kdePackages.phonon-vlc
 
-          # Internet/Networking
-          vesktop
-          element-desktop-wayland
-          fractal-next
-          gnome-network-displays
-          jitsi-meet-electron
-          magic-wormhole-rs
-          remmina
-          thunderbird
-          waypipe
-          wayvnc
-          wireshark
+        # Internet/Networking
+        pkgs.vesktop
+        elementDesktopWayland
+        pkgs.fractal-next
+        pkgs.gnome-network-displays
+        pkgs.jitsi-meet-electron
+        pkgs.magic-wormhole-rs
+        pkgs.remmina
+        pkgs.thunderbird
+        pkgs.waypipe
+        pkgs.wayvnc
+        pkgs.wireshark
 
-          # File utilities
-          ark
-          dolphin
-          gwenview
-          obsidian
-          okteta
-          okular
-          xarchiver
+        # File utilities
+        pkgs.kdePackages.ark
+        pkgs.kdePackages.dolphin
+        pkgs.kdePackages.gwenview
+        pkgs.obsidian
+        pkgs.okteta
+        pkgs.kdePackages.okular
+        pkgs.xarchiver
 
-          # I/O
-          kio
-          kio-extras
-          kio-fuse
-          solid
+        # I/O
+        pkgs.kdePackages.kio
+        pkgs.kdePackages.kio-extras
+        pkgs.kdePackages.kio-fuse
+        pkgs.kdePackages.solid
 
-          # Utilities
-          bubblewrap
-          keepassxc
-          nixos-generators
-          toolbox
-          veracrypt
-          xorg.xkill
-          xorg.xmodmap
-          zeal-qt6
+        # Utilities
+        pkgs.bubblewrap
+        pkgs.keepassxc
+        pkgs.nixos-generators
+        pkgs.toolbox
+        pkgs.veracrypt
+        pkgs.xorg.xkill
+        pkgs.xorg.xmodmap
+        pkgs.zeal-qt6
 
-          # Text Editors
-          kate
-          neovide
-        ];
+        # Text Editors
+        pkgs.kdePackages.kate
+        pkgs.neovide
+      ];
 
       nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 

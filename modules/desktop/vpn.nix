@@ -4,10 +4,9 @@
   lib,
   ...
 }:
-with lib;
 {
   options = {
-    jchw.mullvadNs.enable = mkEnableOption "mullvad namespace";
+    jchw.mullvadNs.enable = lib.mkEnableOption "mullvad namespace";
   };
 
   config =
@@ -66,7 +65,7 @@ with lib;
         }
       '';
     in
-    mkIf config.jchw.mullvadNs.enable {
+    lib.mkIf config.jchw.mullvadNs.enable {
       sops.secrets = {
         "mullvad/account" = { };
         "mullvad/device" = { };
@@ -74,7 +73,7 @@ with lib;
         "mullvad/server" = { };
       };
 
-      environment.systemPackages = with pkgs; [ wireguard-tools ];
+      environment.systemPackages = [ pkgs.wireguard-tools ];
 
       security.wrappers.mullvad-exec = {
         source = "${mullvadExec}/bin/mullvad-exec.orig";
@@ -86,12 +85,12 @@ with lib;
 
       systemd.services.setup-mullvad-netns = {
         description = "Set Up Mullvad Network Namespace";
-        path = with pkgs; [
-          iproute
-          wireguard-tools
-          iptables
-          curl
-          jq
+        path = [
+          pkgs.iproute
+          pkgs.wireguard-tools
+          pkgs.iptables
+          pkgs.curl
+          pkgs.jq
         ];
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];

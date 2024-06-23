@@ -1,5 +1,8 @@
 {
   imports = [
+    ./kde
+    ./sway
+
     ./compat.nix
     ./fonts.nix
     ./fluidsynth.nix

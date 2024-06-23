@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./dbus.nix
@@ -16,7 +21,13 @@
     ./waybar.nix
   ];
 
-  config = {
+  options = {
+    jchw.desktop.sway = {
+      enable = lib.mkEnableOption "SwayWM desktop";
+    };
+  };
+
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     programs.sway = {
       enable = true;
       extraOptions = [
@@ -32,25 +43,25 @@
         export _JAVA_AWT_WM_NONREPARENTING=1
       '';
 
-      extraPackages = with pkgs; [
-        swaybg
-        swayidle
-        xwayland
-        waybar
-        wofi
-        libappindicator-gtk3
-        grim
-        sway-contrib.grimshot
-        slurp
-        swaynotificationcenter
-        wl-clipboard
+      extraPackages = [
+        pkgs.swaybg
+        pkgs.swayidle
+        pkgs.xwayland
+        pkgs.waybar
+        pkgs.wofi
+        pkgs.libappindicator-gtk3
+        pkgs.grim
+        pkgs.sway-contrib.grimshot
+        pkgs.slurp
+        pkgs.swaynotificationcenter
+        pkgs.wl-clipboard
       ];
     };
 
     services = {
-      udev.packages = with pkgs; [
-        libwacom
-        libinput.out
+      udev.packages = [
+        pkgs.libwacom
+        pkgs.libinput.out
         pkgs.libmtp.out
       ];
       udisks2.enable = true;

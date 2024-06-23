@@ -28,6 +28,6 @@
       };
     };
 
-    environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+    environment.systemPackages = [ pkgs.networkmanagerapplet ];
   };
 }

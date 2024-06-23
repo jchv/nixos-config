@@ -1,5 +1,6 @@
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     environment.etc."sway/config".text = ''
       # Input configuration
       input "1149:32792:Kensington_Expert_Wireless_TB_Mouse" {

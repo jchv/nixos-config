@@ -1,15 +1,15 @@
 { pkgs, ... }:
 {
   config = {
-    fonts.packages = with pkgs; [
-      comic-neue
-      dina-font
-      ipafont
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      nerdfonts
-      font-awesome
+    fonts.packages = [
+      pkgs.comic-neue
+      pkgs.dina-font
+      pkgs.ipafont
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk
+      pkgs.noto-fonts-emoji
+      pkgs.nerdfonts
+      pkgs.font-awesome
       (pkgs.nerdfonts.override {
         fonts = [
           "Go-Mono"

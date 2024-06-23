@@ -1,19 +1,14 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, lib, ... }:
 {
   config = {
-    environment.systemPackages = with pkgs; [
-      qemu
-      virt-manager
-      virt-viewer
-      spice-gtk
-      swtpm
-      libguestfs-with-appliance
-      virtiofsd
+    environment.systemPackages = [
+      pkgs.qemu
+      pkgs.virt-manager
+      pkgs.virt-viewer
+      pkgs.spice-gtk
+      pkgs.swtpm
+      pkgs.libguestfs-with-appliance
+      pkgs.virtiofsd
     ];
 
     virtualisation.libvirtd = {

@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
-  config = {
+  config = lib.mkIf config.jchw.desktop.sway.enable {
     environment.etc."gtk-3.0/settings.ini".text = lib.mkAfter ''
       [Settings]
       gtk-decoration-layout = menu:none
