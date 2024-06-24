@@ -22,10 +22,12 @@
 
     environment.systemPackages = [
       (pkgs.stdenv.mkDerivation {
-        name = "kde-autostart";
+        name = "kde-global";
         buildCommand = ''
           mkdir -p $out/etc/xdg/autostart
+          mkdir -p $out/share/kglobalaccel
           cp -R ${./autostart}/* $out/etc/xdg/autostart
+          cp -R ${./kglobalaccel}/* $out/share/kglobalaccel
         '';
       })
     ];
