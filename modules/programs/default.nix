@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./ghidra
     ./kitty
     ./ruffle
     ./syncthing
@@ -63,6 +64,7 @@
         elementDesktopWayland
         pkgs.fractal-next
         pkgs.gnome-network-displays
+        pkgs.kdePackages.neochat
         pkgs.jitsi-meet-electron
         pkgs.magic-wormhole-rs
         pkgs.remmina
@@ -92,13 +94,15 @@
         pkgs.nixos-generators
         pkgs.toolbox
         pkgs.veracrypt
+        pkgs.virtualboxKvm
         pkgs.xorg.xkill
         pkgs.xorg.xmodmap
         pkgs.zeal-qt6
 
         # Text Editors
         pkgs.kdePackages.kate
-        pkgs.neovide
+        pkgs.zed-editor
+        pkgs.yaml-language-server
       ];
 
       nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   config = {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = [
       (pkgs.symlinkJoin {
         name = "ruffle-wrapped";
         paths = [

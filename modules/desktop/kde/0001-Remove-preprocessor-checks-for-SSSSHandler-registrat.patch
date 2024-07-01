@@ -1,0 +1,40 @@
+From 0650cde9829310d604756632430359e9a3b217ab Mon Sep 17 00:00:00 2001
+From: Tobias Fella <fella@posteo.de>
+Date: Wed, 26 Jun 2024 21:11:59 +0200
+Subject: [PATCH] Remove preprocessor checks for SSSSHandler registration
+
+__has_include doesn't seem to work quite as i want it to
+---
+ src/foreigntypes.h | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/foreigntypes.h b/src/foreigntypes.h
+index 88d1e127e..3bfb65fac 100644
+--- a/src/foreigntypes.h
++++ b/src/foreigntypes.h
+@@ -6,10 +6,8 @@
+ #include <QQmlEngine>
+ 
+ #include <Quotient/accountregistry.h>
+-#include <Quotient/keyverificationsession.h>
+-#if __has_include("Quotient/e2ee/sssshandler.h")
+ #include <Quotient/e2ee/sssshandler.h>
+-#endif
++#include <Quotient/keyverificationsession.h>
+ 
+ #include "controller.h"
+ #include "neochatconfig.h"
+@@ -47,10 +45,8 @@ struct ForeignKeyVerificationSession {
+     QML_UNCREATABLE("")
+ };
+ 
+-#if __has_include("Quotient/e2ee/sssshandler.h")
+ struct ForeignSSSSHandler {
+     Q_GADGET
+     QML_FOREIGN(Quotient::SSSSHandler)
+     QML_NAMED_ELEMENT(SSSSHandler)
+ };
+-#endif
+-- 
+2.45.2
+

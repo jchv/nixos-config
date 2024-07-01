@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./globalshortcuts.nix ];
+
   options = {
     jchw.desktop.kde = {
       enable = lib.mkEnableOption "KDE desktop";
@@ -20,6 +22,29 @@
       };
     };
 
+    # For SSSS fix
+    nixpkgs.overlays = [
+      (final: prev: {
+        kdePackages = prev.kdePackages.overrideScope (
+          finalScope: prevScope: {
+            neochat = prevScope.neochat.overrideAttrs (
+              finalAttrs: prevAttrs: {
+                version = "unstable";
+                src = final.fetchgit {
+                  url = "https://invent.kde.org/network/neochat.git";
+                  rev = "24480229cd71cd1f62d5c588dca58ddd58cfc3a6";
+                  hash = "sha256-YBrsUkVPBi3GVR5sQiPYVtwOHjTcfb3WUXKfIiVOWMo=";
+                };
+                patches = (prevAttrs.patches or [ ]) ++ [
+                  ./0001-Remove-preprocessor-checks-for-SSSSHandler-registrat.patch
+                ];
+              }
+            );
+          }
+        );
+      })
+    ];
+
     environment.systemPackages = [
       (pkgs.stdenv.mkDerivation {
         name = "kde-global";
@@ -30,10 +55,15 @@
           cp -R ${./kglobalaccel}/* $out/share/kglobalaccel
         '';
       })
+      pkgs.kdePackages.discover
+      pkgs.kdePackages.packagekit-qt
     ];
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
+
+      # TODO: Remove this soon? Qt 6.7 or so should fix these bugs
+      QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     };
 
     xdg.autostart.enable = true;
