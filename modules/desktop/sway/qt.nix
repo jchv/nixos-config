@@ -16,6 +16,7 @@
       pkgs.kdePackages.breeze-icons
       pkgs.kdePackages.oxygen-icons
       pkgs.kdePackages.qtwayland
+      pkgs.kdePackages.qtsvg
     ];
 
     #programs.sway.extraSessionCommands = ''
