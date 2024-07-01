@@ -97,7 +97,6 @@
         pkgs.virtualboxKvm
         pkgs.xorg.xkill
         pkgs.xorg.xmodmap
-        pkgs.zeal-qt6
 
         # Text Editors
         pkgs.kdePackages.kate
