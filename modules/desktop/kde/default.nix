@@ -66,6 +66,12 @@
       QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     };
 
+    environment.etc."xdg/KTailctlrc".text = ''
+      [Interface]
+      peerFilter=tailnet-b8bc.ts.net.
+      startMinimized=true
+    '';
+
     xdg.autostart.enable = true;
 
     programs.ssh = {

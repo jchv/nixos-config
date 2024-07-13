@@ -65,6 +65,7 @@
         pkgs.fractal-next
         pkgs.gnome-network-displays
         pkgs.kdePackages.neochat
+        pkgs.ktailctl
         pkgs.jitsi-meet-electron
         pkgs.magic-wormhole-rs
         pkgs.remmina
@@ -80,6 +81,7 @@
         pkgs.obsidian
         pkgs.okteta
         pkgs.kdePackages.okular
+        pkgs.syncthingtray
         pkgs.xarchiver
 
         # I/O

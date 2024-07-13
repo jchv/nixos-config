@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=KTailctl
+Exec=ktailctl
+Comment=GUI for tailscale on the KDE Plasma desktop
+Icon=org.fkoehler.KTailctl
+Type=Application
+Terminal=false
