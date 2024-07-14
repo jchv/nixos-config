@@ -1,10 +1,10 @@
 { pkgs, ... }:
 pkgs.writers.writePython3 "mediaplayer"
   {
-    libraries = with pkgs; [
-      python3Packages.pygobject3
-      playerctl
-      python3
+    libraries = [
+      pkgs.python3Packages.pygobject3
+      pkgs.playerctl
+      pkgs.python3
     ];
   }
   ''
@@ -17,7 +17,7 @@ pkgs.writers.writePython3 "mediaplayer"
     import gi
     import json
     from functools import partial
-    os.environ["GI_TYPELIB_PATH"] = "${pkgs.playerctl.out}/lib/girepository-1.0"
+    os.environ["GI_TYPELIB_PATH"] = "${pkgs.glib.out}/lib/girepository-1.0:${pkgs.playerctl.out}/lib/girepository-1.0"
     gi.require_version('Playerctl', '2.0')
     from gi.repository import Playerctl, GLib
 

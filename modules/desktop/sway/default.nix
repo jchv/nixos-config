@@ -30,11 +30,7 @@
   config = lib.mkIf config.jchw.desktop.sway.enable {
     programs.sway = {
       enable = true;
-      extraOptions = [
-        # "--verbose"
-        # "--debug"
-        "--unsupported-gpu"
-      ];
+      extraOptions = [ "--unsupported-gpu" ];
       extraSessionCommands = lib.mkBefore ''
         # Ensure that the environment is set properly.
         . /etc/set-environment
@@ -47,7 +43,6 @@
         pkgs.swaybg
         pkgs.swayidle
         pkgs.xwayland
-        pkgs.waybar
         pkgs.wofi
         pkgs.libappindicator-gtk3
         pkgs.grim
@@ -73,11 +68,14 @@
         package = pkgs.gnome.gvfs;
       };
 
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+        theme = "maya";
+      };
+
       xserver = {
         enable = true;
-        displayManager = {
-          gdm.enable = true;
-        };
         upscaleDefaultCursor = false;
       };
 
@@ -97,6 +95,28 @@
         LD_LIBRARY_PATH = [ "${pkgs.libappindicator-gtk3.out}/lib" ];
       };
 
+      systemPackages = [
+        pkgs.kdePackages.sddm
+        (pkgs.callPackage (
+          { stdenv }:
+          stdenv.mkDerivation {
+            name = "global-desktop-config";
+            unpackPhase = "true";
+            outputs = [ "out" ];
+            installPhase = ''
+              # Set up default icon+cursor theme
+              mkdir -p $out/share/icons/default
+              cat << EOF > $out/share/icons/default/index.theme
+              [Icon Theme]
+              Name=Default
+              Comment=Default Icon and Cursor Theme
+              Inherits=breeze_cursors,breeze,oxygen
+              EOF
+            '';
+          }
+        ) { })
+      ];
+
       etc."udisks2/mount_options.conf".text = ''
         [defaults]
         ntfs_defaults=uid=$UID,gid=$GID
@@ -111,7 +131,7 @@
 
         titlebar_border_thickness 1
         titlebar_padding 5
-        seat seat0 xcursor_theme Adwaita
+        seat seat0 xcursor_theme breeze_cursors
 
         # XDG Autostart
         exec --no-startup-id $dex -a

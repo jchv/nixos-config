@@ -69,10 +69,16 @@
         pkgs.jitsi-meet-electron
         pkgs.magic-wormhole-rs
         pkgs.remmina
+        pkgs.ladybird
         pkgs.thunderbird
         pkgs.waypipe
         pkgs.wayvnc
         pkgs.wireshark
+
+        # Development
+        pkgs.gh
+        pkgs.nixpkgs-review
+        pkgs.nix-prefetch-github
 
         # File utilities
         pkgs.kdePackages.ark
@@ -128,10 +134,12 @@
           "application/vnd.rar" = "org.kde.ark.desktop";
           "application/x-7z-compressed" = "org.kde.ark.desktop";
           "application/x-tar" = "org.kde.ark.desktop";
+          "application/x-compressed-tar" = "org.kde.ark.desktop";
           "application/zip" = "org.kde.ark.desktop";
           "image/gif" = "org.kde.gwenview.desktop";
           "image/jpeg" = "org.kde.gwenview.desktop";
           "image/png" = "org.kde.gwenview.desktop";
+          "image/bmp" = "org.kde.gwenview.desktop";
           "inode/directory" = "org.kde.dolphin.desktop";
           "text/plain" = "org.kde.kwrite.desktop";
           "text/x-readme" = "org.kde.kwrite.desktop";
