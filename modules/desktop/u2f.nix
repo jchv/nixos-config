@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   options = {
     jchw.u2f = {
       enable = lib.mkEnableOption "U2F support";
@@ -14,9 +15,7 @@
       };
     };
 
-    security.pam.u2f = {
-      authFile = config.sops.secrets."u2f/authMapping".path;
-    };
+    security.pam.u2f.settings.authfile = config.sops.secrets."u2f/authMapping".path;
 
     # Allow sudo with U2F
     security.pam.services.sudo = lib.mkIf config.jchw.u2f.sudo.enable {
