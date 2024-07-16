@@ -98,9 +98,9 @@
 
         # Utilities
         pkgs.bubblewrap
+        pkgs.distrobox
         pkgs.keepassxc
         pkgs.nixos-generators
-        pkgs.toolbox
         pkgs.veracrypt
         pkgs.virtualboxKvm
         pkgs.xorg.xkill
