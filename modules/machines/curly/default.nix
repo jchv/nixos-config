@@ -9,6 +9,7 @@
     ../../hardware/android.nix
     ../../hardware/gamecube.nix
     ../../hardware/wacom.nix
+    ../../hardware/brother-ql800.nix
   ];
 
   config = {
