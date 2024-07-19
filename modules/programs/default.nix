@@ -44,13 +44,11 @@
     {
       environment.systemPackages = [
         # Multimedia
-        pkgs.audacity
         pkgs.gst_all_1.gst-plugins-bad
         pkgs.gst_all_1.gst-plugins-base
         pkgs.gst_all_1.gst-plugins-good
         pkgs.gst_all_1.gst-plugins-ugly
         pkgs.gst_all_1.gstreamer
-        pkgs.inkscape
         pkgs.krita
         (patchDesktopFilesForKioFuse pkgs.mpv)
         (patchDesktopFilesForKioFuse pkgs.vlc)
@@ -62,18 +60,13 @@
         # Internet/Networking
         pkgs.vesktop
         elementDesktopWayland
-        pkgs.fractal-next
-        pkgs.gnome-network-displays
         pkgs.kdePackages.neochat
         pkgs.ktailctl
-        pkgs.jitsi-meet-electron
         pkgs.magic-wormhole-rs
         pkgs.remmina
         pkgs.ladybird
         pkgs.thunderbird
         pkgs.waypipe
-        pkgs.wayvnc
-        pkgs.wireshark
 
         # Development
         pkgs.gh
@@ -97,19 +90,15 @@
         pkgs.kdePackages.solid
 
         # Utilities
-        pkgs.bubblewrap
         pkgs.distrobox
         pkgs.keepassxc
         pkgs.nixos-generators
-        pkgs.veracrypt
         pkgs.virtualboxKvm
         pkgs.xorg.xkill
         pkgs.xorg.xmodmap
 
         # Text Editors
-        pkgs.kdePackages.kate
         pkgs.zed-editor
-        pkgs.yaml-language-server
       ];
 
       nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
