@@ -77,6 +77,7 @@
         pkgs.kdePackages.ark
         pkgs.kdePackages.dolphin
         pkgs.kdePackages.gwenview
+        pkgs.kdePackages.kate
         pkgs.obsidian
         pkgs.okteta
         pkgs.kdePackages.okular
