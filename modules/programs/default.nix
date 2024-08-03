@@ -64,7 +64,7 @@
         pkgs.ktailctl
         pkgs.magic-wormhole-rs
         pkgs.remmina
-        pkgs.ladybird
+        # pkgs.ladybird
         pkgs.thunderbird
         pkgs.waypipe
 
