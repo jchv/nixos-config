@@ -15,6 +15,7 @@
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
     services.fwupd.enable = true;
+    security.pam.services.login.fprintAuth = false;
     disko.devices = {
       disk = {
         root = {

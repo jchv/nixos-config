@@ -102,6 +102,18 @@
         pkgs.zed-editor
       ];
 
+      systemd.user.services.kio-fuse = {
+        unitConfig = {
+          Description = "Fuse interface for KIO";
+          PartOf = "graphical-session.target";
+        };
+        serviceConfig = {
+          ExecStart = "${pkgs.kdePackages.kio-fuse}/libexec/kio-fuse -f";
+          BusName = "org.kde.KIOFuse";
+          Slice = "background.slice";
+        };
+      };
+
       nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
       xdg.mime = {
