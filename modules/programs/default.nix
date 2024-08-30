@@ -4,6 +4,7 @@
     ./ghidra
     ./kitty
     ./ruffle
+    ./steam
     ./syncthing
     ./tailscale
     ./upgrade
