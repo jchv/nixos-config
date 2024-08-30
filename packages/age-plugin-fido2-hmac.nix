@@ -1,7 +1,8 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, libfido2
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  libfido2,
 }:
 
 let
@@ -20,9 +21,7 @@ buildGoModule {
 
   vendorHash = "sha256-h4/tyq9oZt41IfRJmmsLHUpJiPJ7YuFu59ccM7jHsFo=";
 
-  buildInputs = [
-    libfido2
-  ];
+  buildInputs = [ libfido2 ];
 
   meta = with lib; {
     description = "FIDO2 plugin for age";
