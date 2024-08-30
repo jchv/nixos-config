@@ -52,17 +52,16 @@
       {
         homepage = "https://github.com/Brawl345/Image-Reverse-Search-with-Google";
         description = "Adds an option to the context menu to search with an image on Google, Bing, Yandex, TinEye, SauceNAO, IQDB or custom search engines. You can also choose more than one and they will be shown in a submenu!";
-        license = licenses.mpl20;
         mozPermissions = [ "contextMenus" "storage" ];
         platforms = platforms.all;
       };
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.1.1";
+      version = "1.9.2";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4315216/keepassxc_browser-1.9.1.1.xpi";
-      sha256 = "94eb909e82507b228bc6c09e36d9043722bf0eaa36edbfe8b26d36e4b588f6f6";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4335111/keepassxc_browser-1.9.2.xpi";
+      sha256 = "cbc085f0e1275d81af22e12fbc9627381d8eb891998a5ebbf5bc198f8d79a0bf";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -90,10 +89,10 @@
     };
     "libredirect" = buildFirefoxXpiAddon {
       pname = "libredirect";
-      version = "2.8.5";
+      version = "2.9.0";
       addonId = "7esoorv3@alefvanoon.anonaddy.me";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4320954/libredirect-2.8.5.xpi";
-      sha256 = "b0e07ae1480c9087c22a560d0601bee28cf79dda3083fc6757a9d2b56b58fa76";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4331333/libredirect-2.9.0.xpi";
+      sha256 = "469937f913e62c80918784ca87e5036526cf0394b371b43139c2673d2977114c";
       meta = with lib;
       {
         homepage = "https://libredirect.github.io";
@@ -229,10 +228,10 @@
     };
     "ruffle_rs" = buildFirefoxXpiAddon {
       pname = "ruffle_rs";
-      version = "0.1.0.1282";
+      version = "0.1.0.1289";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4326931/ruffle_rs-0.1.0.1282.xpi";
-      sha256 = "50d7fe75298722c7928a61644e5b27c0c8eddede742c995abebf98bed21771b5";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4330787/ruffle_rs-0.1.0.1289.xpi";
+      sha256 = "798a958270246090b028a5711d8accbb87d71cc9cbd4d4c4481ddfe4cad635ee";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
