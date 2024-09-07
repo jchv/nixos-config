@@ -44,6 +44,9 @@
       };
     };
 
-    nixpkgs.config.permittedInsecurePackages = [ "p7zip-16.02" ];
+    nixpkgs.config.permittedInsecurePackages = [
+      "p7zip-16.02"
+      "olm-3.2.16"
+    ];
   };
 }

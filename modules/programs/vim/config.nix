@@ -19,19 +19,21 @@
     };
     bufferline = {
       enable = true;
-      diagnostics = "nvim_lsp";
-      offsets = [
-        {
-          filetype = "CHADTree";
-          text = "File Explorer";
-          text_align = "center";
-          separator = true;
-        }
-      ];
-      closeCommand = "";
-      leftMouseCommand = "lua switch_to_buffer(%d)";
-      rightMouseCommand = "";
-      showBufferCloseIcons = false;
+      settings.options = {
+        diagnostics = "nvim_lsp";
+        offsets = [
+          {
+            filetype = "CHADTree";
+            text = "File Explorer";
+            text_align = "center";
+            separator = true;
+          }
+        ];
+        close_command = "";
+        left_mouse_command = "lua switch_to_buffer(%d)";
+        right_mouse_command = "";
+        show_buffer_close_icons = false;
+      };
     };
     none-ls = {
       enable = true;

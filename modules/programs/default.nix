@@ -103,6 +103,15 @@
         pkgs.zed-editor
       ];
 
+      nixpkgs.overlays = [
+        (final: prev: {
+          virtualboxKvm = prev.virtualboxKvm.overrideAttrs {
+            kvmPatchVersion = "20240828";
+            kvmPatchHash = "sha256-g0esJbB1IGyLGZMLFJIY8ZYdHWuiM5IZtLMHZvCY6bs=";
+          };
+        })
+      ];
+
       systemd.user.services.kio-fuse = {
         unitConfig = {
           Description = "Fuse interface for KIO";
