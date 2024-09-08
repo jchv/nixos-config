@@ -33,6 +33,7 @@
     jchw.u2f.sudo.enable = true;
     jchw.u2f.screenLock.enable = true;
     jchw.desktop.sway.enable = true;
+    jchw.virtualization.enable = false;
 
     home-manager.users.john.programs.firefox.profiles.john.settings = {
       "middlemouse.openNewWindow" = false;
