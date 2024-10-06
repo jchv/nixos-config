@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./ghidra
@@ -65,7 +65,6 @@
         pkgs.ktailctl
         pkgs.magic-wormhole-rs
         pkgs.remmina
-        # pkgs.ladybird
         pkgs.thunderbird
         pkgs.waypipe
 
@@ -83,12 +82,12 @@
         pkgs.okteta
         pkgs.kdePackages.okular
         pkgs.syncthingtray
-        pkgs.xarchiver
 
         # I/O
         pkgs.kdePackages.kio
         pkgs.kdePackages.kio-extras
         pkgs.kdePackages.kio-fuse
+        pkgs.kdePackages.ffmpegthumbs
         pkgs.kdePackages.solid
 
         # Utilities
@@ -104,12 +103,42 @@
       ];
 
       nixpkgs.overlays = [
+        # For some reason setting the allowed vulnerabilities does not work.
         (final: prev: {
-          virtualboxKvm = prev.virtualboxKvm.overrideAttrs {
-            kvmPatchVersion = "20240828";
-            kvmPatchHash = "sha256-g0esJbB1IGyLGZMLFJIY8ZYdHWuiM5IZtLMHZvCY6bs=";
-          };
+          olm = prev.olm.overrideAttrs (
+            finalAttrs: prevAttrs: {
+              meta = prevAttrs.meta // {
+                knownVulnerabilities = [ ];
+              };
+            }
+          );
         })
+      ];
+
+      system.replaceDependencies.replacements = [
+        {
+          oldDependency = pkgs.kdePackages.kio;
+          newDependency = pkgs.kdePackages.kio.overrideAttrs (
+            finalAttrs: prevAttrs: {
+              patches = (prevAttrs.patches or [ ]) ++ [
+                (pkgs.fetchpatch {
+                  name = "kio-fuse-support.patch";
+                  url = "https://invent.kde.org/frameworks/kio/-/commit/3723de9048d44007e05058f7f77f99bc900bdaa0.patch";
+                  hash = "sha256-1fjuJQnuKaMC7S7lYN2gnqsGpA8R4EuHQDIesF70Us4=";
+                })
+              ];
+            }
+          );
+        }
+        {
+          oldDependency = pkgs.kdePackages.kio-extras;
+          newDependency = pkgs.kdePackages.kio-extras.overrideAttrs {
+            src = pkgs.fetchurl {
+              url = "https://invent.kde.org/network/kio-extras/-/archive/0200554c98dd745f81d0b060872880bb3fb113a6/kio-extras-0200554c98dd745f81d0b060872880bb3fb113a6.tar.gz";
+              hash = "sha256-ZYYZrv6NEAXo+SQZlzs+uzG9GTXdf+ISw2AbBSf32Bk=";
+            };
+          };
+        }
       ];
 
       systemd.user.services.kio-fuse = {
@@ -123,8 +152,6 @@
           Slice = "background.slice";
         };
       };
-
-      nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
       xdg.mime = {
         addedAssociations = {

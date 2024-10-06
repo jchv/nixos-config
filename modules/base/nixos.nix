@@ -17,8 +17,5 @@
     nix.registry.nixpkgs.flake = nixpkgs;
     nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
     environment.etc."channels/nixpkgs".source = nixpkgs.outPath;
-
-    nixpkgs.config.allowUnfree = true;
-    environment.enableDebugInfo = true;
   };
 }

@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -11,8 +12,17 @@
 
   config = {
     networking.hostName = "taiga";
-
     system.stateVersion = "22.05";
+
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "broadcom-bt-firmware"
+        "obsidian"
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
 
     boot.initrd.luks.devices.root = {
       name = "root";
@@ -32,8 +42,8 @@
     jchw.u2f.screenLock.enable = true;
     jchw.desktop.sway.enable = true;
 
-    microsoft-surface.ipts.enable = true;
-    microsoft-surface.surface-control.enable = true;
+    services.iptsd.enable = true;
+    environment.systemPackages = [ pkgs.surface-control ];
 
     boot.initrd.kernelModules = [
       "surface_hid_core"

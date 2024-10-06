@@ -24,7 +24,7 @@
           })
           (pkgs.runCommand "ruffle-icon" { } ''
             mkdir -p $out/share/icons/hicolor/scalable/apps
-            cp ${pkgs.ruffle.src}/desktop/assets/logo.svg \
+            cp ${pkgs.ruffle.src}/desktop/assets/Assets.xcassets/RuffleMacIcon.iconset/icon_512x512@2x.png \
               $out/share/icons/hicolor/scalable/apps/ruffle.svg
           '')
         ];

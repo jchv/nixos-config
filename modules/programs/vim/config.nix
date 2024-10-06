@@ -80,6 +80,9 @@
     treesitter = {
       enable = true;
     };
+    web-devicons = {
+      enable = true;
+    };
   };
   extraConfigLua = builtins.readFile ./config.lua;
 }

@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -16,6 +17,15 @@
     jchw.desktop.kde.enable = true;
     services.fwupd.enable = true;
     security.pam.services.login.fprintAuth = false;
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "broadcom-bt-firmware"
+        "obsidian"
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
     disko.devices = {
       disk = {
         root = {

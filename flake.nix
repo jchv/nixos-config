@@ -30,8 +30,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs =
-    inputs@{
-      self,
+    {
       nixpkgs,
       nix-index-database,
       nixos-hardware,

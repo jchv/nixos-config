@@ -9,11 +9,8 @@
       nixd
 
       # Archivers/Compression
-      lz4
-      p7zip
+      libarchive
       unar
-      unzip
-      zip
 
       # Multimedia
       ffmpeg-full
@@ -43,10 +40,5 @@
         dockerCompat = true;
       };
     };
-
-    nixpkgs.config.permittedInsecurePackages = [
-      "p7zip-16.02"
-      "olm-3.2.16"
-    ];
   };
 }

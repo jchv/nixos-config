@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -15,6 +15,15 @@
   config = {
     networking.hostName = "curly";
     system.stateVersion = "23.05";
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "broadcom-bt-firmware"
+        "obsidian"
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
 
     boot.initrd.luks.devices.root = {
       name = "root";
