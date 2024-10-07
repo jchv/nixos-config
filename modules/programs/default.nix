@@ -123,8 +123,8 @@
               patches = (prevAttrs.patches or [ ]) ++ [
                 (pkgs.fetchpatch {
                   name = "kio-fuse-support.patch";
-                  url = "https://invent.kde.org/frameworks/kio/-/commit/3723de9048d44007e05058f7f77f99bc900bdaa0.patch";
-                  hash = "sha256-1fjuJQnuKaMC7S7lYN2gnqsGpA8R4EuHQDIesF70Us4=";
+                  url = "https://invent.kde.org/frameworks/kio/-/commit/6ed864fa8a2a68d1fb1e9bbd2d669059a95f58ff.patch";
+                  hash = "sha256-Vw0OONeoh3NaGx35VH9XtvAUCVjkE5qCRjKiFwfKMKc=";
                 })
               ];
             }
