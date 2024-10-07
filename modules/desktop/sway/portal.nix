@@ -16,14 +16,11 @@
         };
       };
       xdgOpenUsePortal = true;
-      extraPortals =
-        with pkgs;
-        with plasma5Packages;
-        [
-          xdg-desktop-portal-wlr
-          xdg-desktop-portal-kde
-          xdg-desktop-portal-gtk
-        ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.kdePackages.xdg-desktop-portal-kde
+        pkgs.xdg-desktop-portal-gtk
+      ];
     };
     nixpkgs.overlays = [
       (final: prev: {
