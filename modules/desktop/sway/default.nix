@@ -134,7 +134,7 @@
         seat seat0 xcursor_theme breeze_cursors
 
         # XDG Autostart
-        exec --no-startup-id $dex -a
+        exec --no-startup-id $dex -a -e MATE
 
         # Display keys
         set $brightnessctl ${pkgs.brightnessctl.out}/bin/brightnessctl
