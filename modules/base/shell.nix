@@ -50,9 +50,6 @@
         IdentityFile ~/.ssh/id_ed25519
     '';
 
-    # Eternal Terminal
-    services.eternal-terminal.enable = true;
-
     # Tmux
     programs.tmux.enable = true;
     programs.tmux.extraConfig = ''
@@ -68,7 +65,6 @@
     # Environment
     environment = {
       variables.EDITOR = "vim";
-      variables.ET_NO_TELEMETRY = "1";
       shellInit = ''
         export PATH="$HOME/bin:$HOME/go/bin:$PATH"
         export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
