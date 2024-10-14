@@ -5,7 +5,7 @@
   plugins = {
     auto-session = {
       enable = true;
-      extraOptions = {
+      settings = {
         pre_save_cmds = [ "lua close_file_tree()" ];
         post_save_cmds = [ "lua open_file_tree()" ];
         post_restore_cmds = [ "lua open_file_tree()" ];

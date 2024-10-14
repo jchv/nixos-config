@@ -35,16 +35,6 @@
     jchw.mullvadNs.enable = true;
     jchw.desktop.sway.enable = true;
 
-    system.autoUpgrade.dates = "20:00";
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.flake = "/etc/nixos#curly";
-    system.autoUpgrade.flags = [
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-    ];
-    systemd.timers.nixos-upgrade.timerConfig.WakeSystem = "true";
-
     boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
