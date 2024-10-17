@@ -50,6 +50,6 @@
       "browser.tabs.opentabfor.middleclick" = false;
     };
 
-    boot.kernelPackages = pkgs.linuxPackages_5_10;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
