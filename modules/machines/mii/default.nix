@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,6 +13,7 @@
   config = {
     networking.hostName = "mii";
     system.stateVersion = "22.05";
+    boot.kernelPackages = pkgs.linuxPackages_latest;
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
     services.fwupd.enable = true;
