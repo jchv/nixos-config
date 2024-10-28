@@ -22,6 +22,10 @@
           scroll_method on_button_down
       }
 
+      input "1386:770:Wacom_Intuos_PT_S_Pad" {
+          map_to_output eDP-1
+      }
+
       primary_selection disabled
     '';
   };
