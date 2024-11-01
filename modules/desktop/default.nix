@@ -10,6 +10,7 @@
     ./network.nix
     ./pipewire.nix
     ./printing.nix
+    ./ssh.nix
     ./u2f.nix
     ./virt.nix
     ./vpn.nix
