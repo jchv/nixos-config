@@ -6,7 +6,7 @@
       pkgs.dina-font
       pkgs.ipafont
       pkgs.noto-fonts
-      pkgs.noto-fonts-cjk
+      pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-emoji
       pkgs.nerdfonts
       pkgs.font-awesome

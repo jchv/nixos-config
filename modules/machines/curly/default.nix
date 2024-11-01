@@ -23,6 +23,7 @@
         "steam"
         "steam-original"
         "steam-run"
+        "steam-unwrapped"
       ];
 
     boot.initrd.luks.devices.root = {

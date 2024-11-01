@@ -26,6 +26,7 @@
         "steam"
         "steam-original"
         "steam-run"
+        "steam-unwrapped"
       ];
     disko.devices = {
       disk = {

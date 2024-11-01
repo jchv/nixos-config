@@ -1,6 +1,7 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
+    ./dogfood
     ./ghidra
     ./kitty
     ./ruffle
@@ -113,32 +114,6 @@
             }
           );
         })
-      ];
-
-      system.replaceDependencies.replacements = [
-        {
-          oldDependency = pkgs.kdePackages.kio;
-          newDependency = pkgs.kdePackages.kio.overrideAttrs (
-            finalAttrs: prevAttrs: {
-              patches = (prevAttrs.patches or [ ]) ++ [
-                (pkgs.fetchpatch {
-                  name = "kio-fuse-support.patch";
-                  url = "https://invent.kde.org/frameworks/kio/-/commit/6ed864fa8a2a68d1fb1e9bbd2d669059a95f58ff.patch";
-                  hash = "sha256-Vw0OONeoh3NaGx35VH9XtvAUCVjkE5qCRjKiFwfKMKc=";
-                })
-              ];
-            }
-          );
-        }
-        {
-          oldDependency = pkgs.kdePackages.kio-extras;
-          newDependency = pkgs.kdePackages.kio-extras.overrideAttrs {
-            src = pkgs.fetchurl {
-              url = "https://invent.kde.org/network/kio-extras/-/archive/0200554c98dd745f81d0b060872880bb3fb113a6/kio-extras-0200554c98dd745f81d0b060872880bb3fb113a6.tar.gz";
-              hash = "sha256-ZYYZrv6NEAXo+SQZlzs+uzG9GTXdf+ISw2AbBSf32Bk=";
-            };
-          };
-        }
       ];
 
       systemd.user.services.kio-fuse = {

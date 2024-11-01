@@ -86,7 +86,7 @@
       systemd.services.setup-mullvad-netns = {
         description = "Set Up Mullvad Network Namespace";
         path = [
-          pkgs.iproute
+          pkgs.iproute2
           pkgs.wireguard-tools
           pkgs.iptables
           pkgs.curl
