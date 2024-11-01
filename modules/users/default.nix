@@ -8,6 +8,11 @@
 
     users = {
       mutableUsers = false;
+      users.root = {
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgZ9V1xE87W7TXaySAvHpAM9QQ8IOc8qItnhh659d/e john@nullptr"
+        ];
+      };
       users.john = {
         isNormalUser = true;
         home = "/home/john";
