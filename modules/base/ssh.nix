@@ -33,5 +33,10 @@
         IdentityFile ~/.ssh/id_ed25519
     '';
 
+    # Allow sudo using ssh-agent authentication
+    security.pam.sshAgentAuth.enable = true;
+
+    # Necessary to be able to remotely use nixos-rebuild with agent auth.
+    environment.variables.NIX_SSHOPTS = "-o ForwardAgent=yes";
   };
 }
