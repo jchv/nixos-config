@@ -6,6 +6,7 @@
     ./programs.nix
     ./samba.nix
     ./shell.nix
+    ./ssh.nix
     ./tracing.nix
   ];
 

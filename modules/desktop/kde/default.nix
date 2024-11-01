@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ ./globalshortcuts.nix ];
+  imports = [
+    ./globalshortcuts.nix
+    ./ssh.nix
+  ];
 
   options = {
     jchw.desktop.kde = {
@@ -50,12 +53,6 @@
     '';
 
     xdg.autostart.enable = true;
-
-    programs.ssh = {
-      startAgent = true;
-      enableAskPassword = true;
-      askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-    };
 
     i18n.inputMethod = {
       enable = true;

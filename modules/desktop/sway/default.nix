@@ -12,11 +12,11 @@
     ./gtk.nix
     ./ime.nix
     ./input.nix
-    ./keyring.nix
     ./overrides.nix
     ./portal.nix
     ./power.nix
     ./qt.nix
+    ./ssh.nix
     ./swaync.nix
     ./waybar.nix
   ];
@@ -81,12 +81,6 @@
 
       displayManager = {
         defaultSession = "sway";
-      };
-
-      gnome = {
-        gnome-keyring = {
-          enable = true;
-        };
       };
     };
 
