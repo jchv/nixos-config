@@ -4,12 +4,12 @@
     boot.extraModulePackages = with config.boot.kernelPackages; [
       (lttng-modules.overrideAttrs (
         final: prev: {
-          version = "2.13.15";
+          version = "2.13.16";
           src = pkgs.fetchFromGitHub {
             owner = "lttng";
             repo = "lttng-modules";
-            rev = "v2.13.15";
-            hash = "sha256-cEiv1EjsEvyreRERrCGKKpJdA1IKvuyVmgA7S3EkEnU=";
+            rev = "v2.13.16";
+            hash = "sha256-6SzKpBuKC98v2PbeyDoxEbt3i6KEztpOk0wlvP4NWBA=";
           };
         }
       ))
