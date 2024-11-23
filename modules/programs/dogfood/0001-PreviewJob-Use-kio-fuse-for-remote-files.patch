@@ -1,4 +1,4 @@
-From f40f87ab4e3b5b5726748c5cefb586aa0bb7caf4 Mon Sep 17 00:00:00 2001
+From 3b9a5285e4a90955d836f9937cc54facb4451b51 Mon Sep 17 00:00:00 2001
 From: John Chadwick <john@jchw.io>
 Date: Sun, 6 Oct 2024 03:47:11 -0400
 Subject: [PATCH] PreviewJob: Use kio-fuse for remote files
@@ -13,9 +13,9 @@ non-KIO applications.
 
 Co-authored-by: Andrew Gunnerson <chillermillerlong@hotmail.com>
 ---
- src/gui/CMakeLists.txt |  8 ++++-
- src/gui/previewjob.cpp | 67 +++++++++++++++++++++++++++++++++++++++---
- 2 files changed, 70 insertions(+), 5 deletions(-)
+ src/gui/CMakeLists.txt |  8 +++++-
+ src/gui/previewjob.cpp | 65 +++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 68 insertions(+), 5 deletions(-)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
 index 15362a906..ec369c4a1 100644
@@ -37,7 +37,7 @@ index 15362a906..ec369c4a1 100644
  
  if (HAVE_QTDBUS AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
 diff --git a/src/gui/previewjob.cpp b/src/gui/previewjob.cpp
-index d4da3e40d..89ff1947b 100644
+index eb4ab0bc3..f4bb8664d 100644
 --- a/src/gui/previewjob.cpp
 +++ b/src/gui/previewjob.cpp
 @@ -58,9 +58,19 @@
@@ -60,12 +60,10 @@ index d4da3e40d..89ff1947b 100644
  }
  
  namespace KIO
-@@ -157,8 +167,14 @@ public:
-     // Device ID for each file. Stored while in STATE_DEVICE_INFO state, used later on.
-     QMap<QString, int> deviceIdMap;
-     enum CachePolicy { Prevent, Allow, Unknown } currentDeviceCachePolicy = Unknown;
-+    // the path of a unique temporary directory
-+    QString m_tempDirPath;
+@@ -163,8 +173,12 @@ public:
+     } currentDeviceCachePolicy = Unknown;
+     // the path of a unique temporary directory
+     QString m_tempDirPath;
 +    // Whether to try using KIOFuse to resolve files. Set to false if KIOFuse is not available.
 +    bool tryKioFuse = true;
  
@@ -75,7 +73,7 @@ index d4da3e40d..89ff1947b 100644
      bool statResultThumbnail();
      void createThumbnail(const QString &);
      void cleanupTempFile();
-@@ -704,13 +720,57 @@ void PreviewJobPrivate::getOrCreateThumbnail()
+@@ -717,13 +731,57 @@ void PreviewJobPrivate::getOrCreateThumbnail()
          determineNextFile();
          return;
      }
@@ -135,7 +133,7 @@ index d4da3e40d..89ff1947b 100644
      const QString extension = item.suffix();
      if (!extension.isEmpty()) {
          localFile.setFileTemplate(QStringLiteral("%1.%2").arg(localFile.fileTemplate(), extension));
-@@ -719,8 +779,7 @@ void PreviewJobPrivate::getOrCreateThumbnail()
+@@ -732,8 +790,7 @@ void PreviewJobPrivate::getOrCreateThumbnail()
      localFile.setAutoRemove(false);
      localFile.open();
      tempName = localFile.fileName();
