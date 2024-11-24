@@ -25,6 +25,8 @@
       };
     };
 
+    programs.kdeconnect.enable = true;
+
     environment.systemPackages = [
       (pkgs.stdenv.mkDerivation {
         name = "kde-global";
