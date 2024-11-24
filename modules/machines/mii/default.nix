@@ -13,7 +13,7 @@
   config = {
     networking.hostName = "mii";
     system.stateVersion = "22.05";
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_6_11; # 6.12 has some AMDGPU regressions for Radeon 980M.
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
     services.fwupd.enable = true;
