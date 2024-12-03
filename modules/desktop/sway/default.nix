@@ -53,6 +53,8 @@
       ];
     };
 
+    programs.kdeconnect.enable = true;
+
     services = {
       udev.packages = [
         pkgs.libwacom

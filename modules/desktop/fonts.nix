@@ -8,15 +8,10 @@
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-emoji
-      pkgs.nerdfonts
+      pkgs.nerd-fonts.go-mono
+      pkgs.nerd-fonts.sauce-code-pro
+      pkgs.nerd-fonts.jetbrains-mono
       pkgs.font-awesome
-      (pkgs.nerdfonts.override {
-        fonts = [
-          "Go-Mono"
-          "SourceCodePro"
-          "JetBrainsMono"
-        ];
-      })
     ];
 
     fonts.fontconfig.defaultFonts = {
