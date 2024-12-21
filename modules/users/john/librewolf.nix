@@ -19,7 +19,10 @@
           inherit (pkgs.librewolf-unwrapped) extraPrefsFiles extraPoliciesFiles;
           wmClass = "librewolf";
           libName = "librewolf";
-          nativeMessagingHosts = with pkgs; [ keepassxc ];
+          nativeMessagingHosts = [
+            pkgs.keepassxc
+            pkgs.plasma-browser-integration
+          ];
         };
         profiles.john = {
           extensions = (
