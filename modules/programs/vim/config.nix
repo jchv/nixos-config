@@ -38,7 +38,7 @@
     none-ls = {
       enable = true;
     };
-    rust-tools = {
+    rustaceanvim = {
       enable = true;
     };
     lsp = {

@@ -54,7 +54,7 @@
             nix-index-database.nixosModules.nix-index
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            nur.nixosModules.nur
+            nur.modules.nixos.default
             disko.nixosModules.disko
             nixvim.nixosModules.nixvim
             { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
@@ -80,7 +80,10 @@
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ nur.overlay ];
+        };
       in
       {
         apps.updateMozillaAddons = {
@@ -94,7 +97,7 @@
         packages =
           let
             vim = nixvim.legacyPackages.${system}.makeNixvim (import ./modules/programs/vim/config.nix);
-            overlay = (import ./packages/overlay.nix) nur.overlay (overlay // pkgs) pkgs;
+            overlay = (import ./packages/overlay.nix) (overlay // pkgs) pkgs;
           in
           overlay // { inherit vim; };
       }

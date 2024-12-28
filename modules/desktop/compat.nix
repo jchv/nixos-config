@@ -119,6 +119,7 @@
         xorg.libxshmfence
         at-spi2-core
         gtk3
+        icu # Needed by dotnet apps
         stdenv.cc.cc.lib
       ];
     };
