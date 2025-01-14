@@ -3,17 +3,9 @@
     # Zshell
     programs.zsh = {
       enable = true;
-      ohMyZsh = {
-        enable = true;
-        plugins = [
-          "git"
-          "man"
-        ];
-        theme = "agnoster";
-      };
     };
 
-    programs.command-not-found.enable = false;
+    programs.nix-index.enable = false;
     programs.nix-index-database.comma.enable = true;
 
     # Tmux

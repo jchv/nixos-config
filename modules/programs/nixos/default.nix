@@ -1,15 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
+    ../common
     ./dogfood
-    ./ghidra
-    ./kitty
     ./ruffle
     ./steam
     ./syncthing
-    ./tailscale
-    ./upgrade
-    ./vim
     ./wine
   ];
 
@@ -46,11 +42,6 @@
     {
       environment.systemPackages = [
         # Multimedia
-        pkgs.gst_all_1.gst-plugins-bad
-        pkgs.gst_all_1.gst-plugins-base
-        pkgs.gst_all_1.gst-plugins-good
-        pkgs.gst_all_1.gst-plugins-ugly
-        pkgs.gst_all_1.gstreamer
         pkgs.krita
         (patchDesktopFilesForKioFuse pkgs.mpv)
         (patchDesktopFilesForKioFuse pkgs.vlc)
@@ -60,19 +51,12 @@
         pkgs.kdePackages.phonon-vlc
 
         # Internet/Networking
-        pkgs.vesktop
         elementDesktopWayland
         pkgs.kdePackages.neochat
         pkgs.ktailctl
-        pkgs.magic-wormhole-rs
         pkgs.remmina
         pkgs.thunderbird
         pkgs.waypipe
-
-        # Development
-        pkgs.gh
-        pkgs.nixpkgs-review
-        pkgs.nix-prefetch-github
 
         # File utilities
         pkgs.kdePackages.ark
@@ -82,7 +66,6 @@
         pkgs.obsidian
         pkgs.okteta
         pkgs.kdePackages.okular
-        pkgs.syncthingtray
 
         # I/O
         pkgs.kdePackages.kio
@@ -93,14 +76,7 @@
 
         # Utilities
         pkgs.distrobox
-        pkgs.keepassxc
-        pkgs.nixos-generators
         pkgs.virtualboxKvm
-        pkgs.xorg.xkill
-        pkgs.xorg.xmodmap
-
-        # Text Editors
-        pkgs.zed-editor
       ];
 
       nixpkgs.overlays = [

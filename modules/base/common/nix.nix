@@ -9,7 +9,6 @@
 
       gc = {
         automatic = true;
-        dates = "00:15";
         options = "--delete-older-than 14d";
       };
     };

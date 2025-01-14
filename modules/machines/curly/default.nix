@@ -2,10 +2,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../base
-    ../../desktop
-    ../../programs
-    ../../users
+    ../../base/nixos
+    ../../desktop/nixos
+    ../../programs/nixos
+    ../../users/nixos
     ../../hardware/android.nix
     ../../hardware/gamecube.nix
     ../../hardware/wacom.nix

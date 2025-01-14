@@ -1,7 +1,6 @@
 {
   config = {
     # Localization/internationalization
-    time.timeZone = "America/Detroit";
     console.keyMap = "us";
     i18n = {
       defaultLocale = "en_US.UTF-8";

@@ -17,7 +17,6 @@
       lame
 
       # Internet/Networking
-      iptables
       tcpdump
       wget
 
@@ -29,16 +28,8 @@
       killport
       nix-index
       pciutils
-      psmisc
       ripgrep
       sops
     ];
-
-    virtualisation = {
-      podman = {
-        enable = true;
-        dockerCompat = true;
-      };
-    };
   };
 }

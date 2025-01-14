@@ -28,6 +28,9 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
@@ -42,40 +45,63 @@
       nixvim,
       disko,
       flake-utils,
+      nix-darwin,
       ...
     }:
     let
-      systemFor =
+      machineModuleFor = hostname: ./modules/machines + "/${hostname}";
+      nixOSModules = [
+        nix-index-database.nixosModules.nix-index
+        sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
+        nur.modules.nixos.default
+        disko.nixosModules.disko
+        nixvim.nixosModules.nixvim
+        { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
+      ];
+      nixOSSystemFor =
         hostname: modules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            (./modules/machines + "/${hostname}")
-            nix-index-database.nixosModules.nix-index
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            nur.modules.nixos.default
-            disko.nixosModules.disko
-            nixvim.nixosModules.nixvim
-            { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
-          ] ++ modules;
+            (machineModuleFor hostname)
+          ] ++ nixOSModules ++ modules;
           specialArgs = {
             inherit nixpkgs;
           };
         };
+      nixDarwinModules = [
+        nix-index-database.darwinModules.nix-index
+        sops-nix.darwinModules.sops
+        home-manager.darwinModules.home-manager
+        nixvim.nixDarwinModules.nixvim
+        { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
+      ];
+      nixDarwinSystemFor =
+        hostname: modules:
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            (machineModuleFor hostname)
+          ] ++ nixDarwinModules ++ modules;
+          specialArgs = {
+            inherit nixpkgs;
+          };
+         };
       surface = nixos-hardware.nixosModules.microsoft-surface-common;
       micropc = nixos-hardware.nixosModules.gpd-micropc;
       framework-16-7040-amd = nixos-hardware.nixosModules.framework-16-7040-amd;
       playerctlInhibit = playerctl-inhibit.nixosModules.playerctl-inhibit;
     in
     {
-      nixosConfigurations.curly = systemFor "curly" [ ];
-      nixosConfigurations.taiga = systemFor "taiga" [ surface ];
-      nixosConfigurations.puchiko = systemFor "puchiko" [
+      nixosConfigurations.curly = nixOSSystemFor "curly" [ ];
+      nixosConfigurations.taiga = nixOSSystemFor "taiga" [ surface ];
+      nixosConfigurations.puchiko = nixOSSystemFor "puchiko" [
         micropc
         playerctlInhibit
       ];
-      nixosConfigurations.mii = systemFor "mii" [ framework-16-7040-amd ];
+      nixosConfigurations.mii = nixOSSystemFor "mii" [ framework-16-7040-amd ];
+      darwinConfigurations.andou = nixDarwinSystemFor "andou" [ ];
     }
     // flake-utils.lib.eachDefaultSystem (
       system:

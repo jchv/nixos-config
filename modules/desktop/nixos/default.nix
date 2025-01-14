@@ -1,5 +1,7 @@
 {
   imports = [
+    ../common
+
     ./kde
     ./sway
 
