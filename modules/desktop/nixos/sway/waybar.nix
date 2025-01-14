@@ -7,7 +7,7 @@
 {
   config =
     let
-      mediaplayer = pkgs.callPackage ../../../packages/mediaplayer.nix { };
+      mediaplayer = pkgs.callPackage ../../../../packages/mediaplayer.nix { };
     in
     lib.mkIf config.jchw.desktop.sway.enable {
       programs.sway.extraPackages = [ pkgs.waybar ];
