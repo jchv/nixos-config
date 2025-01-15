@@ -34,6 +34,7 @@
     };
 
     jchw.mullvadNs.enable = true;
+    jchw.mullvadProxy.enable = true;
     jchw.desktop.sway.enable = true;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;

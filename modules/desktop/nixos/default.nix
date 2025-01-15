@@ -15,7 +15,8 @@
     ./ssh.nix
     ./u2f.nix
     ./virt.nix
-    ./vpn.nix
+    ./vpn-ns.nix
+    ./vpn-proxy.nix
   ];
 
   config = {
