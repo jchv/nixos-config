@@ -12,7 +12,8 @@
     {
       home.file.".mozilla/native-messaging-hosts".force = true;
       home.file.".mozilla/firefox/profiles.ini".target = ".librewolf/profiles.ini";
-      home.file.".librewolf/john".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/john";
+      home.file.".librewolf/john".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/john";
       programs.firefox = {
         enable = true;
         package = pkgs.wrapFirefox pkgs.librewolf-unwrapped {
@@ -22,6 +23,7 @@
           nativeMessagingHosts = [
             pkgs.keepassxc
             pkgs.plasma-browser-integration
+            pkgs.fx-cast-bridge
           ];
         };
         profiles.john = {
@@ -30,6 +32,7 @@
             [
               cookies-txt
               dont-accept-webp
+              fx_cast
               image-reverse-search
               keepassxc-browser
               libredirect
