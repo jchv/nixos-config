@@ -21,7 +21,7 @@
     playerctl-inhibit.url = "github:jchv/playerctl-inhibit";
     playerctl-inhibit.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:nix-community/nixvim?ref=719fa865425ea0740085f23f4fa5c442e99a37d6";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     disko.url = "github:nix-community/disko";
@@ -63,9 +63,12 @@
         hostname: modules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
-            (machineModuleFor hostname)
-          ] ++ nixOSModules ++ modules;
+          modules =
+            [
+              (machineModuleFor hostname)
+            ]
+            ++ nixOSModules
+            ++ modules;
           specialArgs = {
             inherit nixpkgs;
           };
@@ -81,13 +84,16 @@
         hostname: modules:
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          modules = [
-            (machineModuleFor hostname)
-          ] ++ nixDarwinModules ++ modules;
+          modules =
+            [
+              (machineModuleFor hostname)
+            ]
+            ++ nixDarwinModules
+            ++ modules;
           specialArgs = {
             inherit nixpkgs;
           };
-         };
+        };
       surface = nixos-hardware.nixosModules.microsoft-surface-common;
       micropc = nixos-hardware.nixosModules.gpd-micropc;
       framework-16-7040-amd = nixos-hardware.nixosModules.framework-16-7040-amd;
