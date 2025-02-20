@@ -89,11 +89,6 @@
               };
             }
           );
-          virtualbox = prev.virtualbox.overrideAttrs {
-            virtualboxVersion = "7.1.4";
-            virtualboxSubVersion = "";
-            virtualboxSha256 = "872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5e";
-          };
         })
       ];
 
