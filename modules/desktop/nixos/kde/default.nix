@@ -39,6 +39,7 @@
       })
       pkgs.kdePackages.discover
       pkgs.kdePackages.packagekit-qt
+      pkgs.kdePackages.krfb
     ];
 
     environment.sessionVariables = {
