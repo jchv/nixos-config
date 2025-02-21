@@ -10,7 +10,6 @@
       pkgs.noto-fonts-emoji
       pkgs.nerd-fonts.go-mono
       pkgs.nerd-fonts.sauce-code-pro
-      pkgs.nerd-fonts.jetbrains-mono
       pkgs.font-awesome
     ];
 

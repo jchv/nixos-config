@@ -2,7 +2,6 @@
   imports = [
     ./i18n.nix
     ./nix.nix
-    ./overlay.nix
     ./programs.nix
     ./shell.nix
     ./ssh.nix

@@ -1,6 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  config = {
+  options = {
+    jchw.apc-ups.enable = lib.mkEnableOption "APC UPS support";
+  };
+
+  config = lib.mkIf config.jchw.apc-ups.enable {
     sops.secrets = {
       "upsmon/password" = { };
     };

@@ -11,13 +11,7 @@
       ServerAliveCountMax 3
       SetEnv TERM=xterm-256color
 
-      Host curly
-        HostName curly
-        User john
-        ForwardAgent yes
-
-      Host curly.local
-        HostName curly.local
+      Host andou andou.local curly curly.local mii mii.local puchiko puchiko.local taiga taiga.local
         User john
         ForwardAgent yes
 

@@ -1,4 +1,4 @@
-{ nixpkgs, ... }:
+{ inputs, ... }:
 {
   config = {
     nix = {
@@ -13,8 +13,13 @@
       };
     };
 
-    nix.registry.nixpkgs.flake = nixpkgs;
-    nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-    environment.etc."channels/nixpkgs".source = nixpkgs.outPath;
+    nix.registry.nixpkgs.flake = inputs.nixpkgs;
+    nix.registry.system.flake = inputs.self;
+    nix.nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+      "system=${inputs.self}"
+    ];
+    environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+    environment.etc."channels/system".source = inputs.self.outPath;
   };
 }

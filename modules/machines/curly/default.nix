@@ -1,30 +1,12 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ../../base/nixos
-    ../../desktop/nixos
-    ../../programs/nixos
-    ../../users/nixos
-    ../../hardware/android.nix
-    ../../hardware/gamecube.nix
-    ../../hardware/wacom.nix
-    ../../hardware/brother-ql800.nix
   ];
 
   config = {
     networking.hostName = "curly";
     system.stateVersion = "23.05";
-    nixpkgs.config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "broadcom-bt-firmware"
-        "obsidian"
-        "steam"
-        "steam-original"
-        "steam-run"
-        "steam-unwrapped"
-      ];
 
     boot.initrd.luks.devices.root = {
       name = "root";
@@ -35,7 +17,12 @@
 
     jchw.mullvadNs.enable = true;
     jchw.mullvadProxy.enable = true;
-    jchw.desktop.sway.enable = true;
+    jchw.desktop.kde.enable = true;
+    jchw.steam.enable = true;
+    jchw.android.enable = true;
+    jchw.gcadapter.enable = true;
+    jchw.wacom.enable = true;
+    jchw.brother-ql800.enable = true;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
   };

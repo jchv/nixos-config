@@ -13,10 +13,7 @@
     hardware.bluetooth.enable = true;
     hardware.bluetooth.package = pkgs.bluez;
     environment.systemPackages = [
-      pkgs.pavucontrol
       pkgs.pulsemixer
-      pkgs.broadcom-bt-firmware
-      pkgs.qjackctl
     ];
   };
 }

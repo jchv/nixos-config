@@ -5,8 +5,8 @@
       lepton = pkgs.fetchFromGitHub {
         owner = "black7375";
         repo = "Firefox-UI-Fix";
-        rev = "7343efe88d88b2d7cc4434401ab16e2c3799ccbd";
-        hash = "sha256-4D880bHhEib3uJDoFP3yz6H6Iipei8yhf+LgUTsyGNQ=";
+        rev = "v8.7.0";
+        hash = "sha256-NBPSKIxTNSuJahySyLqD45R/UmeyvkJBKehUIE/dI0I=";
       };
     in
     {
@@ -22,33 +22,30 @@
           libName = "librewolf";
           nativeMessagingHosts = [
             pkgs.keepassxc
-            pkgs.plasma-browser-integration
+            pkgs.kdePackages.plasma-browser-integration
             pkgs.fx-cast-bridge
           ];
         };
         profiles.john = {
-          extensions = (
-            with pkgs.firefoxAddons;
-            [
-              cookies-txt
-              dont-accept-webp
-              fx_cast
-              image-reverse-search
-              keepassxc-browser
-              libredirect
-              load-reddit-images-directly
-              localcdn-fork-of-decentraleyes
-              nazeka
-              old-reddit-redirect
-              return-youtube-dislikes
-              ruffle_rs
-              sponsorblock
-              uaswitcher
-              unpaywall
-              violentmonkey
-              youtube-shorts-block
-            ]
-          );
+          extensions.packages = ([
+            pkgs.firefoxAddons.cookies-txt
+            pkgs.firefoxAddons.dont-accept-webp
+            pkgs.firefoxAddons.fx_cast
+            pkgs.firefoxAddons.image-reverse-search
+            pkgs.firefoxAddons.keepassxc-browser
+            pkgs.firefoxAddons.libredirect
+            pkgs.firefoxAddons.load-reddit-images-directly
+            pkgs.firefoxAddons.localcdn-fork-of-decentraleyes
+            pkgs.firefoxAddons.nazeka
+            pkgs.firefoxAddons.old-reddit-redirect
+            pkgs.firefoxAddons.return-youtube-dislikes
+            pkgs.firefoxAddons.ruffle_rs
+            pkgs.firefoxAddons.sponsorblock
+            pkgs.firefoxAddons.uaswitcher
+            pkgs.firefoxAddons.unpaywall
+            pkgs.firefoxAddons.violentmonkey
+            pkgs.firefoxAddons.youtube-shorts-block
+          ]);
           settings = {
             # Remember history for now.
             "places.history.enabled" = 1;

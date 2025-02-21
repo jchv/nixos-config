@@ -75,8 +75,12 @@
         EOF
       '';
 
+      startLimitIntervalSec = 200;
+      startLimitBurst = 5;
+
       serviceConfig = {
         DynamicUser = true;
+        RestartSec = 30;
         Restart = "always";
         LoadCredential = [
           "mullvad-account:${config.sops.secrets."mullvad/account".path}"

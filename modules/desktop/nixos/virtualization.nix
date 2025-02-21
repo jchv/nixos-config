@@ -1,7 +1,7 @@
 {
+  config,
   pkgs,
   lib,
-  config,
   ...
 }:
 {
@@ -38,8 +38,6 @@
         };
       };
     };
-
-    virtualisation.waydroid.enable = true;
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   };

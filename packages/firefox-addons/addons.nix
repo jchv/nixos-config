@@ -2,10 +2,10 @@
   {
     "cookies-txt" = buildFirefoxXpiAddon {
       pname = "cookies-txt";
-      version = "0.7";
+      version = "0.8";
       addonId = "{12cf650b-1822-40aa-bff0-996df6948878}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4368538/cookies_txt-0.7.xpi";
-      sha256 = "04ff7cf1fbebdba3c112fbd4d4ea83f90a08d8a267e63d44cca210659080930e";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4451023/cookies_txt-0.8.xpi";
+      sha256 = "0cfa85e4f1defc0f0e72c4b7a26372d7890d52780e555b868ef4a3759d7bc3ec";
       meta = with lib;
       {
         description = "Exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.";
@@ -58,14 +58,14 @@
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.5";
+      version = "1.9.7";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4395146/keepassxc_browser-1.9.5.xpi";
-      sha256 = "248f90ba6bffc82ef43b97c9e501b0889f70519703f27434e2d920b47f6ead45";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4441759/keepassxc_browser-1.9.7.xpi";
+      sha256 = "f4ecad9cabe70511fbff42fe4fe831c560cc3a0b6da10a740ce670f4f6597f42";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
-        description = "Official browser plugin for the KeePassXC password manager (<a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/aebde84f385b73661158862b419dd43b46ac4c22bea71d8f812030e93d0e52d5/https%3A//keepassxc.org\">https://keepassxc.org</a>).";
+        description = "Official browser plugin for the KeePassXC password manager (https://keepassxc.org).";
         license = licenses.gpl3;
         mozPermissions = [
           "activeTab"
@@ -89,10 +89,10 @@
     };
     "libredirect" = buildFirefoxXpiAddon {
       pname = "libredirect";
-      version = "3.0.2";
+      version = "3.1.0";
       addonId = "7esoorv3@alefvanoon.anonaddy.me";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4357391/libredirect-3.0.2.xpi";
-      sha256 = "9cf22f4a9ad7789c85bfff657b73ead7f846c7e340879801799114a850cc4e64";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4429228/libredirect-3.1.0.xpi";
+      sha256 = "d86a48e0ce416f59cebea52c4152d822a86ec304588785bfb14cb27c3f494775";
       meta = with lib;
       {
         homepage = "https://libredirect.github.io";
@@ -118,7 +118,7 @@
       meta = with lib;
       {
         homepage = "https://github.com/nopperl/load-reddit-images-directly";
-        description = "Loads reddit images directly instead of redirecting to the HTML page containing the image. This works for <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/81e40807248441ca24f789047ae28a7a8266f8ad344ea6f4977e4473d60d20e5/http%3A//i.redd.it\" rel=\"nofollow\">i.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/8e73e8b6575335896f295209eb7b291999654798ffcb596097c6a3cafd045683/http%3A//preview.redd.it\" rel=\"nofollow\">preview.redd.it</a>, <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7e63b0cb427894e946e7065c2badea35dadb397a6a87745849d72f65a9cad794/http%3A//external-preview.redd.it\" rel=\"nofollow\">external-preview.redd.it</a> and <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/5b712eb108fa1803f12422942e6674a8d67e9e8b02d20ccfcce6cf2cb33c934d/http%3A//www.reddit.com/media\" rel=\"nofollow\">www.reddit.com/media</a> urls.";
+        description = "Loads reddit images directly instead of redirecting to the HTML page containing the image. This works for i.redd.it, preview.redd.it, external-preview.redd.it and www.reddit.com/media urls.";
         license = licenses.mpl20;
         mozPermissions = [
           "activeTab"
@@ -136,10 +136,10 @@
     };
     "localcdn-fork-of-decentraleyes" = buildFirefoxXpiAddon {
       pname = "localcdn-fork-of-decentraleyes";
-      version = "2.6.76";
+      version = "2.6.79";
       addonId = "{b86e4813-687a-43e6-ab65-0bde4ab75758}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4401439/localcdn_fork_of_decentraleyes-2.6.76.xpi";
-      sha256 = "00ce9251e78d82b2cea0db408a50058a26e7eb687d8dfdf2fae77c67c61d49cb";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4464649/localcdn_fork_of_decentraleyes-2.6.79.xpi";
+      sha256 = "3180fe626b674d63191cc6d26516b16fd82f3e23500457e6149dcd14febd9eb5";
       meta = with lib;
       {
         homepage = "https://www.localcdn.org";
@@ -183,26 +183,18 @@
     };
     "old-reddit-redirect" = buildFirefoxXpiAddon {
       pname = "old-reddit-redirect";
-      version = "1.8.2";
+      version = "2.0.5";
       addonId = "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4342347/old_reddit_redirect-1.8.2.xpi";
-      sha256 = "0b89437d21132be520fbdf8f55a81cc41dd5f6b50c2905b4c43b870718baddf1";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4472856/old_reddit_redirect-2.0.5.xpi";
+      sha256 = "8b67dfe22d2a7dedddc362a0fb14f90176d7afdc7386e17131a17c831eecf3ed";
       meta = with lib;
       {
         homepage = "https://github.com/tom-james-watson/old-reddit-redirect";
         description = "Ensure Reddit always loads the old design";
         license = licenses.mit;
         mozPermissions = [
-          "webRequest"
-          "webRequestBlocking"
-          "*://reddit.com/*"
-          "*://www.reddit.com/*"
-          "*://np.reddit.com/*"
-          "*://amp.reddit.com/*"
-          "*://i.reddit.com/*"
-          "*://i.redd.it/*"
-          "*://preview.redd.it/*"
-          "*://old.reddit.com/*"
+          "declarativeNetRequestWithHostAccess"
+          "https://old.reddit.com/*"
         ];
         platforms = platforms.all;
       };
@@ -228,10 +220,10 @@
     };
     "ruffle_rs" = buildFirefoxXpiAddon {
       pname = "ruffle_rs";
-      version = "0.1.0.1423";
+      version = "0.1.0.1547";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4405240/ruffle_rs-0.1.0.1423.xpi";
-      sha256 = "e229224e5e884e56308e9dd158db62acc82c8b0186856d4f70a70f9a496f91a4";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4476009/ruffle_rs-0.1.0.1547.xpi";
+      sha256 = "1ff19294c8e4cd87e86defb25e31b1705a5ee490617400497d66a67c3c34a949";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
@@ -262,10 +254,10 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.10.3";
+      version = "5.11.10";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4404647/sponsorblock-5.10.3.xpi";
-      sha256 = "8d670559ae17adc808ed061188822e5112728ba70eda0a3133dcc4abc3857bdc";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-5.11.10.xpi";
+      sha256 = "07e8f50f01a7be1d7b35233a26f599d1471a5b601acd8dfa07dc023c86cac83d";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
@@ -283,10 +275,10 @@
     };
     "uaswitcher" = buildFirefoxXpiAddon {
       pname = "uaswitcher";
-      version = "1.4.68";
+      version = "1.4.89";
       addonId = "user-agent-switcher@ninetailed.ninja";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4350168/uaswitcher-1.4.68.xpi";
-      sha256 = "0d1241f64b40080050caeda49c222c7bc4a12de822cee96e6dd415f76360d158";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4449854/uaswitcher-1.4.89.xpi";
+      sha256 = "ad488274976139ce84517a3e12de6b729edfb8daded18c7184ffc64b90591a0a";
       meta = with lib;
       {
         homepage = "https://gitlab.com/ntninja/user-agent-switcher";
@@ -320,10 +312,10 @@
     };
     "violentmonkey" = buildFirefoxXpiAddon {
       pname = "violentmonkey";
-      version = "2.29.0";
+      version = "2.31.0";
       addonId = "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4398029/violentmonkey-2.29.0.xpi";
-      sha256 = "2edf39a824476b8a77a57c7c3abdaf3f685a679486e47450fab837b4bd71d469";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4455138/violentmonkey-2.31.0.xpi";
+      sha256 = "8880114a3ac30a5f3aebc71443f86a1f7fdd1ec9298def22dc2e250502ecccee";
       meta = with lib;
       {
         homepage = "https://violentmonkey.github.io/";

@@ -1,7 +1,7 @@
 {
   description = "My NixOS configuration flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -18,9 +18,6 @@
     nix-writers.url = "git+https://cgit.krebsco.de/nix-writers";
     nix-writers.inputs.nixpkgs.follows = "nixpkgs";
 
-    playerctl-inhibit.url = "github:jchv/playerctl-inhibit";
-    playerctl-inhibit.inputs.nixpkgs.follows = "nixpkgs";
-
     nixvim.url = "github:nix-community/nixvim?ref=719fa865425ea0740085f23f4fa5c442e99a37d6";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -33,7 +30,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
-    {
+    inputs@{
       nixpkgs,
       nix-index-database,
       nixos-hardware,
@@ -41,7 +38,6 @@
       home-manager,
       nur,
       nix-writers,
-      playerctl-inhibit,
       nixvim,
       disko,
       flake-utils,
@@ -50,14 +46,24 @@
     }:
     let
       machineModuleFor = hostname: ./modules/machines + "/${hostname}";
+      nixInputsOverlay = final: prev: { inherit inputs; };
+      nixpkgsOverlays = [
+        nixInputsOverlay
+        nix-writers.overlays.default
+        (import ./packages/overlay.nix)
+      ];
       nixOSModules = [
+        ./modules/base/nixos
+        ./modules/desktop/nixos
+        ./modules/programs/nixos
+        ./modules/users/nixos
         nix-index-database.nixosModules.nix-index
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         disko.nixosModules.disko
         nixvim.nixosModules.nixvim
-        { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
+        { nixpkgs.overlays = nixpkgsOverlays; }
       ];
       nixOSSystemFor =
         hostname: modules:
@@ -70,15 +76,19 @@
             ++ nixOSModules
             ++ modules;
           specialArgs = {
-            inherit nixpkgs;
+            inherit inputs;
           };
         };
       nixDarwinModules = [
+        ./modules/base/darwin
+        ./modules/desktop/darwin
+        ./modules/programs/darwin
+        ./modules/users/darwin
         nix-index-database.darwinModules.nix-index
         sops-nix.darwinModules.sops
         home-manager.darwinModules.home-manager
         nixvim.nixDarwinModules.nixvim
-        { nixpkgs.overlays = [ nix-writers.overlays.default ]; }
+        { nixpkgs.overlays = nixpkgsOverlays; }
       ];
       nixDarwinSystemFor =
         hostname: modules:
@@ -91,20 +101,18 @@
             ++ nixDarwinModules
             ++ modules;
           specialArgs = {
-            inherit nixpkgs;
+            inherit inputs;
           };
         };
       surface = nixos-hardware.nixosModules.microsoft-surface-common;
       micropc = nixos-hardware.nixosModules.gpd-micropc;
       framework-16-7040-amd = nixos-hardware.nixosModules.framework-16-7040-amd;
-      playerctlInhibit = playerctl-inhibit.nixosModules.playerctl-inhibit;
     in
     {
       nixosConfigurations.curly = nixOSSystemFor "curly" [ ];
       nixosConfigurations.taiga = nixOSSystemFor "taiga" [ surface ];
       nixosConfigurations.puchiko = nixOSSystemFor "puchiko" [
         micropc
-        playerctlInhibit
       ];
       nixosConfigurations.mii = nixOSSystemFor "mii" [ framework-16-7040-amd ];
       darwinConfigurations.andou = nixDarwinSystemFor "andou" [ ];
@@ -114,7 +122,9 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ nur.overlay ];
+          overlays = nixpkgsOverlays ++ [
+            nur.overlays.default
+          ];
         };
       in
       {
@@ -126,12 +136,7 @@
             ''
           );
         };
-        packages =
-          let
-            vim = nixvim.legacyPackages.${system}.makeNixvim (import ./modules/programs/vim/config.nix);
-            overlay = (import ./packages/overlay.nix) (overlay // pkgs) pkgs;
-          in
-          overlay // { inherit vim; };
+        legacyPackages = pkgs;
       }
     );
 }

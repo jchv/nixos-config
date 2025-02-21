@@ -2,19 +2,17 @@
   imports = [
     ../common
 
+    ./hardware
     ./kde
     ./sway
 
     ./compat.nix
     ./fonts.nix
-    ./fluidsynth.nix
-    ./nas.nix
     ./network.nix
     ./pipewire.nix
     ./printing.nix
     ./ssh.nix
-    ./u2f.nix
-    ./virt.nix
+    ./virtualization.nix
     ./vpn-ns.nix
     ./vpn-proxy.nix
   ];

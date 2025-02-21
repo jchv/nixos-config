@@ -96,10 +96,6 @@
         wants = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
 
-        serviceConfig = {
-          Type = "oneshot";
-        };
-
         script = ''
           set -e
           NAMESPACE="${mullvadNamespace}"
@@ -180,6 +176,15 @@
 
           echo "[+] Success! Probably..."
         '';
+
+        startLimitIntervalSec = 200;
+        startLimitBurst = 5;
+
+        serviceConfig = {
+          Type = "oneshot";
+          Restart = "always";
+          RestartSec = 30;
+        };
       };
 
       environment.etc.mullvad-resolvconf = {

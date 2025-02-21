@@ -9,10 +9,10 @@
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-anthy
-        fcitx5-gtk
-        fcitx5-mozc
+      fcitx5.addons = [
+        pkgs.fcitx5-anthy
+        pkgs.fcitx5-gtk
+        pkgs.fcitx5-mozc
       ];
     };
 

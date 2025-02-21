@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   config = {
-    environment.systemPackages = with pkgs; [
-      babeltrace2
-      lttng-tools
+    environment.systemPackages = [
+      pkgs.babeltrace2
+      pkgs.lttng-tools
     ];
 
     systemd.services.lttng-sessiond = {

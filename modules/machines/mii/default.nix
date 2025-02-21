@@ -1,13 +1,6 @@
-{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ../../base/nixos
-    ../../desktop/nixos
-    ../../programs/nixos
-    ../../users/nixos
-    ../../hardware/android.nix
-    ../../hardware/brother-ql800.nix
   ];
 
   config = {
@@ -15,18 +8,11 @@
     system.stateVersion = "22.05";
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
+    jchw.steam.enable = true;
+    jchw.android.enable = true;
+    jchw.brother-ql800.enable = true;
     services.fwupd.enable = true;
     security.pam.services.login.fprintAuth = false;
-    nixpkgs.config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "broadcom-bt-firmware"
-        "obsidian"
-        "steam"
-        "steam-original"
-        "steam-run"
-        "steam-unwrapped"
-      ];
     disko.devices = {
       disk = {
         root = {

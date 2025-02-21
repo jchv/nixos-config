@@ -2,8 +2,6 @@
   imports = [
     ../common
     ./i18n.nix
-    ./programs.nix
-    ./samba.nix
     ./shell.nix
     ./ssh.nix
     ./tracing.nix
@@ -25,9 +23,6 @@
 
     # Enable firmware updater.
     services.fwupd.enable = true;
-
-    # Enable scanner support
-    hardware.sane.enable = true;
 
     # Enable rtkit for realtime priority.
     security.rtkit.enable = true;

@@ -1,35 +1,22 @@
 { pkgs, ... }:
 {
   config = {
-    environment.systemPackages = with pkgs; [
-      # Development Tools
-      bear
-      gitFull
-      lazygit
-      nixd
-
-      # Archivers/Compression
-      libarchive
-      unar
-
-      # Multimedia
-      ffmpeg-full
-      lame
-
-      # Internet/Networking
-      tcpdump
-      wget
-
-      # Utilities
-      age
-      fd
-      file
-      fzf
-      killport
-      nix-index
-      pciutils
-      ripgrep
-      sops
+    environment.systemPackages = [
+      pkgs.gitFull
+      pkgs.libarchive
+      pkgs.unar
+      pkgs.age
+      pkgs.fd
+      pkgs.file
+      pkgs.killport
+      pkgs.nix-index
+      pkgs.usbutils
+      pkgs.pciutils
+      pkgs.moreutils
+      pkgs.psmisc
+      pkgs.iptables
+      pkgs.ripgrep
+      pkgs.sops
     ];
   };
 }
