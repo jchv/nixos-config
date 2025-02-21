@@ -27,7 +27,7 @@
           ];
         };
         profiles.john = {
-          extensions = (
+          extensions.packages = (
             with pkgs.firefoxAddons;
             [
               cookies-txt

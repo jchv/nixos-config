@@ -76,6 +76,7 @@
 
         # Utilities
         pkgs.distrobox
+        pkgs.orca-slicer
         pkgs.virtualboxKvm
       ];
 
