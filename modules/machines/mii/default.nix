@@ -8,6 +8,7 @@
     system.stateVersion = "22.05";
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
+    jchw.amdgpu.enable = true;
     jchw.steam.enable = true;
     jchw.android.enable = true;
     jchw.brother-ql800.enable = true;

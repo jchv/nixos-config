@@ -1,5 +1,6 @@
 {
   imports = [
+    ./amdgpu.nix
     ./android.nix
     ./apc-ups.nix
     ./brother-ql800.nix

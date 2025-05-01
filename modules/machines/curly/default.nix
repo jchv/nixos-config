@@ -18,6 +18,7 @@
     jchw.mullvadNs.enable = true;
     jchw.mullvadProxy.enable = true;
     jchw.desktop.kde.enable = true;
+    jchw.amdgpu.enable = true;
     jchw.steam.enable = true;
     jchw.android.enable = true;
     jchw.gcadapter.enable = true;
