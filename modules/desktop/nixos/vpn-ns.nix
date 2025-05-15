@@ -182,7 +182,7 @@
 
         serviceConfig = {
           Type = "oneshot";
-          Restart = "always";
+          Restart = "on-failure";
           RestartSec = 30;
         };
       };

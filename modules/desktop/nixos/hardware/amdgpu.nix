@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -11,12 +10,17 @@
 
   config = lib.mkIf config.jchw.amdgpu.enable {
     hardware = {
+      amdgpu = {
+        opencl = {
+          enable = true;
+        };
+      };
       graphics = {
         extraPackages = [
-          pkgs.amdvlk
+          # pkgs.amdvlk
         ];
         extraPackages32 = [
-          pkgs.driversi686Linux.amdvlk
+          # pkgs.driversi686Linux.amdvlk
         ];
       };
     };
