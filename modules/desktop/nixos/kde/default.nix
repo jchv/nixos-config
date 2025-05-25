@@ -28,6 +28,7 @@
     };
 
     programs.kdeconnect.enable = true;
+    programs.partition-manager.enable = true;
 
     environment.systemPackages = [
       (pkgs.stdenv.mkDerivation {
