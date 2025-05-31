@@ -8,4 +8,8 @@
     ./nvidia.nix
     ./wacom.nix
   ];
+
+  config = {
+    services.pcscd.enable = true;
+  };
 }

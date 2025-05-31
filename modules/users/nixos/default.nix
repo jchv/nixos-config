@@ -29,6 +29,7 @@
           "adbusers"
           "video"
           "wireshark"
+          "vboxusers"
         ];
         hashedPassword = "$6$LK8j4pHMaTP$cwfQlA5j3ZXB4XrfDsk1qK9CDCjLlzS3.Y.BXaiW5BrYBPn9uxS7DyxFPZiyfJ5O/wlAdWSMk5DGhr.Zqg50K1";
         openssh.authorizedKeys.keys = [
