@@ -58,10 +58,10 @@
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.7";
+      version = "1.9.8";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4441759/keepassxc_browser-1.9.7.xpi";
-      sha256 = "f4ecad9cabe70511fbff42fe4fe831c560cc3a0b6da10a740ce670f4f6597f42";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4477789/keepassxc_browser-1.9.8.xpi";
+      sha256 = "7629ee8fe6a8bace5d0f12c3aef41803c2ab01407a22ad8803633992a6c4eda2";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -220,10 +220,10 @@
     };
     "ruffle_rs" = buildFirefoxXpiAddon {
       pname = "ruffle_rs";
-      version = "0.1.0.1547";
+      version = "0.1.0.1580";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4476009/ruffle_rs-0.1.0.1547.xpi";
-      sha256 = "1ff19294c8e4cd87e86defb25e31b1705a5ee490617400497d66a67c3c34a949";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4497149/ruffle_rs-0.1.0.1580.xpi";
+      sha256 = "9131ce4826a204c562ed625a5f96172ab0554583d722d0d97f5787652013850b";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
@@ -254,10 +254,10 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.11.10";
+      version = "5.12.4";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-5.11.10.xpi";
-      sha256 = "07e8f50f01a7be1d7b35233a26f599d1471a5b601acd8dfa07dc023c86cac83d";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4501802/sponsorblock-5.12.4.xpi";
+      sha256 = "789c63e5cfc74aa11661459de7ab87c0143cca5a0944aab700a6044497bf40eb";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
@@ -338,10 +338,10 @@
     };
     "youtube-shorts-block" = buildFirefoxXpiAddon {
       pname = "youtube-shorts-block";
-      version = "1.5.0";
+      version = "1.5.3";
       addonId = "{34daeb50-c2d2-4f14-886a-7160b24d66a4}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4346135/youtube_shorts_block-1.5.0.xpi";
-      sha256 = "3f180a49c8ff6ae05c8acdca5f37be5a7e55db11f2c6b0a7f4ba6973eb7be06c";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4487339/youtube_shorts_block-1.5.3.xpi";
+      sha256 = "774896393bc782db2d79992a337d782963766365723c4bbab73d53a63feb2043";
       meta = with lib;
       {
         description = "Play the Youtube shorts video as if it were a normal video.\nand hide \"shorts\"tab and videos (optional).";
