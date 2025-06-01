@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,6 +15,7 @@
     jchw.brother-ql800.enable = true;
     services.fwupd.enable = true;
     security.pam.services.login.fprintAuth = false;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
     disko.devices = {
       disk = {
         root = {
