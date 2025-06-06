@@ -43,6 +43,12 @@
       ];
     };
 
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+      usbmon.enable = true;
+    };
+
     systemd.user.services.kio-fuse = {
       unitConfig = {
         Description = "Fuse interface for KIO";
@@ -122,7 +128,5 @@
         "audio/x-xm" = "vlc.desktop";
       };
     };
-
-    programs.wireshark.enable = true;
   };
 }
