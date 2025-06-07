@@ -7,6 +7,7 @@
   config = {
     networking.hostName = "mii";
     system.stateVersion = "22.05";
+    jchw.mullvadProxy.enable = true;
     jchw.autosuspend = true;
     jchw.desktop.kde.enable = true;
     jchw.amdgpu.enable = true;
