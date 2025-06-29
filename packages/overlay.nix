@@ -86,5 +86,37 @@ in
   ghidra-with-extensions = prev.ghidra.withExtensions (_: [
     prev.ghidra-extensions.ghidra-delinker-extension
   ]);
+  lttng-ust = prev.lttng-ust.overrideAttrs (
+    finalAttrs: prevAttrs: {
+      version = "2.14.0";
+      src = final.fetchurl {
+        url = "https://lttng.org/files/lttng-ust/lttng-ust-2.14.0.tar.bz2";
+        hash = "sha256-gs39MEu7Kyt9F8yVGmdWs3qfc4aOwLp9tEig1cpRt2M=";
+      };
+      buildInputs = (prevAttrs.buildInputs or [ ]) ++ [ final.babeltrace2.dev ];
+    }
+  );
+  lttng-tools = prev.lttng-tools.overrideAttrs (
+    finalAttrs: prevAttrs: {
+      version = "2.14.0";
+      src = final.fetchurl {
+        url = "https://lttng.org/files/lttng-tools/lttng-tools-2.14.0.tar.bz2";
+        hash = "sha256-2MOcJs7BO3vYJVHNUqIu/DWLiI4268+cG2DvHDo8L9M=";
+      };
+      buildInputs = (prevAttrs.buildInputs or [ ]) ++ [ final.babeltrace2.dev ];
+    }
+  );
+  babeltrace2 = prev.babeltrace2.overrideAttrs (
+    finalAttrs: prevAttrs: {
+      version = "2.1.1";
+      src = final.fetchFromGitHub {
+        owner = "efficios";
+        repo = "babeltrace";
+        rev = "v2.1.1";
+        hash = "sha256-ppSPly4HR/oemsX069o6VqwSB1AU1mKRwRepwPORf7I=";
+      };
+      patches = [ ];
+    }
+  );
 }
 // builtins.mapAttrs (n: v: v.extend (self: super: (kernelModules self.kernel))) allKernels
