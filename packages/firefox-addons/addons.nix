@@ -58,10 +58,10 @@
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.8";
+      version = "1.9.9";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4477789/keepassxc_browser-1.9.8.xpi";
-      sha256 = "7629ee8fe6a8bace5d0f12c3aef41803c2ab01407a22ad8803633992a6c4eda2";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4518185/keepassxc_browser-1.9.9.xpi";
+      sha256 = "84bdfd50bf30b1eb494c6e0753eda64a0c6489f557d59f3e8d3dbc878107fcba";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -74,6 +74,7 @@
           "cookies"
           "nativeMessaging"
           "notifications"
+          "privacy"
           "storage"
           "tabs"
           "webNavigation"
@@ -89,10 +90,10 @@
     };
     "libredirect" = buildFirefoxXpiAddon {
       pname = "libredirect";
-      version = "3.1.0";
+      version = "3.2.0";
       addonId = "7esoorv3@alefvanoon.anonaddy.me";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4429228/libredirect-3.1.0.xpi";
-      sha256 = "d86a48e0ce416f59cebea52c4152d822a86ec304588785bfb14cb27c3f494775";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4522826/libredirect-3.2.0.xpi";
+      sha256 = "ba4cf8fe97275d7082fea085a09796481122845455df1af524a7210fff3ecf3c";
       meta = with lib;
       {
         homepage = "https://libredirect.github.io";
@@ -136,10 +137,10 @@
     };
     "localcdn-fork-of-decentraleyes" = buildFirefoxXpiAddon {
       pname = "localcdn-fork-of-decentraleyes";
-      version = "2.6.79";
+      version = "2.6.80";
       addonId = "{b86e4813-687a-43e6-ab65-0bde4ab75758}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4464649/localcdn_fork_of_decentraleyes-2.6.79.xpi";
-      sha256 = "3180fe626b674d63191cc6d26516b16fd82f3e23500457e6149dcd14febd9eb5";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4518039/localcdn_fork_of_decentraleyes-2.6.80.xpi";
+      sha256 = "bcd7e4b51422c3559f3edb880d7248410169214266b3b40d236f0b7d478b9ded";
       meta = with lib;
       {
         homepage = "https://www.localcdn.org";
@@ -220,10 +221,10 @@
     };
     "ruffle_rs" = buildFirefoxXpiAddon {
       pname = "ruffle_rs";
-      version = "0.1.0.1580";
+      version = "0.2.0.25179";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4497149/ruffle_rs-0.1.0.1580.xpi";
-      sha256 = "9131ce4826a204c562ed625a5f96172ab0554583d722d0d97f5787652013850b";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4522530/ruffle_rs-0.2.0.25179.xpi";
+      sha256 = "87249ef1d26019e39ad1af917fcbd5efa0ae8099381fa31961a186767badf509";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
@@ -254,10 +255,10 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.12.4";
+      version = "5.13.2";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4501802/sponsorblock-5.12.4.xpi";
-      sha256 = "789c63e5cfc74aa11661459de7ab87c0143cca5a0944aab700a6044497bf40eb";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4523436/sponsorblock-5.13.2.xpi";
+      sha256 = "5474885c40991404f1347db69933da631cc24318abe720efe4ba8df5196f0faa";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
