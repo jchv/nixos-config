@@ -5,18 +5,9 @@
   ];
 
   config = {
-    networking.hostName = "mii";
-    system.stateVersion = "22.05";
-    jchw.mullvadProxy.enable = true;
-    jchw.autosuspend = true;
-    jchw.desktop.kde.enable = true;
-    jchw.amdgpu.enable = true;
-    jchw.steam.enable = true;
-    jchw.android.enable = true;
-    jchw.brother-ql800.enable = true;
-    services.fwupd.enable = true;
-    security.pam.services.login.fprintAuth = false;
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot = {
+      kernelPackages = pkgs.linuxPackages_latest;
+    };
     disko.devices = {
       disk = {
         root = {
@@ -82,5 +73,15 @@
         };
       };
     };
+    hardware = {
+      amdgpu.opencl.enable = true;
+    };
+    jchw = {
+      desktop.kde.enable = true;
+      vpn.proxy.enable = true;
+    };
+    networking.hostName = "mii";
+    security.pam.services.login.fprintAuth = false;
+    system.stateVersion = "22.05";
   };
 }

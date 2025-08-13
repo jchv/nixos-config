@@ -42,20 +42,6 @@
         platforms = platforms.all;
       };
     };
-    "image-reverse-search" = buildFirefoxXpiAddon {
-      pname = "image-reverse-search";
-      version = "4.3.1";
-      addonId = "{0da2e603-21ba-4422-8049-b6d9e013ed84}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4343711/image_reverse_search-4.3.1.xpi";
-      sha256 = "23ee693e6ff075fd665dc51befe6a994eb4a5793fc275bb08532a5108e455921";
-      meta = with lib;
-      {
-        homepage = "https://github.com/Brawl345/Image-Reverse-Search-with-Google";
-        description = "Adds an option to the context menu to search with an image on Google, Bing, Yandex, TinEye, SauceNAO, IQDB or custom search engines. You can also choose more than one and they will be shown in a submenu!";
-        mozPermissions = [ "contextMenus" "storage" ];
-        platforms = platforms.all;
-      };
-    };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
       version = "1.9.9";

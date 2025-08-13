@@ -18,9 +18,6 @@
     nix-writers.url = "git+https://cgit.krebsco.de/nix-writers";
     nix-writers.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim.url = "github:nix-community/nixvim?ref=719fa865425ea0740085f23f4fa5c442e99a37d6";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -38,7 +35,6 @@
       home-manager,
       nur,
       nix-writers,
-      nixvim,
       disko,
       flake-utils,
       nix-darwin,
@@ -53,16 +49,15 @@
         (import ./packages/overlay.nix)
       ];
       nixOSModules = [
-        ./modules/base/nixos
-        ./modules/desktop/nixos
-        ./modules/programs/nixos
-        ./modules/users/nixos
+        ./modules/base/nixos.nix
+        ./modules/desktop
+        ./modules/users
+        ./modules/vpn
         nix-index-database.nixosModules.nix-index
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         disko.nixosModules.disko
-        nixvim.nixosModules.nixvim
         { nixpkgs.overlays = nixpkgsOverlays; }
       ];
       nixOSSystemFor =
@@ -80,14 +75,10 @@
           };
         };
       nixDarwinModules = [
-        ./modules/base/darwin
-        ./modules/desktop/darwin
-        ./modules/programs/darwin
-        ./modules/users/darwin
+        ./modules/base/darwin.nix
         nix-index-database.darwinModules.nix-index
         sops-nix.darwinModules.sops
         home-manager.darwinModules.home-manager
-        nixvim.nixDarwinModules.nixvim
         { nixpkgs.overlays = nixpkgsOverlays; }
       ];
       nixDarwinSystemFor =
@@ -111,9 +102,7 @@
     {
       nixosConfigurations.curly = nixOSSystemFor "curly" [ ];
       nixosConfigurations.taiga = nixOSSystemFor "taiga" [ surface ];
-      nixosConfigurations.puchiko = nixOSSystemFor "puchiko" [
-        micropc
-      ];
+      nixosConfigurations.puchiko = nixOSSystemFor "puchiko" [ micropc ];
       nixosConfigurations.mii = nixOSSystemFor "mii" [ framework-16-7040-amd ];
       darwinConfigurations.andou = nixDarwinSystemFor "andou" [ ];
     }
