@@ -346,7 +346,7 @@ in
           "inode/directory" = "org.kde.dolphin.desktop";
           "text/plain" = "org.kde.kwrite.desktop";
           "text/x-readme" = "org.kde.kwrite.desktop";
-          "video/webm" = "org.kde.gwenview.desktop";
+          "video/webm" = "vlc.desktop";
           "x-scheme-handler/https" = "librewolf.desktop";
           "x-scheme-handler/mailto" = "thunderbird.desktop";
           "x-scheme-handler/mid" = "thunderbird.desktop";
