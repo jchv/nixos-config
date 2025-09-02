@@ -5,8 +5,8 @@
       lepton = pkgs.fetchFromGitHub {
         owner = "black7375";
         repo = "Firefox-UI-Fix";
-        rev = "v8.7.0";
-        hash = "sha256-NBPSKIxTNSuJahySyLqD45R/UmeyvkJBKehUIE/dI0I=";
+        rev = "v8.7.3";
+        hash = "sha256-2AIUzfWp7RhhW5Ku1qYTxr0y+1qpfCIHPVv3wdI2VyU=";
       };
     in
     {
