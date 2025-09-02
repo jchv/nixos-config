@@ -51,7 +51,6 @@ in
           pkgs.fcitx5-mozc
           pkgs.kdePackages.fcitx5-qt
         ];
-        plasma6Support = true;
         waylandFrontend = true;
       };
     };
