@@ -346,9 +346,13 @@ in
       virtualbox.host = {
         enable = true;
         enableKvm = true;
+        enableExtensionPack = true;
         addNetworkInterface = false;
       };
     };
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "Oracle_VirtualBox_Extension_Pack"
+    ];
     systemd.user.services.kio-fuse = {
       unitConfig = {
         Description = "Fuse interface for KIO";
