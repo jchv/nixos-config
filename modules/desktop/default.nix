@@ -350,9 +350,12 @@ in
         addNetworkInterface = false;
       };
     };
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "Oracle_VirtualBox_Extension_Pack"
-    ];
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "Oracle_VirtualBox_Extension_Pack"
+        "vmware-workstation"
+      ];
     systemd.user.services.kio-fuse = {
       unitConfig = {
         Description = "Fuse interface for KIO";

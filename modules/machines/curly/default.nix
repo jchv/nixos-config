@@ -24,5 +24,6 @@
     };
     networking.hostName = "curly";
     system.stateVersion = "23.05";
+    virtualisation.vmware.host.enable = true;
   };
 }
