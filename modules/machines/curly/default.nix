@@ -20,7 +20,6 @@
     jchw = {
       desktop.kde.enable = true;
       vpn.namespace.enable = true;
-      vpn.proxy.enable = true;
     };
     networking.hostName = "curly";
     system.stateVersion = "23.05";

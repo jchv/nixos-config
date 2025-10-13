@@ -78,7 +78,7 @@
     };
     jchw = {
       desktop.kde.enable = true;
-      vpn.proxy.enable = true;
+      vpn.namespace.enable = true;
     };
     networking.hostName = "mii";
     security.pam.services.login.fprintAuth = false;

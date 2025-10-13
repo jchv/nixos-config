@@ -68,10 +68,13 @@
     lib.mkIf config.jchw.vpn.namespace.enable {
       sops.secrets = {
         "mullvad/account" = { };
-        "mullvad/device" = { };
-        "mullvad/privateKey" = { };
+        "mullvad/${config.networking.hostName}/device" = { };
+        "mullvad/${config.networking.hostName}/privateKey" = { };
         "mullvad/server" = { };
       };
+
+      # Needed for routing 10.0.0.0/8 into namespace
+      boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
       environment.systemPackages = [ pkgs.wireguard-tools ];
 
@@ -100,10 +103,10 @@
           set -e
           NAMESPACE="${mullvadNamespace}"
           INTERFACE="${mullvadInterface}"
-          PRIVATEKEY_PATH="${config.sops.secrets."mullvad/privateKey".path}"
+          PRIVATEKEY_PATH="${config.sops.secrets."mullvad/${config.networking.hostName}/privateKey".path}"
           PUBLICKEY="$(cat $PRIVATEKEY_PATH | ${pkgs.wireguard-tools}/bin/wg pubkey)"
           SERVER="$(cat ${config.sops.secrets."mullvad/server".path})"
-          DEVICE="$(cat ${config.sops.secrets."mullvad/device".path})"
+          DEVICE="$(cat ${config.sops.secrets."mullvad/${config.networking.hostName}/device".path})"
           ACCOUNT="$(cat ${config.sops.secrets."mullvad/account".path})"
 
           echo "[+] Network namespace script started."
@@ -173,6 +176,19 @@
           ip netns exec "$NAMESPACE" iptables -t nat -F
           ip netns exec "$NAMESPACE" iptables -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to "${mullvadNameserver}"
           ip netns exec "$NAMESPACE" iptables -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to "${mullvadNameserver}"
+
+          echo "[+] Setting up veth pair."
+          ip link add veth-default type veth peer name veth-wg || echo "veth pair exists"
+          ip link set veth-wg netns "$NAMESPACE" || echo "veth-wg already moved"
+          ip addr add 192.168.255.1/30 dev veth-default || echo "veth-default addr already assigned"
+          ip link set veth-default up
+          ip -n "$NAMESPACE" addr add 192.168.255.2/30 dev veth-wg || echo "veth-wg addr already assigned"
+          ip -n "$NAMESPACE" link set veth-wg up
+
+          echo "[+] Setting up routing from 10.0.0.0/8 into $NAMESPACE."
+          ip route add 10.0.0.0/8 via 192.168.255.2 || echo "route already exists"
+          ip netns exec "$NAMESPACE" iptables -t nat -D POSTROUTING -o "$INTERFACE" -j MASQUERADE || echo "rule does not exist yet"
+          ip netns exec "$NAMESPACE" iptables -t nat -A POSTROUTING -o "$INTERFACE" -j MASQUERADE
 
           echo "[+] Success! Probably..."
         '';
