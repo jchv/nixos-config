@@ -250,6 +250,7 @@ in
       fwupd.enable = true;
       packagekit.enable = true;
       pcscd.enable = true;
+      orca.enable = true;
       pipewire = {
         enable = true;
         package = pkgs.pipewire.overrideAttrs (
