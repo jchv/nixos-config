@@ -67,5 +67,6 @@ in
   };
   ghidra-with-extensions = prev.ghidra.withExtensions (_: [
     prev.ghidra-extensions.ghidra-delinker-extension
+    (prev.callPackage ./ghidra-gamecube-loader { })
   ]);
 }
