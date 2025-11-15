@@ -21,7 +21,7 @@ in
 {
   unfree = import "${final.inputs.nixpkgs}" {
     config.allowUnfree = true;
-    system = prev.system;
+    system = prev.stdenv.hostPlatform.system;
   };
   firefoxAddons = lib.recurseIntoAttrs (callPackage ./firefox-addons { inherit (final) nur; });
   kiofuse-mpv = patchDesktopFilesForKioFuse prev.mpv;

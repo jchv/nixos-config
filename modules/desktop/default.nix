@@ -64,7 +64,7 @@ in
         pkgs.ipafont
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
-        pkgs.noto-fonts-emoji
+        pkgs.noto-fonts-color-emoji
         pkgs.nerd-fonts.go-mono
         pkgs.nerd-fonts.sauce-code-pro
         pkgs.font-awesome
@@ -320,7 +320,6 @@ in
       };
       tailscale.enable = true;
       resolved.enable = true;
-      udev.packages = [ pkgs.android-udev-rules ];
       udev.extraRules = ''
         # GameCube Controller Adapter
         SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
