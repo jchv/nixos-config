@@ -2,10 +2,10 @@
   {
     "cookies-txt" = buildFirefoxXpiAddon {
       pname = "cookies-txt";
-      version = "0.8";
+      version = "0.9";
       addonId = "{12cf650b-1822-40aa-bff0-996df6948878}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4451023/cookies_txt-0.8.xpi";
-      sha256 = "0cfa85e4f1defc0f0e72c4b7a26372d7890d52780e555b868ef4a3759d7bc3ec";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4573893/cookies_txt-0.9.xpi";
+      sha256 = "a734a72d34dbeea1c0a2035c3fa3eb3e9119918b0249b5722ab1d89b142f42a0";
       meta = with lib;
       {
         description = "Exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.";
@@ -44,10 +44,10 @@
     };
     "keepassxc-browser" = buildFirefoxXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.9";
+      version = "1.9.10";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4518185/keepassxc_browser-1.9.9.xpi";
-      sha256 = "84bdfd50bf30b1eb494c6e0753eda64a0c6489f557d59f3e8d3dbc878107fcba";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4592023/keepassxc_browser-1.9.10.xpi";
+      sha256 = "38926e2225ba92da0962e6675a90e1e9bf1e3b280b88014c27f3aa727f212542";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -60,7 +60,6 @@
           "cookies"
           "nativeMessaging"
           "notifications"
-          "privacy"
           "storage"
           "tabs"
           "webNavigation"
@@ -123,10 +122,10 @@
     };
     "localcdn-fork-of-decentraleyes" = buildFirefoxXpiAddon {
       pname = "localcdn-fork-of-decentraleyes";
-      version = "2.6.80";
+      version = "2.6.82";
       addonId = "{b86e4813-687a-43e6-ab65-0bde4ab75758}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4518039/localcdn_fork_of_decentraleyes-2.6.80.xpi";
-      sha256 = "bcd7e4b51422c3559f3edb880d7248410169214266b3b40d236f0b7d478b9ded";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4582489/localcdn_fork_of_decentraleyes-2.6.82.xpi";
+      sha256 = "2106e0826419eb1877d99c689b9c198bd483bfffab6ab9c3242b3fad674f325c";
       meta = with lib;
       {
         homepage = "https://www.localcdn.org";
@@ -170,10 +169,10 @@
     };
     "old-reddit-redirect" = buildFirefoxXpiAddon {
       pname = "old-reddit-redirect";
-      version = "2.0.5";
+      version = "2.0.9";
       addonId = "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4472856/old_reddit_redirect-2.0.5.xpi";
-      sha256 = "8b67dfe22d2a7dedddc362a0fb14f90176d7afdc7386e17131a17c831eecf3ed";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4526031/old_reddit_redirect-2.0.9.xpi";
+      sha256 = "91e7554b85b79201f72c175f6e5f6f493b3330ee833b8289fb6417d991add50a";
       meta = with lib;
       {
         homepage = "https://github.com/tom-james-watson/old-reddit-redirect";
@@ -207,10 +206,10 @@
     };
     "ruffle_rs" = buildFirefoxXpiAddon {
       pname = "ruffle_rs";
-      version = "0.2.0.25179";
+      version = "0.2.0.25315";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4522530/ruffle_rs-0.2.0.25179.xpi";
-      sha256 = "87249ef1d26019e39ad1af917fcbd5efa0ae8099381fa31961a186767badf509";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4617033/ruffle_rs-0.2.0.25315.xpi";
+      sha256 = "311b670117fe549d5c5153bf27a504d4dfed8f772ef2e86196263f5a43adbe42";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
@@ -241,10 +240,10 @@
     };
     "sponsorblock" = buildFirefoxXpiAddon {
       pname = "sponsorblock";
-      version = "5.13.2";
+      version = "6.1.0";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4523436/sponsorblock-5.13.2.xpi";
-      sha256 = "5474885c40991404f1347db69933da631cc24318abe720efe4ba8df5196f0faa";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4608179/sponsorblock-6.1.0.xpi";
+      sha256 = "48f412540ad0217c52caece0eb84186041b28241b24457aaa8c256565f050844";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
@@ -253,6 +252,7 @@
         mozPermissions = [
           "storage"
           "scripting"
+          "unlimitedStorage"
           "https://sponsor.ajay.app/*"
           "https://*.youtube.com/*"
           "https://www.youtube-nocookie.com/embed/*"
@@ -262,10 +262,10 @@
     };
     "uaswitcher" = buildFirefoxXpiAddon {
       pname = "uaswitcher";
-      version = "1.4.89";
+      version = "1.4.92";
       addonId = "user-agent-switcher@ninetailed.ninja";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4449854/uaswitcher-1.4.89.xpi";
-      sha256 = "ad488274976139ce84517a3e12de6b729edfb8daded18c7184ffc64b90591a0a";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4616490/uaswitcher-1.4.92.xpi";
+      sha256 = "41515699c5537769848d3d539879756f87b3643c7e04b73426da76dd234192fb";
       meta = with lib;
       {
         homepage = "https://gitlab.com/ntninja/user-agent-switcher";
