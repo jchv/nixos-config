@@ -14,7 +14,6 @@
         pkgs.fd
         pkgs.file
         pkgs.gh
-        pkgs.gitFull
         pkgs.go
         pkgs.iptables
         pkgs.jq
@@ -64,6 +63,10 @@
       config.allowBroken = true;
     };
     programs = {
+      git = {
+        enable = true;
+        package = pkgs.gitFull;
+      };
       zsh = {
         enable = true;
         enableCompletion = true;
