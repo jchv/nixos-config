@@ -67,6 +67,7 @@
         enable = true;
         package = pkgs.gitFull;
       };
+      fuse.userAllowOther = true;
       zsh = {
         enable = true;
         enableCompletion = true;
