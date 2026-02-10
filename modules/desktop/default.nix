@@ -32,6 +32,7 @@ in
         pkgs.kdePackages.kio-fuse
         pkgs.kdePackages.phonon
         pkgs.kdePackages.phonon-vlc
+        pkgs.libimobiledevice
         pkgs.libnotify
         pkgs.libwacom
         pkgs.networkmanagerapplet
@@ -155,6 +156,7 @@ in
           pkgs.libcanberra
           pkgs.libcap
           pkgs.libdrm
+          pkgs.libgbm
           pkgs.libgcrypt
           pkgs.libgpg-error
           pkgs.libidn
@@ -251,6 +253,7 @@ in
       packagekit.enable = true;
       pcscd.enable = true;
       orca.enable = true;
+      usbmuxd.enable = true;
       pipewire = {
         enable = true;
         package = pkgs.pipewire.overrideAttrs (
