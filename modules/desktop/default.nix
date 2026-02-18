@@ -136,7 +136,7 @@ in
           pkgs.fribidi
           pkgs.fuse
           pkgs.gdk-pixbuf
-          pkgs.glew110
+          pkgs.glew_1_10
           pkgs.glib
           pkgs.gmp
           pkgs.gst_all_1.gst-plugins-bad
