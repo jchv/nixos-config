@@ -55,5 +55,11 @@
       # Enable rtkit for realtime priority.
       rtkit.enable = true;
     };
+    # Use systemd-oomd
+    systemd.oomd = {
+      enable = true;
+      enableRootSlice = true;
+      enableUserSlices = true;
+    };
   };
 }
