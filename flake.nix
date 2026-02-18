@@ -1,7 +1,7 @@
 {
   description = "My NixOS configuration flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-index-database.url = "github:nix-community/nix-index-database";

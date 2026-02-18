@@ -61,13 +61,7 @@ in
     };
     services = {
       desktopManager.plasma6.enable = true;
-      displayManager.sddm = {
-        enable = true;
-        wayland = {
-          enable = true;
-          compositor = "kwin";
-        };
-      };
+      displayManager.plasma-login-manager.enable = true;
     };
     xdg = {
       autostart.enable = true;

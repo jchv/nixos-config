@@ -191,33 +191,33 @@ in
           pkgs.udev
           pkgs.vulkan-loader
           pkgs.wayland
-          pkgs.xorg.libICE
-          pkgs.xorg.libSM
-          pkgs.xorg.libX11
-          pkgs.xorg.libXScrnSaver
-          pkgs.xorg.libXcomposite
-          pkgs.xorg.libXcursor
-          pkgs.xorg.libXdamage
-          pkgs.xorg.libXext
-          pkgs.xorg.libXfixes
-          pkgs.xorg.libXft
-          pkgs.xorg.libXi
-          pkgs.xorg.libXinerama
-          pkgs.xorg.libXmu
-          pkgs.xorg.libXrandr
-          pkgs.xorg.libXrender
-          pkgs.xorg.libXt
-          pkgs.xorg.libXtst
-          pkgs.xorg.libXxf86vm
-          pkgs.xorg.libpciaccess
-          pkgs.xorg.libxcb
-          pkgs.xorg.libxshmfence
-          pkgs.xorg.xcbutil
-          pkgs.xorg.xcbutilimage
-          pkgs.xorg.xcbutilkeysyms
-          pkgs.xorg.xcbutilrenderutil
-          pkgs.xorg.xcbutilwm
-          pkgs.xorg.xkeyboardconfig
+          pkgs.libice
+          pkgs.libsm
+          pkgs.libx11
+          pkgs.libxscrnsaver
+          pkgs.libxcomposite
+          pkgs.libxcursor
+          pkgs.libxdamage
+          pkgs.libxext
+          pkgs.libxfixes
+          pkgs.libxft
+          pkgs.libxi
+          pkgs.libxinerama
+          pkgs.libxmu
+          pkgs.libxrandr
+          pkgs.libxrender
+          pkgs.libxt
+          pkgs.libxtst
+          pkgs.libxxf86vm
+          pkgs.libpciaccess
+          pkgs.libxcb
+          pkgs.libxcb-util
+          pkgs.libxcb-image
+          pkgs.libxcb-keysyms
+          pkgs.libxcb-render-util
+          pkgs.libxcb-wm
+          pkgs.libxshmfence
+          pkgs.xkeyboardconfig
           pkgs.zlib
         ];
       };
@@ -356,7 +356,7 @@ in
     nixpkgs.config.allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-        "Oracle_VirtualBox_Extension_Pack"
+        "virtualbox-extpack"
         "vmware-workstation"
       ];
     systemd.user.services.kio-fuse = {
