@@ -12,8 +12,8 @@ ghidra.buildGhidraExtension (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Cuyler36";
     repo = "Ghidra-GameCube-Loader";
-    rev = "0ff5e888526cd8cbc03660445c0dcd1105c8883a";
-    hash = "sha256-kwgm3xf1VLm6N4icY2LHsL01mxqqR5djUd/Bw2hkFTg=";
+    rev = "c61f08fdddfb655f2f1fd39dc53d8220530c8b52";
+    hash = "sha256-w/onDdTSl6MidJL56e6sozOS9OsVwBhfCm3N1uGLmGQ=";
   };
 
   nativeBuildInputs = [ ant ];
