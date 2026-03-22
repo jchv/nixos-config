@@ -39,6 +39,7 @@
         "ko_KR.UTF-8/UTF-8"
       ];
     };
+    programs.systemtap.enable = true;
     programs.zsh = {
       ohMyZsh = {
         enable = true;
