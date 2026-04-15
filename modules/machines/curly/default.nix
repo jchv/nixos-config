@@ -16,6 +16,12 @@
     };
     hardware = {
       amdgpu.opencl.enable = true;
+      graphics.extraPackages = [
+        pkgs.intel-media-driver
+        pkgs.unfree.intel-ocl
+        pkgs.intel-vaapi-driver
+        pkgs.vpl-gpu-rt
+      ];
     };
     jchw = {
       desktop.kde.enable = true;
