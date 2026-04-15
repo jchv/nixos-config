@@ -285,6 +285,12 @@ in
         # Brother QL-800
         SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", MODE="0666"
       '';
+      sunshine = {
+        enable = true;
+        openFirewall = true;
+        capSysAdmin = true;
+        autoStart = false;
+      };
     };
     system = {
       activationScripts.binbash = ''
