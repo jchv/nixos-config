@@ -69,4 +69,16 @@ in
     prev.ghidra-extensions.ghidra-delinker-extension
     (prev.callPackage ./ghidra-gamecube-loader { })
   ]);
+  # Hack: a variant of Zed forced to use AMDGPU iGPU since there seems to be issues with Arc/ANV.
+  zed-editor-igpu = prev.symlinkJoin {
+    name = "zed-editor-igpu";
+    paths = [ prev.zed-editor ];
+    postBuild = ''
+      . ${prev.makeWrapper}/nix-support/setup-hook
+      unlink $out/bin/zeditor
+      makeWrapper '${prev.zed-editor}/bin/zeditor' "$out/bin/zeditor" \
+        --set-default MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE 1 \
+        --set-default MESA_VK_DEVICE_SELECT "1002:164e"
+    '';
+  };
 }
