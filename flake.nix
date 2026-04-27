@@ -51,6 +51,7 @@
       nixOSModules = [
         ./modules/base/nixos.nix
         ./modules/desktop
+        ./modules/nas
         ./modules/users
         ./modules/vpn
         nix-index-database.nixosModules.nix-index
@@ -64,12 +65,11 @@
         hostname: modules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules =
-            [
-              (machineModuleFor hostname)
-            ]
-            ++ nixOSModules
-            ++ modules;
+          modules = [
+            (machineModuleFor hostname)
+          ]
+          ++ nixOSModules
+          ++ modules;
           specialArgs = {
             inherit inputs;
           };
@@ -85,12 +85,11 @@
         hostname: modules:
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          modules =
-            [
-              (machineModuleFor hostname)
-            ]
-            ++ nixDarwinModules
-            ++ modules;
+          modules = [
+            (machineModuleFor hostname)
+          ]
+          ++ nixDarwinModules
+          ++ modules;
           specialArgs = {
             inherit inputs;
           };

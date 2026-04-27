@@ -102,6 +102,10 @@ in
           };
         };
       };
+      keyboard.qmk = {
+        enable = true;
+        keychronSupport = true;
+      };
     };
     networking = {
       firewall.enable = false;

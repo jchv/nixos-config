@@ -7,6 +7,7 @@
   config = {
     home.stateVersion = "23.11";
     xdg.userDirs.enable = true;
+    xdg.userDirs.setSessionVariables = false;
 
     # This shouldn't be necessary, but it works around KDE bugs.
     home.file.".local/share/applications/mimeapps.list".source =
