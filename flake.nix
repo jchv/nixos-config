@@ -25,6 +25,12 @@
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    deadbeef-vgmstream.url = "github:jchv/deadbeef-vgmstream";
+    deadbeef-vgmstream.inputs.nixpkgs.follows = "nixpkgs";
+
+    deadbeef-pxtone.url = "github:jchv/deadbeef-pxtone";
+    deadbeef-pxtone.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     inputs@{
@@ -38,6 +44,8 @@
       disko,
       flake-utils,
       nix-darwin,
+      deadbeef-vgmstream,
+      deadbeef-pxtone,
       ...
     }:
     let
@@ -46,6 +54,8 @@
       nixpkgsOverlays = [
         nixInputsOverlay
         nix-writers.overlays.default
+        deadbeef-vgmstream.overlays.default
+        deadbeef-pxtone.overlays.default
         (import ./packages/overlay.nix)
       ];
       nixOSModules = [

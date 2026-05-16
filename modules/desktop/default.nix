@@ -295,6 +295,7 @@ in
         capSysAdmin = true;
         autoStart = false;
       };
+      kmscon.enable = true;
     };
     system = {
       activationScripts.binbash = ''

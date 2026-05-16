@@ -81,4 +81,23 @@ in
         --set-default MESA_VK_DEVICE_SELECT "1002:164e"
     '';
   };
+  deadbeef-with-plugins = prev.symlinkJoin {
+    pname = "deadbeef-with-plugins";
+    inherit (prev.deadbeef) version;
+
+    paths = [
+      prev.deadbeef
+      prev.deadbeefPlugins.vgmstream
+      prev.deadbeefPlugins.pxtone
+    ];
+
+    nativeBuildInputs = [ prev.makeWrapper ];
+
+    postBuild = ''
+      wrapProgram $out/bin/deadbeef \
+        --set DEADBEEF_PLUGIN_DIR "$out/lib/deadbeef"
+    '';
+
+    meta = prev.deadbeef.meta;
+  };
 }
