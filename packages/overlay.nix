@@ -100,4 +100,19 @@ in
 
     meta = prev.deadbeef.meta;
   };
+  tailscale =
+    assert prev.tailscale.version == "1.98.0";
+    prev.tailscale.overrideAttrs (oldAttrs: {
+      version = "1.98.2";
+      src = final.fetchFromGitHub {
+        owner = "tailscale";
+        repo = "tailscale";
+        tag = "v1.98.2";
+        hash = "sha256-y3JdVYnvfqrAlubnjrM2FD+PRXlNEzOM3yggSczb+rA=";
+      };
+      postPatch = (oldAttrs.postPatch or "") + ''
+        substituteInPlace go.mod \
+          --replace-fail "go 1.26.3" "go 1.26.2"
+      '';
+    });
 }
