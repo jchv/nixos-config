@@ -65,6 +65,14 @@ in
       '')
     ];
   };
+  keepassxc = prev.keepassxc.overrideAttrs (oldAttrs: {
+    postPatch = (oldAttrs.postPatch or "") + ''
+      # Fuck banks.
+      substituteInPlace src/browser/BrowserPasskeys.cpp \
+        --replace-fail "fdb141b25d84443e8a354698c205a502" "dd4ec289e01d41c9bb8970fa845d4bf2"
+    '';
+    checkPhase = "true";
+  });
   ghidra-with-extensions = prev.ghidra.withExtensions (_: [
     prev.ghidra-extensions.ghidra-delinker-extension
     (prev.callPackage ./ghidra-gamecube-loader { })
