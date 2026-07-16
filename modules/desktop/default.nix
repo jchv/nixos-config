@@ -296,6 +296,7 @@ in
         autoStart = false;
       };
       kmscon.enable = true;
+      lact.enable = true;
     };
     system = {
       activationScripts.binbash = ''

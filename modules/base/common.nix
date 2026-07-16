@@ -1,6 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 {
   config = {
+    sops.secrets = {
+      "nix/secret-key" = { };
+    };
     environment = {
       etc = {
         "channels/nixpkgs".source = inputs.nixpkgs.outPath;
@@ -45,6 +48,8 @@
           "nix-command"
           "flakes"
         ];
+        secret-key-files = config.sops.secrets."nix/secret-key".path;
+        extra-trusted-public-keys = "jchw:6KUKtpuykOWMdecyfgKbRW9boZkflWgB5PHi+O9sST4=";
       };
       gc = {
         automatic = true;

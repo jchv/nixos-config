@@ -61,6 +61,7 @@
       nixOSModules = [
         ./modules/base/nixos.nix
         ./modules/desktop
+        ./modules/dogfood
         ./modules/nas
         ./modules/users
         ./modules/vpn

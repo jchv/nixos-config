@@ -1,11 +1,11 @@
-{ buildFirefoxXpiAddon, fetchurl, lib, stdenv }:
+{ buildMozillaXpiAddon, fetchurl, lib, stdenv }:
   {
-    "cookies-txt" = buildFirefoxXpiAddon {
+    "cookies-txt" = buildMozillaXpiAddon {
       pname = "cookies-txt";
-      version = "0.9";
+      version = "1.0";
       addonId = "{12cf650b-1822-40aa-bff0-996df6948878}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4573893/cookies_txt-0.9.xpi";
-      sha256 = "a734a72d34dbeea1c0a2035c3fa3eb3e9119918b0249b5722ab1d89b142f42a0";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4624727/cookies_txt-1.0.xpi";
+      sha256 = "5277a747488f2bbe657e83f8266eb7f7d3c30aeb886be53b9de87766f2053406";
       meta = with lib;
       {
         description = "Exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.";
@@ -16,11 +16,12 @@
           "contextualIdentities"
           "<all_urls>"
           "tabs"
+          "clipboardWrite"
         ];
         platforms = platforms.all;
       };
     };
-    "dont-accept-webp" = buildFirefoxXpiAddon {
+    "dont-accept-webp" = buildMozillaXpiAddon {
       pname = "dont-accept-webp";
       version = "0.9";
       addonId = "dont-accept-webp@jeffersonscher.com";
@@ -42,12 +43,12 @@
         platforms = platforms.all;
       };
     };
-    "keepassxc-browser" = buildFirefoxXpiAddon {
+    "keepassxc-browser" = buildMozillaXpiAddon {
       pname = "keepassxc-browser";
-      version = "1.9.10";
+      version = "1.10.3";
       addonId = "keepassxc-browser@keepassxc.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4592023/keepassxc_browser-1.9.10.xpi";
-      sha256 = "38926e2225ba92da0962e6675a90e1e9bf1e3b280b88014c27f3aa727f212542";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4831838/keepassxc_browser-1.10.3.xpi";
+      sha256 = "4df9c54e0a293aa2e37e9bcf97ec307a35a00e78cebaa9a68edba552c07c4568";
       meta = with lib;
       {
         homepage = "https://keepassxc.org/";
@@ -73,15 +74,15 @@
         platforms = platforms.all;
       };
     };
-    "libredirect" = buildFirefoxXpiAddon {
+    "libredirect" = buildMozillaXpiAddon {
       pname = "libredirect";
-      version = "3.2.0";
+      version = "3.3.0";
       addonId = "7esoorv3@alefvanoon.anonaddy.me";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4522826/libredirect-3.2.0.xpi";
-      sha256 = "ba4cf8fe97275d7082fea085a09796481122845455df1af524a7210fff3ecf3c";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4734268/libredirect-3.3.0.xpi";
+      sha256 = "1c91739ae52c6eb8522f0efb38397c3d5e85d961b3999f3c5d60f89db447877d";
       meta = with lib;
       {
-        homepage = "https://libredirect.github.io";
+        homepage = "https://libredirect.manerakai.com/";
         description = "Redirects YouTube, Twitter, TikTok... requests to alternative privacy friendly frontends.";
         license = licenses.gpl3;
         mozPermissions = [
@@ -95,12 +96,12 @@
         platforms = platforms.all;
       };
     };
-    "load-reddit-images-directly" = buildFirefoxXpiAddon {
+    "load-reddit-images-directly" = buildMozillaXpiAddon {
       pname = "load-reddit-images-directly";
-      version = "1.8";
+      version = "1.9";
       addonId = "{4c421bb7-c1de-4dc6-80c7-ce8625e34d24}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4329559/load_reddit_images_directly-1.8.xpi";
-      sha256 = "da4485950ffaace68c2e45862702b18204dd05fe28f5d7ed3c3525094d6d9b97";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4769138/load_reddit_images_directly-1.9.xpi";
+      sha256 = "7242551ae0ce95a09111256caecb492db2e36f4cff3721d8cb7f7bf3369bd819";
       meta = with lib;
       {
         homepage = "https://github.com/nopperl/load-reddit-images-directly";
@@ -114,18 +115,19 @@
           "*://i.redd.it/*"
           "*://external-preview.redd.it/*"
           "*://preview.redd.it/*"
+          "*://cf.preview.redd.it/*"
           "*://www.reddit.com/*"
           "*://www.reddit.com/r/*"
         ];
         platforms = platforms.all;
       };
     };
-    "localcdn-fork-of-decentraleyes" = buildFirefoxXpiAddon {
+    "localcdn-fork-of-decentraleyes" = buildMozillaXpiAddon {
       pname = "localcdn-fork-of-decentraleyes";
-      version = "2.6.82";
+      version = "2.6.85";
       addonId = "{b86e4813-687a-43e6-ab65-0bde4ab75758}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4582489/localcdn_fork_of_decentraleyes-2.6.82.xpi";
-      sha256 = "2106e0826419eb1877d99c689b9c198bd483bfffab6ab9c3242b3fad674f325c";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4838011/localcdn_fork_of_decentraleyes-2.6.85.xpi";
+      sha256 = "628fcad19950ca5a3005e3e9b54de73842cf9bf87a5c3b543452b10c1647fa60";
       meta = with lib;
       {
         homepage = "https://www.localcdn.org";
@@ -142,7 +144,7 @@
         platforms = platforms.all;
       };
     };
-    "nazeka" = buildFirefoxXpiAddon {
+    "nazeka" = buildMozillaXpiAddon {
       pname = "nazeka";
       version = "0.4.10";
       addonId = "nazeka@wareya.moe";
@@ -167,12 +169,12 @@
         platforms = platforms.all;
       };
     };
-    "old-reddit-redirect" = buildFirefoxXpiAddon {
+    "old-reddit-redirect" = buildMozillaXpiAddon {
       pname = "old-reddit-redirect";
-      version = "2.0.9";
+      version = "2.2.0";
       addonId = "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4526031/old_reddit_redirect-2.0.9.xpi";
-      sha256 = "91e7554b85b79201f72c175f6e5f6f493b3330ee833b8289fb6417d991add50a";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4882083/old_reddit_redirect-2.2.0.xpi";
+      sha256 = "5b346ff8f7de84304a402432638efdbdac0a6174d62ac5c2845cce4998f33022";
       meta = with lib;
       {
         homepage = "https://github.com/tom-james-watson/old-reddit-redirect";
@@ -181,11 +183,12 @@
         mozPermissions = [
           "declarativeNetRequestWithHostAccess"
           "https://old.reddit.com/*"
+          "https://www.reddit.com/*"
         ];
         platforms = platforms.all;
       };
     };
-    "return-youtube-dislikes" = buildFirefoxXpiAddon {
+    "return-youtube-dislikes" = buildMozillaXpiAddon {
       pname = "return-youtube-dislikes";
       version = "3.0.0.18";
       addonId = "{762f9885-5a13-4abd-9c77-433dcd38b8fd}";
@@ -204,12 +207,12 @@
         platforms = platforms.all;
       };
     };
-    "ruffle_rs" = buildFirefoxXpiAddon {
+    "ruffle_rs" = buildMozillaXpiAddon {
       pname = "ruffle_rs";
-      version = "0.2.0.25315";
+      version = "0.3.0.26163";
       addonId = "{b5501fd1-7084-45c5-9aa6-567c2fcf5dc6}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4617033/ruffle_rs-0.2.0.25315.xpi";
-      sha256 = "311b670117fe549d5c5153bf27a504d4dfed8f772ef2e86196263f5a43adbe42";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4847266/ruffle_rs-0.3.0.26163.xpi";
+      sha256 = "06de9770e3a14f219a971c70520f9f346027e6ca8141ef93ff02237b395ba62c";
       meta = with lib;
       {
         homepage = "https://ruffle.rs/";
@@ -224,7 +227,7 @@
         platforms = platforms.all;
       };
     };
-    "search-by-image" = buildFirefoxXpiAddon {
+    "search-by-image" = buildMozillaXpiAddon {
       pname = "search-by-image";
       version = "1.3";
       addonId = "{ea1c656c-504f-4b5a-8d2d-8793a9b30605}";
@@ -238,12 +241,12 @@
         platforms = platforms.all;
       };
     };
-    "sponsorblock" = buildFirefoxXpiAddon {
+    "sponsorblock" = buildMozillaXpiAddon {
       pname = "sponsorblock";
-      version = "6.1.0";
+      version = "6.1.7";
       addonId = "sponsorBlocker@ajay.app";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4608179/sponsorblock-6.1.0.xpi";
-      sha256 = "48f412540ad0217c52caece0eb84186041b28241b24457aaa8c256565f050844";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4897574/sponsorblock-6.1.7.xpi";
+      sha256 = "0d50e1632c6f15ee15a543e670e1c572974605a5c02622916e08e026803df83f";
       meta = with lib;
       {
         homepage = "https://sponsor.ajay.app";
@@ -260,12 +263,12 @@
         platforms = platforms.all;
       };
     };
-    "uaswitcher" = buildFirefoxXpiAddon {
+    "uaswitcher" = buildMozillaXpiAddon {
       pname = "uaswitcher";
-      version = "1.4.92";
+      version = "1.4.102";
       addonId = "user-agent-switcher@ninetailed.ninja";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4616490/uaswitcher-1.4.92.xpi";
-      sha256 = "41515699c5537769848d3d539879756f87b3643c7e04b73426da76dd234192fb";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4772478/uaswitcher-1.4.102.xpi";
+      sha256 = "b83c36fe95d44ecd5dd8611b4af87390aa7b8c653d637b3bb287c152e63da8c8";
       meta = with lib;
       {
         homepage = "https://gitlab.com/ntninja/user-agent-switcher";
@@ -282,7 +285,7 @@
         platforms = platforms.all;
       };
     };
-    "unpaywall" = buildFirefoxXpiAddon {
+    "unpaywall" = buildMozillaXpiAddon {
       pname = "unpaywall";
       version = "3.98";
       addonId = "{f209234a-76f0-4735-9920-eb62507a54cd}";
@@ -297,12 +300,12 @@
         platforms = platforms.all;
       };
     };
-    "violentmonkey" = buildFirefoxXpiAddon {
+    "violentmonkey" = buildMozillaXpiAddon {
       pname = "violentmonkey";
-      version = "2.31.0";
+      version = "2.41.0";
       addonId = "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4455138/violentmonkey-2.31.0.xpi";
-      sha256 = "8880114a3ac30a5f3aebc71443f86a1f7fdd1ec9298def22dc2e250502ecccee";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4830363/violentmonkey-2.41.0.xpi";
+      sha256 = "42d184788bd2f6a291956dd31cd45daa7b4a5d1b19bf1c74fb0ae76e456fa36b";
       meta = with lib;
       {
         homepage = "https://violentmonkey.github.io/";
@@ -323,7 +326,7 @@
         platforms = platforms.all;
       };
     };
-    "youtube-shorts-block" = buildFirefoxXpiAddon {
+    "youtube-shorts-block" = buildMozillaXpiAddon {
       pname = "youtube-shorts-block";
       version = "1.5.3";
       addonId = "{34daeb50-c2d2-4f14-886a-7160b24d66a4}";

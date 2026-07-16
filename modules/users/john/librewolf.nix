@@ -1,31 +1,22 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   config =
     let
       lepton = pkgs.fetchFromGitHub {
         owner = "black7375";
         repo = "Firefox-UI-Fix";
-        rev = "v8.7.3";
-        hash = "sha256-2AIUzfWp7RhhW5Ku1qYTxr0y+1qpfCIHPVv3wdI2VyU=";
+        rev = "v8.7.5";
+        hash = "sha256-IfR5pI+tpP5RfoTqO6Vgnbc5nADqSA4gg+9csz/+pO0=";
       };
     in
     {
-      home.file.".mozilla/native-messaging-hosts".force = true;
-      home.file.".mozilla/firefox/profiles.ini".target = ".librewolf/profiles.ini";
-      home.file.".librewolf/john".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/john";
-      programs.firefox = {
+      programs.librewolf = {
         enable = true;
-        package = pkgs.wrapFirefox pkgs.librewolf-unwrapped {
-          inherit (pkgs.librewolf-unwrapped) extraPrefsFiles extraPoliciesFiles;
-          wmClass = "librewolf";
-          libName = "librewolf";
-          nativeMessagingHosts = [
-            pkgs.keepassxc
-            pkgs.kdePackages.plasma-browser-integration
-            pkgs.fx-cast-bridge
-          ];
-        };
+        nativeMessagingHosts = [
+          pkgs.keepassxc
+          pkgs.kdePackages.plasma-browser-integration
+          pkgs.fx-cast-bridge
+        ];
         profiles.john = {
           extensions.packages = [
             pkgs.firefoxAddons.cookies-txt

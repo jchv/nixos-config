@@ -7,7 +7,7 @@
 }:
 import ./addons.nix {
   inherit lib stdenv fetchurl;
-  inherit (nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
+  buildMozillaXpiAddon = nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
 }
 // {
   image-reverse-search = stdenv.mkDerivation {
