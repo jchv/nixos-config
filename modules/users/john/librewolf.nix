@@ -12,6 +12,7 @@
     {
       programs.librewolf = {
         enable = true;
+        configPath = ".config/librewolf/librewolf";
         nativeMessagingHosts = [
           pkgs.keepassxc
           pkgs.kdePackages.plasma-browser-integration
