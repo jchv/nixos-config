@@ -110,7 +110,7 @@ in
     networking = {
       firewall.enable = false;
       networkmanager.enable = true;
-      search = [ "jchw.io" ];
+      search = [ "jchw.dev" ];
     };
     programs = {
       nix-ld = {
