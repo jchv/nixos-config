@@ -88,6 +88,10 @@
         ServerAliveInterval 5
         ServerAliveCountMax 3
         SetEnv TERM=xterm-256color
+        Host *
+          ControlMaster auto
+          ControlPath ~/.ssh/control-%r@%h:%p
+          ControlPersist 10m
         Host andou andou.local curly curly.local mii mii.local puchiko puchiko.local taiga taiga.local
           User john
           ForwardAgent yes
